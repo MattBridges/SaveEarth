@@ -8,12 +8,15 @@ public class PlayerShip : Ship
     public float moveSpeed;
     public GameObject weaponShot;
     public float bulletSpeed;
+    public AudioClip shotSound;
     private CNAbstractController leftStick;
     private CNAbstractController rightStick;
     private CNAbstractController[] sticks;
     private Rigidbody2D rb;
     private Transform weaponShotPosition;
+    private AudioSource audioSrc;
     #endregion
+
 
     // Use this for initialization
 	void Start () {
@@ -22,6 +25,7 @@ public class PlayerShip : Ship
         //Object references
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         weaponShotPosition = GameObject.Find("PlayerCannon").transform;
+        audioSrc = this.gameObject.GetComponent<AudioSource>();
 
         //Register joysticks
         RegisterJoysticks();
@@ -68,14 +72,25 @@ public class PlayerShip : Ship
     {
         while (true)
         {
-            yield return new WaitForSeconds(.15f);
-            //audio.PlayOneShot(shotSound);
-            Vector3 dir = new Vector3(rightStick.GetAxis("Horizontal"), rightStick.GetAxis("Vertical"));
-
-            GameObject projectile = (GameObject)Instantiate(weaponShot, weaponShotPosition.position, Quaternion.identity);
-            projectile.transform.parent = GameObject.Find("BulletCollector").transform;
-            projectile.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
-        }
+            yield return new WaitForSeconds(.15f);           
+            
+            Vector3 sDir = new Vector3(rightStick.GetAxis("Horizontal"), rightStick.GetAxis("Vertical"));
+            Vector3 cDir = sDir.normalized;
+            
+            bool canFire = false;
+            if (cDir.x == 0 && cDir.y == 0)
+                canFire = false;
+            else
+                canFire = true;
+            if(canFire)
+            {
+                audioSrc.clip = shotSound;
+                audioSrc.Play();
+                GameObject projectile = (GameObject)Instantiate(weaponShot, weaponShotPosition.position, Quaternion.identity);
+                projectile.transform.parent = GameObject.Find("BulletCollector").transform;
+                projectile.GetComponent<Rigidbody>().velocity = cDir * bulletSpeed;
+            }
+       }
     }
 
 }
