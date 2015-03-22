@@ -33,12 +33,20 @@ public class Ship : MonoBehaviour {
     public void Rotate(Vector3 stickPos)
     {
         Vector3 newDir = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, Mathf.Atan2(stickPos.x, stickPos.y) * -1 * Mathf.Rad2Deg + 90);
-        if (newDir.z == 90)
+        if (newDir.z == 90 && stickPos.y == 0)
             rotDir = this.transform.eulerAngles;
         else
             rotDir = newDir;
 
         transform.eulerAngles = rotDir;
 
+    }
+    public void FireCannon(GameObject projectle, float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection )
+    {
+        audioSrc.clip = shotSound;
+        audioSrc.Play();
+        GameObject projectile = (GameObject)Instantiate(projectle, shotPos.position, Quaternion.identity);
+        projectile.transform.parent = GameObject.Find("BulletCollector").transform;
+        projectile.GetComponent<Rigidbody>().velocity = shotDirection * bulletSpeed;
     }
 }

@@ -9,6 +9,7 @@ public class PlayerShip : Ship
     public GameObject weaponShot;
     public float bulletSpeed;
     public AudioClip shotSound;
+
     private CNAbstractController leftStick;
     private CNAbstractController rightStick;
     private CNAbstractController[] sticks;
@@ -16,10 +17,7 @@ public class PlayerShip : Ship
     private Transform weaponShotPosition;
     private AudioSource audioSrc;
     #endregion
-
-
-    // Use this for initialization
-	void Start () {
+ 	void Start () {
         //Create ship and assign sprite and give speed value
         CreateShip(shipSprite, moveSpeed);
         //Object references
@@ -35,6 +33,7 @@ public class PlayerShip : Ship
         rightStick.FingerTouchedEvent += StartFire;
         rightStick.FingerLiftedEvent += StopFire;
 	}
+    #region EventMethods
     void MoveShip(Vector3 dir, CNAbstractController controller)
     {
         JoystickMove(rb, dir);
@@ -51,6 +50,8 @@ public class PlayerShip : Ship
     {
         StopCoroutine("FireWepon");
     }
+    #endregion
+    #region Methods
     void RegisterJoysticks()
     {
         //Find all joysticks in scene
@@ -84,13 +85,9 @@ public class PlayerShip : Ship
                 canFire = true;
             if(canFire)
             {
-                audioSrc.clip = shotSound;
-                audioSrc.Play();
-                GameObject projectile = (GameObject)Instantiate(weaponShot, weaponShotPosition.position, Quaternion.identity);
-                projectile.transform.parent = GameObject.Find("BulletCollector").transform;
-                projectile.GetComponent<Rigidbody>().velocity = cDir * bulletSpeed;
+                FireCannon(weaponShot, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir);
             }
        }
     }
-
+    #endregion
 }
