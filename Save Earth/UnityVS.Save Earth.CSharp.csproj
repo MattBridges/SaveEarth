@@ -66,7 +66,10 @@
     <Compile Include="Assets\CNControls\Scripts\CNJoystick.cs" />
     <Compile Include="Assets\CNControls\Scripts\CNThrowableTouchpad.cs" />
     <Compile Include="Assets\CNControls\Scripts\CNTouchpad.cs" />
+    <Compile Include="Assets\Scripts\Controllers\DragonflyShip.cs" />
+    <Compile Include="Assets\Scripts\Controllers\MotherShip.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerShip.cs" />
+    <Compile Include="Assets\Scripts\Controllers\RaptorShip.cs" />
     <Compile Include="Assets\Scripts\Controllers\Ship.cs" />
     <Compile Include="Assets\Scripts\TimeDestroy.cs" />
   </ItemGroup>
