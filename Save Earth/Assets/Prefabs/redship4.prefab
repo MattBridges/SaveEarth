@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 495754}
   - 212: {fileID: 21205534}
+  - 50: {fileID: 5070354}
+  - 60: {fileID: 6026916}
   m_Layer: 0
   m_Name: redship4
   m_TagString: Untagged
@@ -23,11 +25,62 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .888000011, y: 1.30499995, z: 0}
+  m_LocalPosition: {x: .791999996, y: 1.30499995, z: 0}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5070354
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170932}
+  m_Mass: 1
+  m_LinearDrag: .5
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+--- !u!60 &6026916
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170932}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -.34622848, y: .0178086758}
+      - {x: -.363142729, y: -.438500881}
+      - {x: -.505953908, y: -.898807883}
+      - {x: -.374599338, y: -1.4600445}
+      - {x: .379180908, y: -1.46135187}
+      - {x: .531609058, y: -1.03305507}
+      - {x: .363321781, y: -.44643569}
+      - {x: .364302158, y: -.000576257706}
+      - {x: .714318752, y: .0106785297}
+      - {x: .861871719, y: .514485836}
+      - {x: .735000014, y: 1}
+      - {x: .514999986, y: 1.22000003}
+      - {x: .435000002, y: 1.29999995}
+      - {x: .238844872, y: 1.41928077}
+      - {x: -.272806168, y: 1.39675403}
+      - {x: -.814999998, y: .959999979}
+      - {x: -.88499999, y: .560000002}
+      - {x: -.925000012, y: .540000021}
+      - {x: -.925000012, y: .460000008}
+      - {x: -.75114584, y: .00438976288}
+    - - {x: .00499999989, y: -.370000005}
+      - {x: -.00499999989, y: -.310000002}
+      - {x: -.0149999997, y: -.310000002}
 --- !u!212 &21205534
 SpriteRenderer:
   m_ObjectHideFlags: 1

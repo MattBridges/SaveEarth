@@ -10,6 +10,7 @@ public class Ship : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().sprite = ShipSprite;
         speed = MoveSpeed;        
     }
+    #region Movement Methods
     public void MoveLeft(Rigidbody2D rb)
     {
         rb.AddForce(-Vector2.right * speed);
@@ -41,6 +42,8 @@ public class Ship : MonoBehaviour {
         transform.eulerAngles = rotDir;
 
     }
+    #endregion
+    #region Weapon Methods
     public void FireCannon(GameObject projectle, float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection )
     {
         audioSrc.clip = shotSound;
@@ -49,4 +52,5 @@ public class Ship : MonoBehaviour {
         projectile.transform.parent = GameObject.Find("BulletCollector").transform;
         projectile.GetComponent<Rigidbody>().velocity = shotDirection * bulletSpeed;
     }
+#endregion
 }

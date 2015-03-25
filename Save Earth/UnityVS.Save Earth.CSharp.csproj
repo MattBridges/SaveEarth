@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Controllers\PlayerShip.cs" />
     <Compile Include="Assets\Scripts\Controllers\RaptorShip.cs" />
     <Compile Include="Assets\Scripts\Controllers\Ship.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\TimeDestroy.cs" />
   </ItemGroup>
   <ItemGroup>
