@@ -16,22 +16,27 @@ public class PlayerShip : Ship
     private Rigidbody2D rb;
     private Transform weaponShotPosition;
     private AudioSource audioSrc;
+    public SpriteRenderer ren;
+    public Collider2D col;
+    public static PlayerShip curPlayer;
     #endregion
  	void Start () {
         //Create ship and assign sprite and give speed value
         CreateShip(shipSprite, moveSpeed);
+        this.gameObject.transform.parent = GameObject.Find("ShipCollector").transform;
         //Object references
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         weaponShotPosition = GameObject.Find("PlayerCannon").transform;
         audioSrc = this.gameObject.GetComponent<AudioSource>();
-
+        curPlayer = this;
+  
         //Register joysticks
         RegisterJoysticks();
         //Register methods to events
-        leftStick.ControllerMovedEvent += MoveShip;
-        rightStick.ControllerMovedEvent += RotateShip;
-        rightStick.FingerTouchedEvent += StartFire;
-        rightStick.FingerLiftedEvent += StopFire;
+        this.leftStick.ControllerMovedEvent += MoveShip;
+        this.rightStick.ControllerMovedEvent += RotateShip;
+        this.rightStick.FingerTouchedEvent += StartFire;
+        this.rightStick.FingerLiftedEvent += StopFire;
 	}
     #region EventMethods
     void MoveShip(Vector3 dir, CNAbstractController controller)
@@ -90,4 +95,23 @@ public class PlayerShip : Ship
        }
     }
     #endregion
+    public void SpawnPlayer()
+    {
+        GameObject ship = GameObject.FindGameObjectWithTag("Player");
+        if(ship!=null)
+        {
+            Debug.Log("Ship Exists");
+        }
+        else 
+        {
+            Instantiate(this.gameObject, Vector2.zero, Quaternion.identity);
+        }
+           
+    }
+    public void RespawnPlayer()
+    {
+        curPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        curPlayer.transform.position = new Vector2(0,0);
+    }
+    
 }

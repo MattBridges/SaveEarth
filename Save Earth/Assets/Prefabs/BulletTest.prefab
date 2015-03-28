@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2346238}
   - 54: {fileID: 5411420}
   - 114: {fileID: 11479580}
+  - 114: {fileID: 11443416}
   m_Layer: 0
   m_Name: BulletTest
   m_TagString: Untagged
@@ -78,13 +79,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11479580
+--- !u!114 &11443416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118598}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b80bb52bf170d4ebe51a8789049936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11479580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118598}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07a2fb4883d0a4b468083fad6e6dee01, type: 3}
   m_Name: 

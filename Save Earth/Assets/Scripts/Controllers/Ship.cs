@@ -48,8 +48,11 @@ public class Ship : MonoBehaviour {
     {
         audioSrc.clip = shotSound;
         audioSrc.Play();
-        GameObject projectile = (GameObject)Instantiate(projectle, shotPos.position, Quaternion.identity);
-        projectile.transform.parent = GameObject.Find("BulletCollector").transform;
+       // GameObject projectile = (GameObject)Instantiate(projectle, shotPos.position, Quaternion.identity);
+        GameObject projectile = Bulletpooler.curBulletPool.ReturnBullet();
+        projectile.SetActive(true);
+        //projectile.transform.parent = GameObject.Find("BulletCollector").transform;
+        projectile.transform.position = shotPos.position;
         projectile.GetComponent<Rigidbody>().velocity = shotDirection * bulletSpeed;
     }
 #endregion
