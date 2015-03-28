@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour {
         {
             player.RespawnPlayer();
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            CameraFX cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFX>();
+            cam.ScreenShake(.15f,.4f);
+        }
 
 	}
 
