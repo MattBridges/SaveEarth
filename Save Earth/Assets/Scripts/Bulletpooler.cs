@@ -7,7 +7,7 @@ public class Bulletpooler : MonoBehaviour {
     public static Bulletpooler curBulletPool;
     public int pooledAmount = 10;
     public bool dynamicPooling=true;
-    List<GameObject> bullets;
+    public List<GameObject> bullets;
 
 
 
@@ -42,8 +42,5 @@ public class Bulletpooler : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

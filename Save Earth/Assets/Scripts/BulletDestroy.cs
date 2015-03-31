@@ -5,8 +5,7 @@ public class BulletDestroy : MonoBehaviour {
 
 	void OnEnable()
     {
-        Invoke("Destroy", 2f);
-        
+        Invoke("Destroy", 2f);        
     }
     void Destroy()
     {
