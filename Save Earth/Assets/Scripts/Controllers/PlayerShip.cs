@@ -16,9 +16,11 @@ public class PlayerShip : Ship
     private Rigidbody2D rb;
     private Transform weaponShotPosition;
     private AudioSource audioSrc;
-    public SpriteRenderer ren;
+ 
     public Collider2D col;
     public static PlayerShip curPlayer;
+
+
     #endregion
  	void Start () {
         //Create ship and assign sprite and give speed value
@@ -29,6 +31,7 @@ public class PlayerShip : Ship
         weaponShotPosition = GameObject.Find("PlayerCannon").transform;
         audioSrc = this.gameObject.GetComponent<AudioSource>();
         curPlayer = this;
+        
   
         //Register joysticks
         RegisterJoysticks();
@@ -112,6 +115,13 @@ public class PlayerShip : Ship
     {
         curPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         curPlayer.transform.position = new Vector2(0,0);
+    }
+    public void TakeDamage()
+    {
+        CameraFX camFX = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFX>();       
+        camFX.ScreenShake();
+        
+
     }
     
 }

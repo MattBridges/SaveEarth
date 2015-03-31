@@ -2,10 +2,13 @@
 using System.Collections;
 
 public class CameraFX : MonoBehaviour {
-    public static CameraFX gameCam;
+    public float shakeAmt;
+    public float shakeTime;
 	// Use this for initialization
 	void Start () {
-        gameCam = this;
+        shakeAmt = .15f;
+        shakeTime = .4f;
+
 	}
 	
 	// Update is called once per frame
@@ -14,8 +17,8 @@ public class CameraFX : MonoBehaviour {
             
 
 	}
-    public void ScreenShake(float amt, float time)
+    public void ScreenShake()
     {
-        iTween.ShakePosition(this.gameObject, iTween.Hash("x", amt, "y", amt, "time", time));
+        iTween.ShakePosition(this.gameObject, iTween.Hash("x", shakeAmt, "y", shakeAmt, "time", shakeTime));
     }
 }
