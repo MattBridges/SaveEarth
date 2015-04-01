@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
-    public GameObject playerRef;
+   
     public PlayerShip player;
+   
+
+    
 	// Use this for initialization
 	void Start () {
-       // playerRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShip>();
+         
         player.SpawnPlayer();
         
 	}

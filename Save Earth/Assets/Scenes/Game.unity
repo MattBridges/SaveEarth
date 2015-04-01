@@ -299,7 +299,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 589134383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.33333349, y: -2.5, z: 0}
+  m_LocalPosition: {x: 4.33767796, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 50541930}
@@ -325,49 +325,6 @@ MonoBehaviour:
   _dragRadius: 1.5
   _snapsToFinger: 1
   _isHiddenIfNotTweaking: 0
---- !u!1 &843851374
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 843851376}
-  - 114: {fileID: 843851375}
-  m_Layer: 0
-  m_Name: BulletPooler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &843851375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 843851374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3843d6ff140c0074dbcd516d9d2b1093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 118598, guid: 15acd9b69ac71fd42b69106d6791d2ed, type: 2}
-  pooledAmount: 13
-  dynamicPooling: 1
-  bullets: []
---- !u!4 &843851376
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 843851374}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1967758684}
-  m_RootOrder: 1
 --- !u!1 &1094680299
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +504,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &1764266828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1764266829}
+  - 114: {fileID: 1764266830}
+  m_Layer: 0
+  m_Name: Pooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1764266829
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1764266828}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1836787544}
+  m_RootOrder: 0
+--- !u!114 &1764266830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1764266828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364693f83b244ac47a50cc2a31c7f3f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dynamicPooling: 1
 --- !u!1 &1784900227
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,8 +583,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d66a2c27eb3534b93c2ef299df27af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRef: {fileID: 0}
   player: {fileID: 11436020, guid: 0ba5a3a82d6cd1f48ae6d606951393ef, type: 2}
+--- !u!1 &1836787542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1836787544}
+  - 114: {fileID: 1836787543}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1836787543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1836787542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce9cf8722f412ab4f8c569c455d41ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dfShip: {fileID: 160624, guid: f90c0cc2605584a4ca9b961a2834e85a, type: 2}
+  dfSpawnAmt: 10
+  bullet: {fileID: 118598, guid: 15acd9b69ac71fd42b69106d6791d2ed, type: 2}
+  bulletSpawnAmt: 10
+  bullets: []
+  dragonFlies: []
+  shipCollector: {fileID: 269149519}
+  bulletCollector: {fileID: 1285866041}
+--- !u!4 &1836787544
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1836787542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1764266829}
+  m_Father: {fileID: 1967758684}
+  m_RootOrder: 1
 --- !u!1 &1967758683
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +658,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1784900228}
-  - {fileID: 843851376}
+  - {fileID: 1836787544}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!1 &1980275991
@@ -702,7 +746,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2145587819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.33333349, y: -2.5, z: 0}
+  m_LocalPosition: {x: -4.33767796, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 201154903}
