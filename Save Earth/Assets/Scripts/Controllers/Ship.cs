@@ -58,4 +58,5 @@ public class Ship : MonoBehaviour {
         projectile.GetComponent<Rigidbody>().velocity = shotDirection * bulletSpeed;
     }
 #endregion
+
 }

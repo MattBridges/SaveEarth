@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            player.TakeDamage();
+            player.TakeDamage(5);
         }
 
 	}

@@ -19,13 +19,16 @@ public class PlayerShip : Ship
  
     public Collider2D col;
     public static PlayerShip curPlayer;
-
+    public int health;
+    
+    
 
     #endregion
  	void Start () {
         //Create ship and assign sprite and give speed value
         CreateShip(shipSprite, moveSpeed);
         this.gameObject.transform.parent = GameObject.Find("ShipCollector").transform;
+        this.health = 100;
         //Object references
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         weaponShotPosition = GameObject.Find("PlayerCannon").transform;
@@ -108,6 +111,7 @@ public class PlayerShip : Ship
         else 
         {
             Instantiate(this.gameObject, Vector2.zero, Quaternion.identity);
+            this.health = 100;
         }
            
     }
@@ -115,12 +119,26 @@ public class PlayerShip : Ship
     {
         curPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         curPlayer.transform.position = new Vector2(0,0);
+        this.health = 100;
+        
     }
-    public void TakeDamage()
+    public void TakeDamage(int amt)
     {
         CameraFX camFX = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFX>();       
         camFX.ScreenShake();
+        this.health -= amt;
         
+        if(health<=0)
+        {
+            RespawnPlayer();
+        }
+    }
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Bullet")
+        {
+            TakeDamage(10);            
+        }
 
     }
     

@@ -184,6 +184,7 @@ MonoBehaviour:
   bulletSpeed: 10
   shotSound: {fileID: 8300000, guid: f6cb1f581b7444b23a05b613a16420d5, type: 3}
   col: {fileID: 0}
+  health: 100
 --- !u!212 &21242744
 SpriteRenderer:
   m_ObjectHideFlags: 1
