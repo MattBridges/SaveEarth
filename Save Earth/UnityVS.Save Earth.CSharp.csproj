@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\BulletDestroy.cs" />
     <Compile Include="Assets\Scripts\Bulletpooler.cs" />
     <Compile Include="Assets\Scripts\CameraFX.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CameraController.cs" />
     <Compile Include="Assets\Scripts\Controllers\DragonflyShip.cs" />
     <Compile Include="Assets\Scripts\Controllers\MotherShip.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerShip.cs" />
