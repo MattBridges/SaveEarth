@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour {
 
-    private Vector2 moveTemp;
+    private Vector3 moveTemp;
 
     private Transform player;
     
@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour {
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        moveTemp = new Vector3(0, 0, -10);
+
     }
 
 	void Update () {
@@ -37,11 +39,11 @@ public class CameraController : MonoBehaviour {
 
             if (xDif >= movementThreshold || yDif >= movementThreshold || xDif <= -movementThreshold || yDif <= -movementThreshold)
             {
-                moveTemp = player.transform.position;
+                moveTemp = new Vector3(player.transform.position.x, player.transform.position.y, -10);
             }
 
 
-            transform.position = Vector2.MoveTowards(transform.position, moveTemp, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, moveTemp, speed * Time.deltaTime);
         }
     
         

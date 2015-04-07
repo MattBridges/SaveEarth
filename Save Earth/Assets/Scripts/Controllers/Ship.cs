@@ -30,6 +30,7 @@ public class Ship : MonoBehaviour {
     public void JoystickMove(Rigidbody2D rb, Vector3 dir)
     {
         rb.AddForce(dir * speed);
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, speed);
     }
     public void Rotate(Vector3 stickPos)
     {
