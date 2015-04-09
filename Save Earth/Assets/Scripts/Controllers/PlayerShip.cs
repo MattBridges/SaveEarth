@@ -44,6 +44,10 @@ public class PlayerShip : Ship
         this.rightStick.FingerTouchedEvent += StartFire;
         this.rightStick.FingerLiftedEvent += StopFire;
 	}
+    void FixedUpdate()
+    {
+   
+    }
     #region EventMethods
     void MoveShip(Vector3 dir, CNAbstractController controller)
     {
