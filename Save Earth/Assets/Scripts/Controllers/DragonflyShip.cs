@@ -13,6 +13,8 @@ public class DragonflyShip : AIController {
 		currentState = AIstate.AI_Follow;
 		speed = moveSpeed;
 		health = newHealth;
+		attack = true;
+		weaponShotPosition = transform.FindChild ("DragonflyCannon").gameObject.transform;
     }
 
 	public override void AIFollow()

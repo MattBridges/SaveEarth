@@ -100,7 +100,7 @@ public class PlayerShip : Ship
                 canFire = true;
             if(canFire)
             {
-                FireCannon(weaponShot, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir);
+                FireCannon(weaponShot, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false);
             }
        }
     }

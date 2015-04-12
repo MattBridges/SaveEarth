@@ -7,7 +7,16 @@ public class AIController : Ship {
 	public AIstate currentState;
 	public bool attack = false;
 	public GameObject pShip;
-	
+	private Vector3 dir;
+	private float angle;
+	public GameObject weaponShot;
+	public Transform weaponShotPosition;
+	public float bulletSpeed;
+	private Vector3 cDir;
+	private bool canFire;
+	public float fireRate;
+	private float lastFired;
+
 	// Use this for initialization
 	public virtual void Start () 
 	{
@@ -21,6 +30,18 @@ public class AIController : Ship {
 		if (!pShip) 
 		{
 			Debug.Log ("Error: No player ship found");
+		}
+	}
+
+	private void UpdateRotation()
+	{
+		dir = pShip.transform.position - transform.position;
+		angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		angle -= 90;
+
+		if (currentState == AIstate.AI_Follow) 
+		{
+			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		}
 	}
 
@@ -40,12 +61,28 @@ public class AIController : Ship {
 	
 	public virtual void AIAttack()
 	{
+		if (attack && pShip) 
+		{
+			cDir = pShip.transform.position - transform.position;
 
+			if ((Time.time - lastFired) < fireRate )
+				canFire = false;
+			else
+				canFire = true;
+
+			if (canFire)
+			{
+				lastFired = Time.time;
+				FireCannon(weaponShot, bulletSpeed, null, null, weaponShotPosition, cDir, true);
+			}
+		}
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
+		UpdateRotation();
+
 		switch (currentState) 
 		{
 			case AIstate.AI_Idle:
