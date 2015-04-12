@@ -30,7 +30,7 @@ public class PlayerShip : MonoBehaviour
         //CreateShip(shipSprite, moveSpeed);
         thisShip = new Ship(moveSpeed, health);
         this.gameObject.transform.parent = GameObject.Find("ShipCollector").transform;
-        this.health = 100;
+//        this.health = 100;
         //Object references
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         weaponShotPosition = GameObject.Find("PlayerCannon").transform;
@@ -123,8 +123,11 @@ public class PlayerShip : MonoBehaviour
     }
     public void RespawnPlayer()
     {
+        iTween.Stop();
         curPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         curPlayer.transform.position = new Vector2(0,0);
+        CameraController cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        cam.ReturnCam();
         this.health = 100;
         
     }
@@ -133,12 +136,13 @@ public class PlayerShip : MonoBehaviour
         CameraFX camFX = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFX>();       
         camFX.ScreenShake();
         this.health -= amt;
-        
-        if(health<=0)
+
+        if (this.health <= 0)
         {
             RespawnPlayer();
         }
     }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Bullet")

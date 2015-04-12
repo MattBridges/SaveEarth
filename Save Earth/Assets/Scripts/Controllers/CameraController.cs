@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour {
     private Transform player;
     
     public float speed = 5;
+    private float _speed;
 
   
     public float xDif, yDif;
@@ -19,6 +20,7 @@ public class CameraController : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         moveTemp = new Vector3(0, 0, -10);
+        _speed = speed;
 
     }
 
@@ -43,9 +45,20 @@ public class CameraController : MonoBehaviour {
             }
 
 
-            transform.position = Vector3.MoveTowards(transform.position, moveTemp, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, moveTemp, _speed * Time.deltaTime);
         }
     
         
 	}
+    public void ReturnCam()
+    {
+       
+        _speed = 100;
+        Invoke("ResetSpeed",.5f);
+    }
+    void ResetSpeed()
+    {
+      _speed = speed;
+    }
+ 
 }

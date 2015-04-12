@@ -10,15 +10,13 @@ public class CameraFX : MonoBehaviour {
         shakeTime = .4f;
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        
-            
 
-	}
     public void ScreenShake()
     {
         iTween.ShakePosition(this.gameObject, iTween.Hash("x", shakeAmt, "y", shakeAmt, "time", shakeTime));
+    }
+    public void StopScreenShake()
+    {
+        iTween.Stop();
     }
 }
