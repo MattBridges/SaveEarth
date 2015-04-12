@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AIController : MonoBehaviour {
+public class AIController : Ship {
 	
 	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary };
 	public AIstate currentState;

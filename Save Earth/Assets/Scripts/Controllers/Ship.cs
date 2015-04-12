@@ -2,16 +2,9 @@
 using System.Collections;
 
 public class Ship : MonoBehaviour {
-    private float speed;
+    public float speed;
     private Vector3 rotDir;
     public int health;
-   
-
-    public Ship(float Speed, int Health)
-    {
-        speed = Speed;
-        health = Health;
-    }
 
     #region Movement Methods
     public void MoveLeft(Rigidbody2D rb)
@@ -62,7 +55,7 @@ public class Ship : MonoBehaviour {
         GameObject projectile = op.ReturnObject(gm.bullets, gm.bullet, gm.bulletCollector);
         projectile.SetActive(true);
         projectile.transform.position = shotPos.position;
-        projectile.GetComponent<Rigidbody>().velocity = shotDirection * bulletSpeed;
+        projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
     }
 #endregion
 
