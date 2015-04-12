@@ -21,6 +21,7 @@ public class PlayerShip : Ship
     public static PlayerShip curPlayer;
     //public int health;
     public Ship thisShip;
+    public Color bulletColor;
     
     
 
@@ -100,7 +101,7 @@ public class PlayerShip : Ship
                 canFire = true;
             if(canFire)
             {
-                FireCannon(weaponShot, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false);
+                FireCannon(weaponShot, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet");
             }
        }
     }
@@ -143,7 +144,7 @@ public class PlayerShip : Ship
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Bullet")
+        if(other.tag == "EnemyBullet")
         {
             TakeDamage(10);            
         }

@@ -45,7 +45,7 @@ public class Ship : MonoBehaviour {
     }
     #endregion
     #region Weapon Methods
-    public void FireCannon(GameObject projectle, float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy )
+    public void FireCannon(GameObject projectle, float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color , string Tag)
     {
 		if (!enemy) 
 		{
@@ -56,6 +56,9 @@ public class Ship : MonoBehaviour {
         ObjectPooler op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
         PoolingManager gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
         GameObject projectile = op.ReturnObject(gm.bullets, gm.bullet, gm.bulletCollector);
+        SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
+        ren.color = color;
+        projectile.tag = Tag;
         projectile.SetActive(true);
         projectile.transform.position = shotPos.position;
         projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;

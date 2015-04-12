@@ -15,4 +15,11 @@ public class BulletDestroy : MonoBehaviour {
     {
         CancelInvoke();
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Enemy" ||other.tag == "Player")
+        {
+            Destroy();
+        }
+    }
 }

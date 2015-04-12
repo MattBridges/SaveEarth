@@ -16,11 +16,12 @@ public class AIController : Ship {
 	private bool canFire;
 	public float fireRate;
 	private float lastFired;
+    public Color bulletColor = Color.magenta;
 
 	// Use this for initialization
 	public virtual void Start () 
 	{
-		Debug.Log ("Called base");
+		
 	}
 
 	void OnEnable()
@@ -73,7 +74,7 @@ public class AIController : Ship {
 			if (canFire)
 			{
 				lastFired = Time.time;
-				FireCannon(weaponShot, bulletSpeed, null, null, weaponShotPosition, cDir, true);
+                FireCannon(weaponShot, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, "EnemyBullet");
 			}
 		}
 	}
@@ -102,4 +103,12 @@ public class AIController : Ship {
 				break;
 		}
 	}
+   public void TakeDamage(int amt)
+    {
+        this.health -= amt;
+        if (this.health <= 0)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
 }

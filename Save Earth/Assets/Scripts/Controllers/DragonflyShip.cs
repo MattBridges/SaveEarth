@@ -34,13 +34,14 @@ public class DragonflyShip : AIController {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Bullet") {
-			health -= 1;
+		if (other.gameObject.tag == "PlayerBullet") {
+            TakeDamage(1);
 		}
 	}
 
-    // Update is called once per frame
-    void Update () {
 
-    }
+    void OnDisable()
+   {
+       health = newHealth;
+   }
 }
