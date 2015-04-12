@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerShip : Ship
+public class PlayerShip : MonoBehaviour
 {
     #region Variables
     public Sprite shipSprite;
@@ -20,13 +20,15 @@ public class PlayerShip : Ship
     public Collider2D col;
     public static PlayerShip curPlayer;
     public int health;
+    public Ship thisShip;
     
     
 
     #endregion
  	void Start () {
         //Create ship and assign sprite and give speed value
-        CreateShip(shipSprite, moveSpeed);
+        //CreateShip(shipSprite, moveSpeed);
+        thisShip = new Ship(moveSpeed, health);
         this.gameObject.transform.parent = GameObject.Find("ShipCollector").transform;
         this.health = 100;
         //Object references
@@ -51,11 +53,11 @@ public class PlayerShip : Ship
     #region EventMethods
     void MoveShip(Vector3 dir, CNAbstractController controller)
     {
-        JoystickMove(rb, dir);
+        thisShip.JoystickMove(rb, dir);
     }
     void RotateShip(Vector3 dir, CNAbstractController controller)
     {
-        Rotate(dir);
+        thisShip.Rotate(dir, this.gameObject.transform);
     }
     void StartFire(CNAbstractController controller)
     {
@@ -100,7 +102,7 @@ public class PlayerShip : Ship
                 canFire = true;
             if(canFire)
             {
-                FireCannon(weaponShot, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir);
+                thisShip.FireCannon(weaponShot, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir);
             }
        }
     }

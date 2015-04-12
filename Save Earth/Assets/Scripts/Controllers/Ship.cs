@@ -4,16 +4,19 @@ using System.Collections;
 public class Ship : MonoBehaviour {
     private float speed;
     private Vector3 rotDir;
-    
-    public void CreateShip(Sprite ShipSprite, float MoveSpeed)
+    private int health;
+   
+
+    public Ship(float Speed, int Health)
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = ShipSprite;
-        speed = MoveSpeed;        
+        speed = Speed;
+        health = Health;
     }
+
     #region Movement Methods
     public void MoveLeft(Rigidbody2D rb)
     {
-        rb.AddForce(-Vector2.right * speed);
+        rb.AddForce(-Vector2.right * 4);
     }
     public void MoveRight(Rigidbody2D rb)
     {
@@ -36,15 +39,15 @@ public class Ship : MonoBehaviour {
       }
       
     }
-    public void Rotate(Vector3 stickPos)
+    public void Rotate(Vector3 stickPos, Transform Ship)
     {
-        Vector3 newDir = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, Mathf.Atan2(stickPos.x, stickPos.y) * -1 * Mathf.Rad2Deg + 90);
+        Vector3 newDir = new Vector3(Ship.eulerAngles.x, Ship.eulerAngles.y, Mathf.Atan2(stickPos.x, stickPos.y) * -1 * Mathf.Rad2Deg + 90);
         if (newDir.z == 90 && stickPos.y == 0)
-            rotDir = this.transform.eulerAngles;
+            rotDir = Ship.transform.eulerAngles;
         else
             rotDir = newDir;
 
-        transform.eulerAngles = rotDir;
+        Ship.eulerAngles = rotDir;
 
     }
     #endregion
@@ -58,7 +61,6 @@ public class Ship : MonoBehaviour {
         PoolingManager gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
         GameObject projectile = op.ReturnObject(gm.bullets, gm.bullet, gm.bulletCollector);
         projectile.SetActive(true);
-        //projectile.transform.parent = GameObject.Find("BulletCollector").transform;
         projectile.transform.position = shotPos.position;
         projectile.GetComponent<Rigidbody>().velocity = shotDirection * bulletSpeed;
     }
