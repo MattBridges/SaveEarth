@@ -4,54 +4,51 @@ using System.Collections.Generic;
 
 public class LevelCreator : MonoBehaviour {
     
-    private GameObject[] dfNodes;
-    private GameObject[] rapNodes;
-    private GameObject[] motNodes;
     private ObjectPooler op;
-    private PoolingManager gm;
-  //  private GameObject[] nodes;
+    private PoolingManager pm;
+    private GameObject[] nodes;
+
 	// Use this for initialization
 	void Start () {
         op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
-        gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
-       
-        dfNodes = GameObject.FindGameObjectsWithTag("DragonFlySpawn");
-        rapNodes = GameObject.FindGameObjectsWithTag("RaptorSpawn");
-        motNodes = GameObject.FindGameObjectsWithTag("MotherShipSpawn");
-        
-        DistributeShip(dfNodes);
-        DistributeShip(rapNodes);
-        DistributeShip(motNodes);
+        pm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
 
+        nodes = GameObject.FindGameObjectsWithTag("SpawnNode");
+
+        SpawnEnemies();
+      
 	}
 
-    public void DistributeShip(GameObject[] node)
+    public void SpawnEnemies()
     {
-        foreach(GameObject n in node)
+        foreach (GameObject node in nodes)
         {
-            if (n.tag == "DragonFlySpawn")
-                SpawnDragonfly(n);
-            if (n.tag == "RaptorSpawn")
-                SpawnRaptor(n);
-            if (n.tag == "MotherShipSpawn")
-                SpawnMotherShip(n);
+            string[] ns = node.name.Split(' ');
+            string nodeName = ns[0];
+
+            if (nodeName == "DragonFlySpawn")
+                SpawnDragonfly(node);
+            if (nodeName == "RaptorSpawn")
+                SpawnRaptor(node);
+            if (nodeName == "MotherShipSpawn")
+                SpawnMotherShip(node);
         }
     }
     public void SpawnDragonfly(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(gm.dragonFlies, gm.dfShip, gm.shipCollector);
+        GameObject ship = op.ReturnObject(pm.dragonFlies, pm.dfShip, pm.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnRaptor(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(gm.raptors, gm.rpShip, gm.shipCollector);
+        GameObject ship = op.ReturnObject(pm.raptors, pm.rpShip, pm.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnMotherShip(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(gm.motherShips, gm.mShip, gm.shipCollector);
+        GameObject ship = op.ReturnObject(pm.motherShips, pm.mShip, pm.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }

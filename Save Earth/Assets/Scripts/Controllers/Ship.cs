@@ -4,7 +4,7 @@ using System.Collections;
 public class Ship : MonoBehaviour {
     private float speed;
     private Vector3 rotDir;
-    private int health;
+    public int health;
    
 
     public Ship(float Speed, int Health)
