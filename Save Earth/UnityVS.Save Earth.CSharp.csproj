@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Controllers\RaptorShip.cs" />
     <Compile Include="Assets\Scripts\Controllers\Ship.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\LevelCreator.cs" />
     <Compile Include="Assets\Scripts\Managers\PoolingManager.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\Old Scripts\EnemySpawn_Rabid.cs" />
