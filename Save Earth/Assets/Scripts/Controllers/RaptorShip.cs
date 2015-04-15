@@ -1,23 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RaptorShip: MonoBehaviour  {
+public class RaptorShip: AIController  {
     
-    public float speed2;
-    public int health2;
-    public Ship ship;
-    //private Rigidbody2D rb;
+	public float moveSpeed;
+	public int newHealth;
+	
 	// Use this for initialization
-	void Start () {
-        //ship = new Ship(5, 50);
-
-     
-      
+	public override void Start () {
+		base.Start ();
+		currentState = AIstate.AI_Follow;
+		speed = moveSpeed;
+		health = newHealth;
+		attack = true;
+		weaponShotPosition = transform.FindChild ("RaptorCannon").gameObject.transform;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        //if (Input.GetKey(KeyCode.M))
-        //    ship.MoveLeft();
+	public override void AIFollow()
+	{
+		base.AIFollow();
+	}
+	
+	public override void AIRetreat()
+	{
+		base.AIRetreat();
+	}
+	
+	public override void AIAttack()
+	{
+		base.AIAttack();
+	}
+	
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.tag == "PlayerBullet") {
+			TakeDamage(1);
+		}
+	}
+	
+	void OnDisable()
+	{
+		health = newHealth;
 	}
 }
