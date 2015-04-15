@@ -45,7 +45,7 @@ public class Ship : MonoBehaviour {
     }
     #endregion
     #region Weapon Methods
-    public void FireCannon(GameObject projectle, float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color , string Tag)
+    public void FireCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color , string Tag)
     {
 		if (!enemy) 
 		{

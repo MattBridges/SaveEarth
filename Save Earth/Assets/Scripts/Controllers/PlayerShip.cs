@@ -6,9 +6,10 @@ public class PlayerShip : Ship
     #region Variables
     public Sprite shipSprite;
     public float moveSpeed;
-    public GameObject weaponShot;
     public float bulletSpeed;
     public AudioClip shotSound;
+    public static PlayerShip curPlayer;
+    public Color bulletColor;
 
     private CNAbstractController leftStick;
     private CNAbstractController rightStick;
@@ -17,11 +18,8 @@ public class PlayerShip : Ship
     private Transform weaponShotPosition;
     private AudioSource audioSrc;
  
-    public Collider2D col;
-    public static PlayerShip curPlayer;
-    //public int health;
-    public Ship thisShip;
-    public Color bulletColor;
+
+ 
     
     
 
@@ -29,7 +27,7 @@ public class PlayerShip : Ship
  	void Start () {
 		speed = moveSpeed;
         this.gameObject.transform.parent = GameObject.Find("ShipCollector").transform;
-//        this.health = 100;
+
         //Object references
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         weaponShotPosition = GameObject.Find("PlayerCannon").transform;
@@ -101,7 +99,7 @@ public class PlayerShip : Ship
                 canFire = true;
             if(canFire)
             {
-                FireCannon(weaponShot, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet");
+                FireCannon( bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet");
             }
        }
     }
@@ -146,7 +144,7 @@ public class PlayerShip : Ship
     {
         if(other.tag == "EnemyBullet")
         {
-            TakeDamage(10);            
+            TakeDamage(5);            
         }
 
     }

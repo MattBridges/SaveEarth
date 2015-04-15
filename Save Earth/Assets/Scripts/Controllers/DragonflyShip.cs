@@ -35,7 +35,7 @@ public class DragonflyShip : AIController {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "PlayerBullet") {
-            TakeDamage(1);
+            TakeDamage(5);
 		}
 	}
 

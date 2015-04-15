@@ -17,7 +17,11 @@ public class BulletDestroy : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Enemy" ||other.tag == "Player")
+        if(other.tag == "Enemy" && this.gameObject.tag == "PlayerBullet")
+        {
+            Destroy();
+        }
+        if (other.tag == "Player" && this.gameObject.tag == "EnemyBullet")
         {
             Destroy();
         }

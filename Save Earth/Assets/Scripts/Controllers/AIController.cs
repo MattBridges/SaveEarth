@@ -9,7 +9,6 @@ public class AIController : Ship {
 	public GameObject pShip;
 	private Vector3 dir;
 	private float angle;
-	public GameObject weaponShot;
 	public Transform weaponShotPosition;
 	public float bulletSpeed;
 	private Vector3 cDir;
@@ -74,7 +73,7 @@ public class AIController : Ship {
 			if (canFire)
 			{
 				lastFired = Time.time;
-                FireCannon(weaponShot, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, "EnemyBullet");
+                FireCannon( bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, "EnemyBullet");
 			}
 		}
 	}
