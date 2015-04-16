@@ -3,8 +3,6 @@ using System.Collections;
 
 public class RaptorShip: AIController  {
     
-	public int maxHealth;
-
 	// Use this for initialization
 	public override void Start () {
 		base.Start ();

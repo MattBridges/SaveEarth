@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class DragonflyShip : AIController {
-
-	public int maxHealth;
+	
 	public float attackRange;
 
     // Use this for initialization

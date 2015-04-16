@@ -21,10 +21,12 @@ public class AIController : Ship {
 	private float lastFired;
     public Color bulletColor = Color.magenta;
 
+	public int maxHealth;
+
 	// Use this for initialization
 	public virtual void Start () 
 	{
-		
+		health = maxHealth;
 	}
 
 	void OnEnable()

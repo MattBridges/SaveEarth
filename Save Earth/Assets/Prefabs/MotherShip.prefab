@@ -164,7 +164,7 @@ MonoBehaviour:
   bulletSpeed: 2
   fireRate: 1
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
-  maxHealth: 0
+  maxHealth: 40
 --- !u!212 &21223158
 SpriteRenderer:
   m_ObjectHideFlags: 1
