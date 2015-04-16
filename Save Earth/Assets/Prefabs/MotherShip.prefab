@@ -55,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 178034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.86199999, y: 2.43700004, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 441874}
   m_Father: {fileID: 0}
@@ -160,13 +160,11 @@ MonoBehaviour:
   currentState: 0
   attack: 0
   pShip: {fileID: 0}
-  weaponShot: {fileID: 142318, guid: 2787fbd4701b1407dac85ce84a9d9aea, type: 2}
   weaponShotPosition: {fileID: 0}
   bulletSpeed: 2
   fireRate: 1
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
-  moveSpeed: 1
-  newHealth: 40
+  maxHealth: 0
 --- !u!212 &21223158
 SpriteRenderer:
   m_ObjectHideFlags: 1
