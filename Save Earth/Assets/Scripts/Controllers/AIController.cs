@@ -49,7 +49,7 @@ public class AIController : Ship {
 	{
 		if (pShip) 
 		{
-			if (Vector3.Distance (transform.position, pShip.transform.position) > 2)
+			if (Vector3.Distance (transform.position, pShip.transform.position) > 3.5)
 				transform.position = Vector3.Lerp (transform.position, pShip.transform.position, Time.fixedDeltaTime);
 		}
 	}
@@ -78,6 +78,11 @@ public class AIController : Ship {
 		}
 	}
 
+	public virtual void AIStationary()
+	{
+
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
@@ -96,13 +101,15 @@ public class AIController : Ship {
 				AIAttack();
 				break;
 			case AIstate.AI_Stationary:
+				AIStationary();
 				AIAttack();
 				break;
 			default:
 				break;
 		}
 	}
-   public void TakeDamage(int amt)
+
+    public void TakeDamage(int amt)
     {
         this.health -= amt;
         if (this.health <= 0)

@@ -147,6 +147,10 @@ public class PlayerShip : Ship
             TakeDamage(5);            
         }
 
+		if (other.tag == "Enemy") 
+		{
+			TakeDamage (20);
+		}
     }
     
 }

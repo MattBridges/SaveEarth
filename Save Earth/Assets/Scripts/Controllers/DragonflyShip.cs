@@ -4,19 +4,24 @@ using System.Collections;
 public class DragonflyShip : AIController {
 
 	public int maxHealth;
+	public float attackRange;
 
     // Use this for initialization
     public override void Start () 
 	{
 		base.Start ();
-		currentState = AIstate.AI_Follow;
-		attack = true;
+		attack = false;
 		weaponShotPosition = transform.FindChild ("DragonflyCannon").gameObject.transform;
     }
 
 	public override void AIFollow()
 	{
 		base.AIFollow();
+
+		if (Vector3.Distance (transform.position, pShip.transform.position) < 3.5)
+			speed = 5;
+
+		transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
 	}
 
 	public override void AIRetreat()
@@ -26,7 +31,13 @@ public class DragonflyShip : AIController {
 
 	public override void AIAttack()
 	{
-		base.AIAttack();
+
+	}
+
+	public override void AIStationary()
+	{
+		if (Vector3.Distance (transform.position, pShip.transform.position) < attackRange)
+			currentState = AIstate.AI_Follow;
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -34,11 +45,13 @@ public class DragonflyShip : AIController {
 		if (other.gameObject.tag == "PlayerBullet") {
             TakeDamage(5);
 		}
+
+		if (other.gameObject.tag == "Player") 
+			this.gameObject.SetActive (false);
 	}
-
-
+	
     void OnDisable()
-   {
+    {
        health = maxHealth;
-   }
+    }
 }
