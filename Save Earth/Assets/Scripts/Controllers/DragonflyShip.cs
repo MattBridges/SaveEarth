@@ -3,16 +3,13 @@ using System.Collections;
 
 public class DragonflyShip : AIController {
 
-	public float moveSpeed;
-	public int newHealth;
+	public int maxHealth;
 
     // Use this for initialization
     public override void Start () 
 	{
 		base.Start ();
 		currentState = AIstate.AI_Follow;
-		speed = moveSpeed;
-		health = newHealth;
 		attack = true;
 		weaponShotPosition = transform.FindChild ("DragonflyCannon").gameObject.transform;
     }
@@ -42,6 +39,6 @@ public class DragonflyShip : AIController {
 
     void OnDisable()
    {
-       health = newHealth;
+       health = maxHealth;
    }
 }

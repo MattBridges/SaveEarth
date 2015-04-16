@@ -4,6 +4,8 @@ using System.Collections;
 public class Ship : MonoBehaviour {
     public float speed;
     private Vector3 rotDir;
+
+	[HideInInspector]
     public int health;
 
     #region Movement Methods

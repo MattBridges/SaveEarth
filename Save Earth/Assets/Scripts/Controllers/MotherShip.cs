@@ -3,15 +3,12 @@ using System.Collections;
 
 public class MotherShip : AIController {
 
-	public float moveSpeed;
-	public int newHealth;
+	public int maxHealth;
 
 	// Use this for initialization
 	public override void Start () {
 		base.Start ();
 		currentState = AIstate.AI_Follow;
-		speed = moveSpeed;
-		health = newHealth;
 		attack = true;
 		weaponShotPosition = transform.FindChild ("MothershipCannon").gameObject.transform;
 	}
@@ -40,6 +37,6 @@ public class MotherShip : AIController {
 
 	void OnDisable()
 	{
-		health = newHealth;
+		health = maxHealth;
 	}
 }
