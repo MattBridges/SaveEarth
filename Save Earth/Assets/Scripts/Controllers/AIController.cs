@@ -4,9 +4,13 @@ using System.Collections;
 public class AIController : Ship {
 	
 	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary };
+
 	public AIstate currentState;
+
 	public bool attack = false;
+
 	public GameObject pShip;
+
 	private Vector3 dir;
 	private float angle;
 	public Transform weaponShotPosition;
@@ -50,7 +54,7 @@ public class AIController : Ship {
 		if (pShip) 
 		{
 			if (Vector3.Distance (transform.position, pShip.transform.position) > 3.5)
-				transform.position = Vector3.Lerp (transform.position, pShip.transform.position, Time.fixedDeltaTime);
+				transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
 		}
 	}
 
