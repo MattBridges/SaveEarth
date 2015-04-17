@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AIController : Ship {
 	
-	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary };
+	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary, AI_Defend };
 
 	public AIstate currentState;
 
@@ -84,6 +84,11 @@ public class AIController : Ship {
 		}
 	}
 
+	public virtual void AIDefend()
+	{
+
+	}
+
 	public virtual void AIStationary()
 	{
 
@@ -109,6 +114,9 @@ public class AIController : Ship {
 			case AIstate.AI_Stationary:
 				AIStationary();
 				AIAttack();
+				break;
+			case AIstate.AI_Defend:
+				AIDefend();
 				break;
 			default:
 				break;
