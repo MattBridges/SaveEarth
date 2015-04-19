@@ -150,7 +150,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8.97000027
+      value: -2.01999998
       objectReference: {fileID: 0}
     - target: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
       propertyPath: m_LocalPosition.y
@@ -182,7 +182,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 134064, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
@@ -229,6 +229,10 @@ Prefab:
     - target: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 134064, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
@@ -357,6 +361,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 162656, guid: 074e37d3304693342a82796e70f43019, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 074e37d3304693342a82796e70f43019, type: 2}
   m_IsPrefabParent: 0
@@ -460,6 +468,10 @@ Prefab:
     - target: {fileID: 162656, guid: 074e37d3304693342a82796e70f43019, type: 2}
       propertyPath: m_Name
       value: DragonFlySpawn 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 162656, guid: 074e37d3304693342a82796e70f43019, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 074e37d3304693342a82796e70f43019, type: 2}
@@ -608,8 +620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a151af1e494e5a44cb5245c93ee9844b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeAmt: 0
-  shakeTime: 0
+  shakeAmt: .300000012
+  shakeTime: 1.25
 --- !u!114 &1094680306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,7 +679,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1262952378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3292408, y: -3.5, z: 0}
+  m_LocalPosition: {x: 5.33333349, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 535304300}
@@ -840,6 +852,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 177604, guid: c975ff7c264a58844adfeac77e63bfde, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c975ff7c264a58844adfeac77e63bfde, type: 2}
   m_IsPrefabParent: 0
@@ -902,11 +918,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.72834587
+      value: 2.22000003
       objectReference: {fileID: 0}
     - target: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.125753745
+      value: -.129999995
       objectReference: {fileID: 0}
     - target: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
       propertyPath: m_LocalPosition.z
@@ -938,7 +954,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 134064, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
@@ -1065,6 +1081,10 @@ Prefab:
     - target: {fileID: 162656, guid: 074e37d3304693342a82796e70f43019, type: 2}
       propertyPath: m_Name
       value: DragonFlySpawn 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 162656, guid: 074e37d3304693342a82796e70f43019, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 074e37d3304693342a82796e70f43019, type: 2}
@@ -1391,7 +1411,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2076003980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.3292408, y: -3.5, z: 0}
+  m_LocalPosition: {x: -5.33333349, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 51983745}

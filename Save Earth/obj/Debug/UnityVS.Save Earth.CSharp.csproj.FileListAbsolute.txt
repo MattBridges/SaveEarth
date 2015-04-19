@@ -10,3 +10,5 @@ C:\Users\Matt\Desktop\SaveEarth\Save Earth\Temp\UnityVS_bin\Debug\UnityEditor.xm
 C:\Users\Matt\Desktop\SaveEarth\Save Earth\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
 C:\Users\Matt\Desktop\SaveEarth\Save Earth\obj\Debug\Assembly-CSharp.dll
 C:\Users\Matt\Desktop\SaveEarth\Save Earth\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Matt\Desktop\SaveEarth\Save Earth\Temp\UnityVS_bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
+C:\Users\Matt\Desktop\SaveEarth\Save Earth\Temp\UnityVS_bin\Debug\UnityEditor.iOS.Extensions.Xcode.xml

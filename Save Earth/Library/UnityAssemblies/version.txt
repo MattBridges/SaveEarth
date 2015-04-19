@@ -1,6 +1,5 @@
 5.0.1f1:1.9.8.0
 C:/Program Files/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
-C:\Program Files\Unity5\Editor\Data\PlaybackEngines\iossupport\UnityEditor.iOS.Extensions.Xcode.dll
 C:/Program Files/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
 C:/Program Files/Unity5/Editor/Data/Managed/UnityEditor.Graphs.dll
 C:\Program Files\Unity5\Editor\Data\PlaybackEngines\androidplayer/UnityEditor.Android.Extensions.dll
@@ -12,3 +11,4 @@ C:\Program Files\Unity5\Editor\Data\PlaybackEngines\webglsupport/UnityEditor.Web
 C:\Program Files\Unity5\Editor\Data\PlaybackEngines\linuxstandalonesupport/UnityEditor.LinuxStandalone.Extensions.dll
 C:\Program Files\Unity5\Editor\Data\PlaybackEngines\windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
 C:\Program Files\Unity5\Editor\Data\PlaybackEngines\macstandalonesupport/UnityEditor.OSXStandalone.Extensions.dll
+C:\Program Files\Unity5\Editor\Data\PlaybackEngines\iossupport\UnityEditor.iOS.Extensions.Xcode.dll

@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.Save Earth.CSharp.Editor", "UnityVS.Save Earth.CSharp.Editor.csproj", "{253B7219-ECCE-7F69-E46E-437D522247D6}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.Save Earth.CSharp.Plugins", "UnityVS.Save Earth.CSharp.Plugins.csproj", "{6B46AF83-DC7A-B5F7-6F62-C3C99A281BEB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.Save Earth.CSharp", "UnityVS.Save Earth.CSharp.csproj", "{202B4EF8-90D1-4091-5B58-0E95CB2F1A00}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.Save Earth.CSharp.Editor", "UnityVS.Save Earth.CSharp.Editor.csproj", "{253B7219-ECCE-7F69-E46E-437D522247D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{253B7219-ECCE-7F69-E46E-437D522247D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{253B7219-ECCE-7F69-E46E-437D522247D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{253B7219-ECCE-7F69-E46E-437D522247D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{253B7219-ECCE-7F69-E46E-437D522247D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B46AF83-DC7A-B5F7-6F62-C3C99A281BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B46AF83-DC7A-B5F7-6F62-C3C99A281BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B46AF83-DC7A-B5F7-6F62-C3C99A281BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -21,10 +25,6 @@ Global
 		{202B4EF8-90D1-4091-5B58-0E95CB2F1A00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{202B4EF8-90D1-4091-5B58-0E95CB2F1A00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{202B4EF8-90D1-4091-5B58-0E95CB2F1A00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{253B7219-ECCE-7F69-E46E-437D522247D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{253B7219-ECCE-7F69-E46E-437D522247D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{253B7219-ECCE-7F69-E46E-437D522247D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{253B7219-ECCE-7F69-E46E-437D522247D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

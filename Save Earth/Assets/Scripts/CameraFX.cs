@@ -6,8 +6,7 @@ public class CameraFX : MonoBehaviour {
     public float shakeTime;
 	// Use this for initialization
 	void Start () {
-        shakeAmt = .15f;
-        shakeTime = .4f;
+   
 
 	}
 

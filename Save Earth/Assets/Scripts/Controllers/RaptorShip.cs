@@ -55,7 +55,8 @@ public class RaptorShip: AIController  {
 	{
 		if (other.gameObject.tag == "PlayerBullet") {
 			TakeDamage(5);
-			currentState = AIstate.AI_Follow;
+            if (currentState == AIstate.AI_Idle)
+                currentState = AIstate.AI_Follow;
 		}
 	}
 
