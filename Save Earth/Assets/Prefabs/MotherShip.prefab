@@ -155,15 +155,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168ec6ecd4090c743b2d0b524da70891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 1
   health: 0
-  currentState: 0
+  currentState: 1
   attack: 0
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
   bulletSpeed: 2
   fireRate: 1
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
+  wakeupDistance: 0
   maxHealth: 40
 --- !u!212 &21223158
 SpriteRenderer:

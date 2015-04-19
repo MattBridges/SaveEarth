@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da92b52cb7e0d8479f21e41d03877d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 2
   health: 0
   currentState: 0
   attack: 0
@@ -156,7 +156,12 @@ MonoBehaviour:
   bulletSpeed: 2
   fireRate: .75
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
+  wakeupDistance: 8
   maxHealth: 30
+  distanceFromPlayer: 4
+  canWake: 0
+  mothershipShieldDelay: 0
+  strafeSpeed: 3
 --- !u!212 &21217012
 SpriteRenderer:
   m_ObjectHideFlags: 1

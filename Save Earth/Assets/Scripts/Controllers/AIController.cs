@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AIController : Ship {
 	
-	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary, AI_Defend };
+	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary, AI_Defend, AI_Strafe };
 
 	public AIstate currentState;
 
@@ -20,6 +20,8 @@ public class AIController : Ship {
 	public float fireRate;
 	private float lastFired;
     public Color bulletColor = Color.magenta;
+
+	public float wakeupDistance;
 
 	public int maxHealth;
 
@@ -45,7 +47,7 @@ public class AIController : Ship {
 		angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		angle -= 90;
 
-		if (currentState == AIstate.AI_Follow) 
+		if (currentState == AIstate.AI_Follow || currentState == AIstate.AI_Strafe) 
 		{
 			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		}
@@ -56,7 +58,9 @@ public class AIController : Ship {
 		if (pShip) 
 		{
 			if (Vector3.Distance (transform.position, pShip.transform.position) > 3.5)
+			{
 				transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
+			}
 		}
 	}
 
@@ -94,6 +98,16 @@ public class AIController : Ship {
 
 	}
 
+	public virtual void AIStrafe()
+	{
+
+	}
+
+	public virtual void AIIdle()
+	{
+
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
@@ -102,6 +116,7 @@ public class AIController : Ship {
 		switch (currentState) 
 		{
 			case AIstate.AI_Idle:
+				AIIdle();
 				break;
 			case AIstate.AI_Follow:
 				AIFollow();
@@ -117,6 +132,11 @@ public class AIController : Ship {
 				break;
 			case AIstate.AI_Defend:
 				AIDefend();
+				AIAttack();
+				break;
+			case AIstate.AI_Strafe:
+				AIStrafe();
+				AIAttack();
 				break;
 			default:
 				break;
