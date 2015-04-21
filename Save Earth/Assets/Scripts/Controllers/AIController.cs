@@ -29,6 +29,7 @@ public class AIController : Ship {
 	public virtual void Start () 
 	{
 		health = maxHealth;
+        currentWeapon = Weapons.RedWeapon;
 	}
 
 	void OnEnable()
@@ -83,7 +84,7 @@ public class AIController : Ship {
 			if (canFire)
 			{
 				lastFired = Time.time;
-                FireCannon( bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, "EnemyBullet");
+                FireCannon(currentWeapon, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, "EnemyBullet");
 			}
 		}
 	}

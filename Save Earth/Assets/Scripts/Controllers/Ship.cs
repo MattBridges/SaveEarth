@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Ship : MonoBehaviour {
     public float speed;
+    public enum Weapons { BlueWeapon, RedWeapon };
+    public Weapons currentWeapon;
     private Vector3 rotDir;
 
 	[HideInInspector]
@@ -47,24 +49,54 @@ public class Ship : MonoBehaviour {
     }
     #endregion
     #region Weapon Methods
-    public void FireCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color , string Tag)
+    public void FireCannon(Weapons currentWeapon, float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color , string Tag)
     {
-		if (!enemy) 
-		{
-			audioSrc.clip = shotSound;
-			audioSrc.Play ();
-		}
+		if(currentWeapon == Weapons.BlueWeapon)
+        {
+            FireBlueCannon(bulletSpeed, audioSrc, shotSound, shotPos, shotDirection, enemy, color, Tag);
+        }
+        if (currentWeapon == Weapons.RedWeapon)
+        {
+            FireRedCannon(bulletSpeed, audioSrc, shotSound, shotPos, shotDirection, enemy, color, Tag);
+        }
+    }
+    void FireBlueCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag)
+    {
+        if (!enemy)
+        {
+            audioSrc.clip = shotSound;
+            audioSrc.Play();
+        }
 
         ObjectPooler op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
         PoolingManager gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
         GameObject projectile = op.ReturnObject(gm.bullets, gm.bullet, gm.bulletCollector);
         SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
-        ren.color = color;
+        ren.color = Color.blue;
         projectile.tag = Tag;
         projectile.SetActive(true);
         projectile.transform.position = shotPos.position;
         projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
     }
+    void FireRedCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag)
+    {
+        if (!enemy)
+        {
+            audioSrc.clip = shotSound;
+            audioSrc.Play();
+        }
+
+        ObjectPooler op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
+        PoolingManager gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
+        GameObject projectile = op.ReturnObject(gm.bullets, gm.bullet, gm.bulletCollector);
+        SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
+        ren.color = Color.red;
+        projectile.tag = Tag;
+        projectile.SetActive(true);
+        projectile.transform.position = shotPos.position;
+        projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
+    }
+
 #endregion
 
 }

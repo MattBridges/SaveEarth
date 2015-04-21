@@ -27,6 +27,7 @@ public class PlayerShip : Ship
  	void Start () {
 		speed = moveSpeed;
         this.gameObject.transform.parent = GameObject.Find("ShipCollector").transform;
+        currentWeapon = Weapons.BlueWeapon;
 
         //Object references
         rb = this.gameObject.GetComponent<Rigidbody2D>();
@@ -45,7 +46,15 @@ public class PlayerShip : Ship
 	}
     void FixedUpdate()
     {
-   
+            if(Input.GetKeyDown(KeyCode.A))
+            {
+                currentWeapon = Weapons.BlueWeapon;
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                currentWeapon = Weapons.RedWeapon;
+            }
+            
     }
     #region EventMethods
     void MoveShip(Vector3 dir, CNAbstractController controller)
@@ -99,7 +108,7 @@ public class PlayerShip : Ship
                 canFire = true;
             if(canFire)
             {
-                FireCannon( bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet");
+                FireCannon(currentWeapon, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet");
             }
        }
     }
