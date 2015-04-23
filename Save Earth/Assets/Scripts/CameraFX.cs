@@ -17,5 +17,7 @@ public class CameraFX : MonoBehaviour {
     public void StopScreenShake()
     {
         iTween.Stop();
+      
     }
+    
 }

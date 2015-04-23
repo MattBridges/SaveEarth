@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class LevelCreator : MonoBehaviour {
-    
+    public GameObject[] levels;
     private ObjectPooler op;
     private PoolingManager pm;
     private GameObject[] nodes;
@@ -12,15 +12,35 @@ public class LevelCreator : MonoBehaviour {
 	void Start () {
         op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
         pm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
+        
 
-        nodes = GameObject.FindGameObjectsWithTag("SpawnNode");
+        
 
-        SpawnEnemies();
+        //SpawnEnemies();
       
 	}
+    public void LoadLevel(string LevelName)
+    {
+        foreach(GameObject level in levels)
+        {
+            level.SetActive(false);
+   
+        }
+        foreach(GameObject level in levels)
+        {
+            if (level.name == LevelName)
+            {
+                level.SetActive(true);
+                SpawnEnemies();
+            }
+        }
+        
+    }
 
     public void SpawnEnemies()
     {
+        nodes = GameObject.FindGameObjectsWithTag("SpawnNode");
+
         foreach (GameObject node in nodes)
         {
             string[] ns = node.name.Split(' ');
