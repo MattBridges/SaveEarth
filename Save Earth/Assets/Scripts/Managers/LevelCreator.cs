@@ -1,47 +1,92 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class LevelCreator : MonoBehaviour {
-    public GameObject[] levels;
+    private Dictionary<string, Dictionary<int, Dictionary<int, GameObject>>> levelData;
     private ObjectPooler op;
     private PoolingManager pm;
-    private GameObject[] nodes;
+    private GameObject lastMission;
 
 	// Use this for initialization
-	void Start () {
+    public void Start()
+    {
         op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
         pm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
-        
 
-        
-
-        //SpawnEnemies();
-      
-	}
-    public void LoadLevel(string LevelName)
-    {
-        foreach(GameObject level in levels)
-        {
-            level.SetActive(false);
-   
-        }
-        foreach(GameObject level in levels)
-        {
-            if (level.name == LevelName)
-            {
-                level.SetActive(true);
-                SpawnEnemies();
-            }
-        }
-        
     }
 
+    #region Level Spawn Methods
+    public void AddLevel(string level, int mission, int variant, GameObject LevelObject)
+    {
+        InitLevelDictionary();
+        if (levelData.ContainsKey(level) == false)
+            levelData[level] = new Dictionary<int, Dictionary<int, GameObject>>();
+        if (levelData[level].ContainsKey(mission) == false)
+            levelData[level][mission] = new Dictionary<int, GameObject>();
+
+        levelData[level][mission][variant] = LevelObject;
+    }
+    public int GetMissionCount(string level, int mission)
+    {
+        InitLevelDictionary();
+        if (levelData.ContainsKey(level) == false)
+            return 0;
+        if (levelData[level].ContainsKey(mission) == false)
+            return 0;
+
+        return levelData[level][mission].Count;
+    }
+    public GameObject GetRandomMission(string level, int mission)
+    {
+        InitLevelDictionary();
+        if (levelData.ContainsKey(level) == false)
+            return null;
+        if (levelData[level].ContainsKey(mission) == false)
+            return null;
+
+        int varient = Random.Range(1, GetMissionCount(level, mission)+1);
+        return levelData[level][mission][varient];
+    }
+    void InitLevelDictionary()
+    {
+        if (levelData != null)
+            return;
+
+        levelData = new Dictionary<string, Dictionary<int, Dictionary<int, GameObject>>>();
+    }
+    public void LoadLevel(GameObject Mission)
+    {
+        ClearAllMissionNodes(lastMission);
+        Mission.SetActive(true);
+        SpawnEnemies();
+        lastMission = Mission;
+        Debug.Log("Loaded Level: " + Mission.name);
+    }
+    public void LoadRandomMission(string curMission)
+    {
+        LoadLevel(GetRandomMission(curMission, 1));
+    }
+
+    public void ClearAllMissionNodes(GameObject mis)
+    {
+        if(mis!=null)
+        {
+            mis.SetActive(false);
+        }        
+    }
+    public GameObject[] GetActiveNodes()
+    {
+        GameObject[] activeNodes = GameObject.FindGameObjectsWithTag("SpawnNode");
+        return activeNodes;
+    }
+    #endregion
+    #region Object Spawning Methods
     public void SpawnEnemies()
     {
-        nodes = GameObject.FindGameObjectsWithTag("SpawnNode");
-
-        foreach (GameObject node in nodes)
+        GameObject[] an = GetActiveNodes();
+        foreach (GameObject node in an)
         {
             string[] ns = node.name.Split(' ');
             string nodeName = ns[0];
@@ -72,4 +117,5 @@ public class LevelCreator : MonoBehaviour {
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
+    #endregion
 }
