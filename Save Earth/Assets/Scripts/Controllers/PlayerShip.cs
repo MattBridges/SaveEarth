@@ -17,7 +17,8 @@ public class PlayerShip : Ship
     private Rigidbody2D rb;
     private Transform weaponShotPosition;
     private AudioSource audioSrc;
- 
+	private bool paused;
+	private Vector2 oldVelocity;
 
  
     
@@ -56,14 +57,34 @@ public class PlayerShip : Ship
             }
             
     }
+
+	public void TogglePause()
+	{
+		paused = !paused;
+		
+		if (paused) 
+		{
+			oldVelocity = rb.velocity;
+			rb.velocity = new Vector2 (0, 0);
+		} 
+		else 
+		{
+			rb.velocity = oldVelocity;
+		}
+
+		Debug.Log ("Paused " + paused);
+	}
+
     #region EventMethods
     void MoveShip(Vector3 dir, CNAbstractController controller)
     {
-        JoystickMove(rb, dir);
+		if (!paused)
+			JoystickMove(rb, dir);
     }
     void RotateShip(Vector3 dir, CNAbstractController controller)
     {
-        Rotate(dir, this.gameObject.transform);
+		if (!paused)
+	        Rotate(dir, this.gameObject.transform);
     }
     void StartFire(CNAbstractController controller)
     {
@@ -94,23 +115,21 @@ public class PlayerShip : Ship
     }
     IEnumerator FireWepon()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(.15f);           
+		while (true) {
+			yield return new WaitForSeconds (.15f);           
             
-            Vector3 sDir = new Vector3(rightStick.GetAxis("Horizontal"), rightStick.GetAxis("Vertical"));
-            Vector3 cDir = sDir.normalized;
+			Vector3 sDir = new Vector3 (rightStick.GetAxis ("Horizontal"), rightStick.GetAxis ("Vertical"));
+			Vector3 cDir = sDir.normalized;
             
-            bool canFire = false;
-            if (cDir.x == 0 && cDir.y == 0)
-                canFire = false;
-            else
-                canFire = true;
-            if(canFire)
-            {
-                FireCannon(currentWeapon, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet");
-            }
-       }
+			bool canFire = false;
+			if (cDir.x == 0 && cDir.y == 0)
+				canFire = false;
+			else
+				canFire = true;
+			if (canFire && !paused) {
+				FireCannon (currentWeapon, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet");
+			}
+		}
     }
     #endregion
     public void SpawnPlayer()

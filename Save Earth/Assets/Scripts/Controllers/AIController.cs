@@ -20,6 +20,7 @@ public class AIController : Ship {
 	public float fireRate;
 	private float lastFired;
     public Color bulletColor = Color.magenta;
+	private bool paused;
 
 	public float wakeupDistance;
 
@@ -109,38 +110,45 @@ public class AIController : Ship {
 
 	}
 
+	private void TogglePause()
+	{
+		paused = !paused;
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		UpdateRotation();
-
-		switch (currentState) 
+		if (!paused) 
 		{
+			UpdateRotation ();
+
+			switch (currentState) {
 			case AIstate.AI_Idle:
-				AIIdle();
+				AIIdle ();
 				break;
 			case AIstate.AI_Follow:
-				AIFollow();
-				AIAttack();
+				AIFollow ();
+				AIAttack ();
 				break;
 			case AIstate.AI_Retreat:
-				AIRetreat();
-				AIAttack();
+				AIRetreat ();
+				AIAttack ();
 				break;
 			case AIstate.AI_Stationary:
-				AIStationary();
-				AIAttack();
+				AIStationary ();
+				AIAttack ();
 				break;
 			case AIstate.AI_Defend:
-				AIDefend();
-				AIAttack();
+				AIDefend ();
+				AIAttack ();
 				break;
 			case AIstate.AI_Strafe:
-				AIStrafe();
-				AIAttack();
+				AIStrafe ();
+				AIAttack ();
 				break;
 			default:
 				break;
+			}
 		}
 	}
 

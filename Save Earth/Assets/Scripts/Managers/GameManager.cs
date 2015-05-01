@@ -5,14 +5,29 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
    
     public PlayerShip player;
-   
+	private List<GameObject> objects = new List<GameObject>();
 
-    
+   
 	// Use this for initialization
 	void Start () {
          
         player.SpawnPlayer();
         
+	}
+
+	void TogglePause()
+	{
+		objects.Add(GameObject.FindGameObjectWithTag("Player"));
+		objects.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+		objects.AddRange(GameObject.FindGameObjectsWithTag("EnemyBullet"));
+		objects.AddRange(GameObject.FindGameObjectsWithTag("PlayerBullet"));
+
+		foreach (GameObject o in objects) 
+		{
+			o.SendMessage ("TogglePause", SendMessageOptions.DontRequireReceiver);
+		}
+
+		objects.Clear();
 	}
 	
 	// Update is called once per frame
@@ -29,6 +44,10 @@ public class GameManager : MonoBehaviour {
         {
             player.TakeDamage(5);
         }
+		if (Input.GetKeyDown (KeyCode.Escape)) 
+		{
+			TogglePause();
+		}
 
 	}
 
