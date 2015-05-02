@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour {
     public PlayerShip player;
 	private List<GameObject> objects = new List<GameObject>();
     public Camera mainCam;
-
-   
+	   
 	// Use this for initialization
 	void Start () {
          
@@ -48,9 +47,8 @@ public class GameManager : MonoBehaviour {
         }
 		if (Input.GetKeyDown (KeyCode.Escape)) 
 		{
-			TogglePause();
+			TogglePause ();
 		}
-
 	}
 
 }
