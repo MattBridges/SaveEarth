@@ -6,16 +6,17 @@ public class GameManager : MonoBehaviour {
    
     public PlayerShip player;
 	private List<GameObject> objects = new List<GameObject>();
+    public Camera mainCam;
 
    
 	// Use this for initialization
 	void Start () {
          
         player.SpawnPlayer();
-        
+        TogglePause();
 	}
 
-	void TogglePause()
+	public void TogglePause()
 	{
 		objects.Add(GameObject.FindGameObjectWithTag("Player"));
 		objects.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 		objects.Clear();
+
 	}
 	
 	// Update is called once per frame

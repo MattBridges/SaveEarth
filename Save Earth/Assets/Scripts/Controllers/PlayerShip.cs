@@ -19,6 +19,7 @@ public class PlayerShip : Ship
     private AudioSource audioSrc;
 	private bool paused;
 	private Vector2 oldVelocity;
+    public Camera mainCam;
 
  
     
@@ -35,6 +36,7 @@ public class PlayerShip : Ship
         weaponShotPosition = GameObject.Find("PlayerCannon").transform;
         audioSrc = this.gameObject.GetComponent<AudioSource>();
         curPlayer = this;
+        mainCam = GameObject.FindObjectOfType<GameManager>().mainCam;
         
   
         //Register joysticks
@@ -64,15 +66,19 @@ public class PlayerShip : Ship
 		
 		if (paused) 
 		{
-			oldVelocity = rb.velocity;
-			rb.velocity = new Vector2 (0, 0);
+            if (rb != null)
+            {
+                oldVelocity = rb.velocity;
+                rb.velocity = new Vector2(0, 0);
+            }              
+            else
+                oldVelocity = new Vector2(0, 0);
+			
 		} 
 		else 
 		{
 			rb.velocity = oldVelocity;
 		}
-
-		Debug.Log ("Paused " + paused);
 	}
 
     #region EventMethods
@@ -137,7 +143,7 @@ public class PlayerShip : Ship
         GameObject ship = GameObject.FindGameObjectWithTag("Player");
         if(ship!=null)
         {
-            Debug.Log("Ship Exists");
+            RespawnPlayer();
         }
         else 
         {

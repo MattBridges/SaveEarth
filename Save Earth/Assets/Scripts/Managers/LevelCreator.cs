@@ -64,9 +64,9 @@ public class LevelCreator : MonoBehaviour {
         lastMission = Mission;
         Debug.Log("Loaded Level: " + Mission.name);
     }
-    public void LoadRandomMission(string curMission)
+    public void LoadRandomMission(string curLevel, int mission)
     {
-        LoadLevel(GetRandomMission(curMission, 1));
+        LoadLevel(GetRandomMission(curLevel, mission));
     }
 
     public void ClearAllMissionNodes(GameObject mis)

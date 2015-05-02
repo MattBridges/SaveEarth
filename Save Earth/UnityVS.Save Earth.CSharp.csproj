@@ -86,6 +86,8 @@
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LevelCreator.cs" />
     <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\MainMenuManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\MessageManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PoolingManager.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\RegisterLevel.cs" />

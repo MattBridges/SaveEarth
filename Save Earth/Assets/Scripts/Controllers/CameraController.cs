@@ -53,7 +53,7 @@ public class CameraController : MonoBehaviour {
     public void ReturnCam()
     {
        
-        _speed = 100;
+        _speed = 10000;
         Invoke("ResetSpeed",.5f);
     }
     void ResetSpeed()
