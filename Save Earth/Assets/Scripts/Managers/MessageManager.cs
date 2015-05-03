@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -15,7 +15,7 @@ public class MessageManager : MonoBehaviour {
 	void Start () {
 		messageQueue = new List<string>();
 		UIText = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
-		UIImage = this.gameObject.GetComponent<Image> ();
+		UIImage = this.gameObject.GetComponent<Image>();
 	}
 
 	public void InsertMessages(List<string> messages)
@@ -34,9 +34,14 @@ public class MessageManager : MonoBehaviour {
 		}
 		else 
 		{
-			++current;
-			UIText.text = messageQueue [current];
+			UIText.text = messageQueue[++current];
 		}
+	}
+
+	public void EnableMessage()
+	{
+		UIImage.enabled = true;
+		UIText.text = messageQueue[0];
 	}
 
 	// Update is called once per frame
