@@ -34,14 +34,9 @@ public class MessageManager : MonoBehaviour {
 		}
 		else 
 		{
-			UIText.text = messageQueue[++current];
+			++current;
+			UIText.text = messageQueue [current];
 		}
-	}
-
-	public void EnableMessage()
-	{
-		UIImage.enabled = true;
-		UIText.text = messageQueue[0];
 	}
 
 	// Update is called once per frame
