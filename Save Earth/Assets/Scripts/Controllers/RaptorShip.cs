@@ -9,9 +9,9 @@ public class RaptorShip: AIController  {
 	private bool hasMothershipShield;
 	private int shieldHealth;
 	public float strafeSpeed;
-	public Vector3 strafeDir;
+	public bool strafeDir;
 	private Vector2 impulse;
-	private Vector3 direction;
+	private Vector2 direction;
 
 	// Use this for initialization
 	public override void Start () {
@@ -29,7 +29,7 @@ public class RaptorShip: AIController  {
 
 		if (Vector3.Distance(transform.position, pShip.transform.position) <= distanceFromPlayer) 
 		{
-			strafeDir = Random.Range(0, 100) > 50 ? transform.right : -transform.right;
+			strafeDir = Random.Range(0, 100) > 50 ? true : false;
 			currentState = AIstate.AI_Strafe;
 			rb.velocity = Vector3.zero;
 		}
@@ -60,21 +60,25 @@ public class RaptorShip: AIController  {
 		direction = direction / direction.magnitude;
 
 		if (Vector3.Distance (transform.position, pShip.transform.position) > distanceFromPlayer)
-			rb.AddForce (direction * speed, ForceMode2D.Force);
+			direction.x = 1;
+		else
+			direction.x = 0;
 
-		if (Vector3.Distance (transform.position, pShip.transform.position) < distanceFromPlayer / 2) 
+		if (Vector3.Distance (transform.position, pShip.transform.position) < distanceFromPlayer) 
 		{
-			impulse = -direction * strafeSpeed;
-			rb.AddForce(impulse, ForceMode2D.Impulse);
+			direction.x = -1;
 		} 
-		
-		rb.AddRelativeForce(strafeDir * strafeSpeed, ForceMode2D.Force);
+		else 
+			direction.x = 0;
+			
+		direction.y = strafeDir ? 1 : -1;
 
-		if (Vector3.Distance (transform.position, pShip.transform.position) > distanceFromPlayer + 4)
+		rb.AddRelativeForce (direction * strafeSpeed, ForceMode2D.Force);
+
+		if (Vector3.Distance (transform.position, pShip.transform.position) > distanceFromPlayer + 4) 
+		{
 			currentState = AIstate.AI_Follow;
-
-		//transform.position = ((transform.position - pShip.transform.position).normalized * distanceFromPlayer + pShip.transform.position);
-		//transform.RotateAround (pShip.transform.position, Vector3.forward, -(strafeSpeed/4));
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
