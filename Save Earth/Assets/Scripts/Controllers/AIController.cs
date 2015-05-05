@@ -64,11 +64,7 @@ public class AIController : Ship {
 			if (Vector3.Distance (transform.position, pShip.transform.position) > 3.5)
 			{
 				//transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
-				rb.AddForce((pShip.transform.position - transform.position).normalized * speed);
-/*				if(rb.velocity.magnitude < speed)
-				{
-					rb.velocity *= .99f;
-				} */
+				rb.AddForce((pShip.transform.position - transform.position).normalized * speed, ForceMode2D.Force);
 			}
 		}
 	}

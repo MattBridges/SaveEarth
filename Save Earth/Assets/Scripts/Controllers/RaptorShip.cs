@@ -9,6 +9,9 @@ public class RaptorShip: AIController  {
 	private bool hasMothershipShield;
 	private int shieldHealth;
 	public float strafeSpeed;
+	public Vector3 strafeDir;
+	private Vector2 impulse;
+	private Vector3 direction;
 
 	// Use this for initialization
 	public override void Start () {
@@ -18,10 +21,18 @@ public class RaptorShip: AIController  {
 	
 	public override void AIFollow()
 	{
-		base.AIFollow();
+		if (Vector3.Distance (transform.position, pShip.transform.position) > distanceFromPlayer)
+		{
+				//transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
+				rb.AddForce((pShip.transform.position - transform.position).normalized * speed, ForceMode2D.Force);
+		}
 
-		if (Vector3.Distance (transform.position, pShip.transform.position) <= distanceFromPlayer)
+		if (Vector3.Distance(transform.position, pShip.transform.position) <= distanceFromPlayer) 
+		{
+			strafeDir = Random.Range(0, 100) > 50 ? transform.right : -transform.right;
 			currentState = AIstate.AI_Strafe;
+			rb.velocity = Vector3.zero;
+		}
 	}
 	
 	public override void AIRetreat()
@@ -45,10 +56,25 @@ public class RaptorShip: AIController  {
 
 	public override void AIStrafe()
 	{
-		if (Vector3.Distance (transform.position, pShip.transform.position) > distanceFromPlayer || Vector3.Distance (transform.position, pShip.transform.position) < distanceFromPlayer) 
-			transform.position = ((transform.position - pShip.transform.position).normalized * distanceFromPlayer + pShip.transform.position);
+		direction = pShip.transform.position - transform.position;
+		direction = direction / direction.magnitude;
 
-		transform.RotateAround (pShip.transform.position, Vector3.forward, -(strafeSpeed/4));
+		if (Vector3.Distance (transform.position, pShip.transform.position) > distanceFromPlayer)
+			rb.AddForce (direction * speed, ForceMode2D.Force);
+
+		if (Vector3.Distance (transform.position, pShip.transform.position) < distanceFromPlayer / 2) 
+		{
+			impulse = -direction * strafeSpeed;
+			rb.AddForce(impulse, ForceMode2D.Impulse);
+		} 
+		
+		rb.AddRelativeForce(strafeDir * strafeSpeed, ForceMode2D.Force);
+
+		if (Vector3.Distance (transform.position, pShip.transform.position) > distanceFromPlayer + 4)
+			currentState = AIstate.AI_Follow;
+
+		//transform.position = ((transform.position - pShip.transform.position).normalized * distanceFromPlayer + pShip.transform.position);
+		//transform.RotateAround (pShip.transform.position, Vector3.forward, -(strafeSpeed/4));
 	}
 
 	void OnTriggerEnter2D(Collider2D other)

@@ -148,7 +148,7 @@ public class PlayerShip : Ship
             if (spawnPoint != null)
             {
                 Instantiate(this.gameObject, spawnPoint.transform.position, Quaternion.identity);
-                this.health = 100;
+                this.health = 1000;
             }
      
         }
@@ -186,7 +186,7 @@ public class PlayerShip : Ship
             Debug.Log("No Player Spawn Point");
         
         cam.ReturnCam();
-        this.health = 100;
+        this.health = 1000;
         
     }
   
