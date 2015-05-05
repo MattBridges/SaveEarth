@@ -13,7 +13,7 @@ public class Ship : MonoBehaviour {
     #region Movement Methods
     public void MoveLeft(Rigidbody2D rb)
     {
-        rb.AddForce(-Vector2.right * 4);
+        rb.AddForce(-Vector2.right * speed);
     }
     public void MoveRight(Rigidbody2D rb)
     {
