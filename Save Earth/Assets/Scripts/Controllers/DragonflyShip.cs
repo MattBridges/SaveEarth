@@ -18,10 +18,11 @@ public class DragonflyShip : AIController {
 	{
 		base.AIFollow();
 
-		if (Vector3.Distance (transform.position, pShip.transform.position) < rushDistance)
+		if (Vector3.Distance(transform.position, pShip.transform.position) < rushDistance)
 			speed = 5;
 
-		transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
+		//transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
+		rb.AddForce((pShip.transform.position - transform.position) * speed);
 	}
 
 	public override void AIRetreat()

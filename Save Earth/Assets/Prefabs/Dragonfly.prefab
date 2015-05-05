@@ -230,7 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8a5b3bb9f291045bcac3ce2ef262f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
+  currentWeapon: 0
   health: 0
   currentState: 3
   attack: 0
@@ -239,9 +240,10 @@ MonoBehaviour:
   bulletSpeed: 2
   fireRate: 1
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
+  rb: {fileID: 0}
   wakeupDistance: 8
   maxHealth: 20
-  rushDistance: 3.5
+  rushDistance: 4
   canWake: 0
 --- !u!212 &21230682
 SpriteRenderer:
