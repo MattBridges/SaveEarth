@@ -21,6 +21,7 @@ public class AIController : Ship {
 	private float lastFired;
     public Color bulletColor = Color.magenta;
 	private bool paused;
+	public Rigidbody2D rb;
 
 	public float wakeupDistance;
 
@@ -31,6 +32,7 @@ public class AIController : Ship {
 	{
 		health = maxHealth;
         currentWeapon = Weapons.RedWeapon;
+		rb = this.gameObject.GetComponent<Rigidbody2D>();
 	}
 
 	void OnEnable()
@@ -61,7 +63,12 @@ public class AIController : Ship {
 		{
 			if (Vector3.Distance (transform.position, pShip.transform.position) > 3.5)
 			{
-				transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
+				//transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
+				rb.AddForce((pShip.transform.position - transform.position).normalized * speed);
+/*				if(rb.velocity.magnitude < speed)
+				{
+					rb.velocity *= .99f;
+				} */
 			}
 		}
 	}
