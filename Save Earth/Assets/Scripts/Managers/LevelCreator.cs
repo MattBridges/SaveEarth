@@ -97,6 +97,8 @@ public class LevelCreator : MonoBehaviour {
                 SpawnRaptor(node);
             if (nodeName == "MotherShipSpawn")
                 SpawnMotherShip(node);
+            if (nodeName == "MineSpawn")
+                SpawnMines(node);
         }
     }
     public void SpawnDragonfly(GameObject Position)
@@ -114,6 +116,12 @@ public class LevelCreator : MonoBehaviour {
     public void SpawnMotherShip(GameObject Position)
     {
         GameObject ship = op.ReturnObject(pm.motherShips, pm.mShip, pm.shipCollector);
+        ship.SetActive(true);
+        ship.transform.position = Position.transform.position;
+    }
+    public void SpawnMines(GameObject Position)
+    {
+        GameObject ship = op.ReturnObject(pm.mines , pm.mine, pm.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }

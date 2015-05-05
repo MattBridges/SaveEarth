@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Controllers\AIController.cs" />
     <Compile Include="Assets\Scripts\Controllers\CameraController.cs" />
     <Compile Include="Assets\Scripts\Controllers\DragonflyShip.cs" />
+    <Compile Include="Assets\Scripts\Controllers\MineController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MixedStation.cs" />
     <Compile Include="Assets\Scripts\Controllers\MobileStation.cs" />
     <Compile Include="Assets\Scripts\Controllers\MotherShip.cs" />

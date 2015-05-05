@@ -8,7 +8,7 @@ public class PlayerShip : Ship
     public float moveSpeed;
     public float bulletSpeed;
     public AudioClip shotSound;
-    public static PlayerShip curPlayer;
+    public PlayerShip curPlayer;
     public Color bulletColor;
 
     private CNAbstractController leftStick;
@@ -20,6 +20,7 @@ public class PlayerShip : Ship
 	private bool paused;
 	private Vector2 oldVelocity;
     public Camera mainCam;
+    private GameObject spawnPoint;
 
  
     
@@ -140,28 +141,55 @@ public class PlayerShip : Ship
     #endregion
     public void SpawnPlayer()
     {
+        GameObject spawnPoint = GameObject.Find("PlayerSpawn");
         GameObject ship = GameObject.FindGameObjectWithTag("Player");
-        if(ship!=null)
+        if(ship==null)
         {
-            RespawnPlayer();
+            if (spawnPoint != null)
+            {
+                Instantiate(this.gameObject, spawnPoint.transform.position, Quaternion.identity);
+                this.health = 100;
+            }
+     
         }
         else 
         {
-            Instantiate(this.gameObject, Vector2.zero, Quaternion.identity);
-            this.health = 100;
+            RespawnPlayer();            
         }
            
     }
     public void RespawnPlayer()
     {
         iTween.Stop();
-        curPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        curPlayer.transform.position = new Vector2(0,0);
+        GameObject[] nodes = GameObject.FindGameObjectsWithTag("SpawnNode");
         CameraController cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        GameObject ship = GameObject.FindGameObjectWithTag("Player");
+        
+        foreach(GameObject node in nodes)
+        {
+            if (node.name == "PlayerSpawn")
+            {
+                spawnPoint = node;
+                Debug.Log("Found Player Spawn");
+            }                
+        }
+
+
+        ship.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        if (spawnPoint != null)
+        {
+            ship.transform.position = spawnPoint.transform.position;
+            ship.transform.rotation = Quaternion.identity;
+        }
+            
+        else
+            Debug.Log("No Player Spawn Point");
+        
         cam.ReturnCam();
         this.health = 100;
         
     }
+  
     public void TakeDamage(int amt)
     {
         CameraFX camFX = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFX>();       
@@ -185,6 +213,12 @@ public class PlayerShip : Ship
 		{
 			TakeDamage (20);
 		}
+        if(other.tag == "Mine")
+        {
+            TakeDamage(25);
+            Debug.Log("Hit Mine");
+        }
+        
     }
     
 }

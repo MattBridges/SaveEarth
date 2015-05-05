@@ -15,6 +15,9 @@ public class PoolingManager : MonoBehaviour {
 
     public GameObject mShip;
     public int mShipSpawnAmt;
+
+    public GameObject mine;
+    public int minesSpawnAmt;
  
    
     //Lists
@@ -22,6 +25,7 @@ public class PoolingManager : MonoBehaviour {
     public List<GameObject> dragonFlies;
     public List<GameObject> raptors;
     public List<GameObject> motherShips;
+    public List<GameObject> mines;
     //Collectors
     public GameObject shipCollector;
     public GameObject bulletCollector;
@@ -29,13 +33,14 @@ public class PoolingManager : MonoBehaviour {
     private ObjectPooler op;
 	// Use this for initialization
 	void Start () {
-        dragonFlies = new List<GameObject>();
-        bullets = new List<GameObject>();
+       // dragonFlies = new List<GameObject>();
+       // bullets = new List<GameObject>();
         op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
         bullets = op.PoolObjects(bullet, bulletSpawnAmt, bulletCollector);
         dragonFlies = op.PoolObjects(dfShip, dfSpawnAmt, shipCollector);
         raptors = op.PoolObjects(rpShip, rpSpawnAmt, shipCollector);
         motherShips = op.PoolObjects(mShip, mShipSpawnAmt, shipCollector);
+        mines = op.PoolObjects(mine, minesSpawnAmt, shipCollector);
         
 	}
 	
