@@ -20672,6 +20672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11436020, guid: 0ba5a3a82d6cd1f48ae6d606951393ef, type: 2}
   mainCam: {fileID: 1094680303}
+  currentMission: {fileID: 0}
 --- !u!1001 &1791764923
 Prefab:
   m_ObjectHideFlags: 0

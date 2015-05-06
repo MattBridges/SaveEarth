@@ -8,12 +8,14 @@ public class LevelCreator : MonoBehaviour {
     private ObjectPooler op;
     private PoolingManager pm;
     private GameObject lastMission;
+    private GameManager gameManager;
 
 	// Use this for initialization
     public void Start()
     {
         op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
         pm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
 
     }
 
@@ -62,6 +64,7 @@ public class LevelCreator : MonoBehaviour {
         Mission.SetActive(true);
         SpawnEnemies();
         lastMission = Mission;
+        gameManager.currentMission = Mission;
         Debug.Log("Loaded Level: " + Mission.name);
     }
     public void LoadRandomMission(string curLevel, int mission)

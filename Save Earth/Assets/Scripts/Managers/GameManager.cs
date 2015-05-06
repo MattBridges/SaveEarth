@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public PlayerShip player;
 	private List<GameObject> objects = new List<GameObject>();
     public Camera mainCam;
+    public GameObject currentMission;
 	   
 	// Use this for initialization
 	void Start () {
