@@ -12,11 +12,17 @@ public class RaptorShip: AIController  {
 	public bool strafeDir;
 	private Vector2 impulse;
 	private Vector2 direction;
+	public GameObject currentLevel;
 
 	// Use this for initialization
 	public override void Start () {
 		base.Start ();
 		weaponShotPosition = transform.FindChild ("RaptorCannon").gameObject.transform;
+
+		foreach (RegisterLevel rL in GameObject.FindObjectsOfType<RegisterLevel>()) 
+		{
+			currentLevel = rL.gameObject;
+		}
 	}
 	
 	public override void AIFollow()
@@ -79,6 +85,11 @@ public class RaptorShip: AIController  {
 		{
 			currentState = AIstate.AI_Follow;
 		}
+	}
+
+	public override void FixedUpdate()
+	{
+		base.FixedUpdate();
 	}
 
 	void OnTriggerEnter2D(Collider2D other)

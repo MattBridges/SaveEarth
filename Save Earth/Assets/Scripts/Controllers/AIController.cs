@@ -20,12 +20,14 @@ public class AIController : Ship {
 	public float fireRate;
 	private float lastFired;
     public Color bulletColor = Color.magenta;
-	private bool paused;
+	public bool paused;
 	public Rigidbody2D rb;
 
 	public float wakeupDistance;
 
 	public int maxHealth;
+
+	public GameObject target;
 
 	// Use this for initialization
 	public virtual void Start () 
@@ -119,7 +121,7 @@ public class AIController : Ship {
 	}
 
 	// Update is called once per frame
-	void FixedUpdate () 
+	public virtual void FixedUpdate () 
 	{
 		if (!paused) 
 		{
