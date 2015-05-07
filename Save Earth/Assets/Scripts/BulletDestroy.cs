@@ -6,6 +6,7 @@ public class BulletDestroy : MonoBehaviour {
 	private Vector2 oldVelocity;
 	private Rigidbody2D rb;
 	private bool paused;
+	public GameObject shipFired;
 
 	void Start()
 	{

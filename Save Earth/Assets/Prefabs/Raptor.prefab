@@ -150,21 +150,26 @@ MonoBehaviour:
   speed: 2
   currentWeapon: 0
   health: 0
-  currentState: 0
+  currentState: 1
   attack: 0
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
   bulletSpeed: 2
   fireRate: .75
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
+  paused: 0
   rb: {fileID: 0}
   wakeupDistance: 10
   maxHealth: 30
+  target: {fileID: 0}
   distanceFromPlayer: 4
   canWake: 0
   mothershipShieldDelay: 0
   strafeSpeed: 3
   strafeDir: 0
+  currentLevel: {fileID: 0}
+  swapTarget: 0
+  protectedSatellite: {fileID: 0}
 --- !u!212 &21217012
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -134,7 +134,7 @@ public class PlayerShip : Ship
 			else
 				canFire = true;
 			if (canFire && !paused) {
-				FireCannon (currentWeapon, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet");
+				FireCannon (currentWeapon, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet", this.gameObject);
 			}
 		}
     }

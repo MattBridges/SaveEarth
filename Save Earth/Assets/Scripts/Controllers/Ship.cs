@@ -49,18 +49,18 @@ public class Ship : MonoBehaviour {
     }
     #endregion
     #region Weapon Methods
-    public void FireCannon(Weapons currentWeapon, float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color , string Tag)
+	public void FireCannon(Weapons currentWeapon, float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color , string Tag, GameObject theShip)
     {
 		if(currentWeapon == Weapons.BlueWeapon)
         {
-            FireBlueCannon(bulletSpeed, audioSrc, shotSound, shotPos, shotDirection, enemy, color, Tag);
+            FireBlueCannon(bulletSpeed, audioSrc, shotSound, shotPos, shotDirection, enemy, color, Tag, theShip);
         }
         if (currentWeapon == Weapons.RedWeapon)
         {
-            FireRedCannon(bulletSpeed, audioSrc, shotSound, shotPos, shotDirection, enemy, color, Tag);
+            FireRedCannon(bulletSpeed, audioSrc, shotSound, shotPos, shotDirection, enemy, color, Tag, theShip);
         }
     }
-    void FireBlueCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag)
+	void FireBlueCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag, GameObject theShip)
     {
         if (!enemy)
         {
@@ -77,8 +77,9 @@ public class Ship : MonoBehaviour {
         projectile.SetActive(true);
         projectile.transform.position = shotPos.position;
         projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
+		projectile.GetComponent<BulletDestroy>().shipFired = theShip;
     }
-    void FireRedCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag)
+    void FireRedCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag, GameObject theShip)
     {
         if (!enemy)
         {
@@ -95,6 +96,7 @@ public class Ship : MonoBehaviour {
         projectile.SetActive(true);
         projectile.transform.position = shotPos.position;
         projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
+		projectile.GetComponent<BulletDestroy>().shipFired = theShip;
     }
 
 #endregion

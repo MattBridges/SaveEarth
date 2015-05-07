@@ -49,7 +49,7 @@ public class AIController : Ship {
 
 	private void UpdateRotation()
 	{
-		dir = pShip.transform.position - transform.position;
+		dir = target.transform.position - transform.position;
 		angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		angle -= 90;
 
@@ -63,10 +63,10 @@ public class AIController : Ship {
 	{
 		if (pShip) 
 		{
-			if (Vector3.Distance (transform.position, pShip.transform.position) > 3.5)
+			if (Vector3.Distance (transform.position, target.transform.position) > 3.5)
 			{
 				//transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
-				rb.AddForce((pShip.transform.position - transform.position).normalized * speed, ForceMode2D.Force);
+				rb.AddForce((target.transform.position - transform.position).normalized * speed, ForceMode2D.Force);
 			}
 		}
 	}
@@ -78,21 +78,20 @@ public class AIController : Ship {
 	
 	public virtual void AIAttack()
 	{
-		if (attack && pShip) 
+		if ((attack && target) && target.activeSelf) 
 		{
-			cDir = pShip.transform.position - transform.position;
+			cDir = target.transform.position - transform.position;
 
-			if ((Time.time - lastFired) < fireRate )
+			if ((Time.time - lastFired) < fireRate)
 				canFire = false;
 			else
 				canFire = true;
 
-			if (canFire)
-			{
+			if (canFire) {
 				lastFired = Time.time;
-                FireCannon(currentWeapon, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, "EnemyBullet");
+				FireCannon (currentWeapon, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, this.gameObject.tag == "Ally" ? "AllyBullet" : "EnemyBullet", this.gameObject);
 			}
-		}
+		} 
 	}
 
 	public virtual void AIDefend()
@@ -125,34 +124,42 @@ public class AIController : Ship {
 	{
 		if (!paused) 
 		{
-			UpdateRotation ();
+			if (target)
+				UpdateRotation ();
 
-			switch (currentState) {
-			case AIstate.AI_Idle:
-				AIIdle ();
-				break;
-			case AIstate.AI_Follow:
-				AIFollow ();
-				AIAttack ();
-				break;
-			case AIstate.AI_Retreat:
-				AIRetreat ();
-				AIAttack ();
-				break;
-			case AIstate.AI_Stationary:
-				AIStationary ();
-				AIAttack ();
-				break;
-			case AIstate.AI_Defend:
-				AIDefend ();
-				AIAttack ();
-				break;
-			case AIstate.AI_Strafe:
-				AIStrafe ();
-				AIAttack ();
-				break;
-			default:
-				break;
+			if (!target.activeSelf)
+			{
+				currentState = AIstate.AI_Idle;
+				attack = false;
+			}
+
+			switch (currentState) 
+			{
+				case AIstate.AI_Idle:
+					AIIdle ();
+					break;
+				case AIstate.AI_Follow:
+					AIFollow ();
+					AIAttack ();
+					break;
+				case AIstate.AI_Retreat:
+					AIRetreat ();
+					AIAttack ();
+					break;
+				case AIstate.AI_Stationary:
+					AIStationary ();
+					AIAttack ();
+					break;
+				case AIstate.AI_Defend:
+					AIDefend ();
+					AIAttack ();
+					break;
+				case AIstate.AI_Strafe:
+					AIStrafe ();
+					AIAttack ();
+					break;
+				default:
+					break;
 			}
 		}
 	}

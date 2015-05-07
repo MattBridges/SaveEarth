@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
 		objects.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
 		objects.AddRange(GameObject.FindGameObjectsWithTag("EnemyBullet"));
 		objects.AddRange(GameObject.FindGameObjectsWithTag("PlayerBullet"));
+		objects.AddRange(GameObject.FindGameObjectsWithTag("AllyBullet"));
 
 		foreach (GameObject o in objects) 
 		{
