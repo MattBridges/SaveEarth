@@ -53,5 +53,17 @@ public class BulletDestroy : MonoBehaviour {
         {
             Destroy();
         }
+		if (other.tag == "Enemy" && this.gameObject.tag == "AllyBullet") 
+		{
+			Destroy ();
+		}
+		if (other.tag == "Ally" && this.gameObject.tag == "EnemyBullet") 
+		{
+			Destroy ();
+		}
+		if (other.tag == "Satellite" && this.gameObject.tag == "EnemyBullet") 
+		{
+			Destroy ();
+		}
     }
 }

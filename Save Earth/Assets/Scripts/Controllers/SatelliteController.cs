@@ -28,8 +28,6 @@ public class SatelliteController : MonoBehaviour {
 				this.gameObject.SetActive (false);
 				health = maxHealth;
 			}
-
-			other.gameObject.SetActive(false);
 		}
 	}
 

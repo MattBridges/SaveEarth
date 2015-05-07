@@ -169,7 +169,7 @@ public class RaptorShip: AIController  {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "PlayerBullet") 
+		if (other.gameObject.tag == "PlayerBullet" && this.gameObject.tag == "Enemy") 
 		{
 			TakeDamage(5);
             if (currentState == AIstate.AI_Idle)
@@ -190,8 +190,6 @@ public class RaptorShip: AIController  {
 			
 			target = other.GetComponent<BulletDestroy>().shipFired;
 		}
-
-		other.gameObject.SetActive(false);
 	}
 
 	void OnDisable()
