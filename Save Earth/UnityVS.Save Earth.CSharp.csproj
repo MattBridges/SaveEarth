@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Controllers\MotherShip.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerShip.cs" />
     <Compile Include="Assets\Scripts\Controllers\RaptorShip.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SatelliteController.cs" />
     <Compile Include="Assets\Scripts\Controllers\Ship.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceStation.cs" />
     <Compile Include="Assets\Scripts\Controllers\StationaryStation.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Assets\Scripts\Managers\PoolingManager.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\RegisterLevel.cs" />
+    <Compile Include="Assets\Scripts\SpawnNode.cs" />
     <Compile Include="Assets\Scripts\TimeDestroy.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,9 @@ TagManager:
   - Bullet
   - Messenger
   - Mine
+  - Satellite
+  - Ally
+  - AllyBullet
   layers:
   - Default
   - TransparentFX

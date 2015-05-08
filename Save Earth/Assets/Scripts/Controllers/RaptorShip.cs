@@ -102,7 +102,7 @@ public class RaptorShip: AIController  {
 	{
 		GameObject temp = null;
 
-		if (level.name == "Level1_1") 
+		if (level.name == "Level1_1" && level != null) 
 		{
 			foreach (GameObject go in GameObject.FindGameObjectsWithTag("Satellite")) 
 			{

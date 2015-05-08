@@ -171,22 +171,28 @@ public class PlayerShip : Ship
             {
                 spawnPoint = node;
                 Debug.Log("Found Player Spawn");
+                ship.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                if (spawnPoint != null)
+                {
+                    ship.transform.position = spawnPoint.transform.position;
+                    ship.transform.rotation = Quaternion.identity;
+
+                }
+                if (spawnPoint == null)
+                {
+                    Debug.Log("No Player Spawn Point");
+                }
+                cam.ReturnCam();
+                this.health = 1000;
+                break;
             }                
         }
 
-
-        ship.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        if (spawnPoint != null)
-        {
-            ship.transform.position = spawnPoint.transform.position;
-            ship.transform.rotation = Quaternion.identity;
-        }
             
-        else
-            Debug.Log("No Player Spawn Point");
+       
+            
         
-        cam.ReturnCam();
-        this.health = 1000;
+        
         
     }
   

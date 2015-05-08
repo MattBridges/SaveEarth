@@ -102,6 +102,24 @@ public class LevelCreator : MonoBehaviour {
                 SpawnMotherShip(node);
             if (nodeName == "MineSpawn")
                 SpawnMines(node);
+            if (nodeName == "SatelliteSpawn")
+                SpawnSatellite(node);
+            if (nodeName == "AllyRaptorSpawn")
+                SpawnAllyRaptor(node);
+            if (nodeName == "OrbitalRefinerySpawn")
+                SpawnOrbitalRefinery(node);
+            if (nodeName == "GathererSpawn")
+                SpawnGatherer(node);
+            if (nodeName == "AllyOrbitalSpawn")
+                SpawnAllyOrbital(node);
+            if (nodeName == "OrbitalBaseSpawn")
+                SpawnOrbitalBase(node);
+            if (nodeName == "AllyCarrierSpawn")
+                SpawnAllyCarrier(node);
+            if (nodeName == "CarrierSpawn")
+                SpawnCarrier(node);
+            if (nodeName == "BaseShipSpawn")
+                SpawnBaseShip(node);
         }
     }
     public void SpawnDragonfly(GameObject Position)
@@ -125,6 +143,60 @@ public class LevelCreator : MonoBehaviour {
     public void SpawnMines(GameObject Position)
     {
         GameObject ship = op.ReturnObject(pm.mines , pm.mine, pm.shipCollector);
+        ship.SetActive(true);
+        ship.transform.position = Position.transform.position;
+    }
+    public void SpawnSatellite(GameObject Position)
+    {
+        GameObject ship = op.ReturnObject(pm.satellites, pm.satellite, pm.shipCollector);
+        ship.SetActive(true);
+        ship.transform.position = Position.transform.position;
+    }
+    public void SpawnAllyRaptor(GameObject Position)
+    {
+        GameObject ship = op.ReturnObject(pm.allyCarriers, pm.allyCarrier, pm.shipCollector);
+        ship.SetActive(true);
+        ship.transform.position = Position.transform.position;
+    }
+    public void SpawnOrbitalRefinery(GameObject Position)
+    {
+        GameObject ship = op.ReturnObject(pm.orbitalRefinerys, pm.orbitalRefinery, pm.shipCollector);
+        ship.SetActive(true);
+        ship.transform.position = Position.transform.position;
+    }
+    public void SpawnGatherer(GameObject Position)
+    {
+        GameObject ship = op.ReturnObject(pm.gatherers, pm.gatherer, pm.shipCollector);
+        ship.SetActive(true);
+        ship.transform.position = Position.transform.position;
+    }
+    public void SpawnAllyOrbital(GameObject Position)
+    {
+        GameObject ship = op.ReturnObject(pm.allyOrbitalBases, pm.allyOrbitalBase, pm.shipCollector);
+        ship.SetActive(true);
+        ship.transform.position = Position.transform.position;
+    }
+    public void SpawnOrbitalBase(GameObject Position)
+    {
+        GameObject ship = op.ReturnObject(pm.orbitalBases, pm.orbitalBase, pm.shipCollector);
+        ship.SetActive(true);
+        ship.transform.position = Position.transform.position;
+    }
+    public void SpawnAllyCarrier(GameObject Position)
+    {
+        GameObject ship = op.ReturnObject(pm.allyCarriers, pm.allyCarrier, pm.shipCollector);
+        ship.SetActive(true);
+        ship.transform.position = Position.transform.position;
+    }
+    public void SpawnCarrier(GameObject Position)
+    {
+        GameObject ship = op.ReturnObject(pm.carriers, pm.carrier, pm.shipCollector);
+        ship.SetActive(true);
+        ship.transform.position = Position.transform.position;
+    }
+    public void SpawnBaseShip(GameObject Position)
+    {
+        GameObject ship = op.ReturnObject(pm.baseShips, pm.baseShip, pm.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }

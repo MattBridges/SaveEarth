@@ -18,6 +18,36 @@ public class PoolingManager : MonoBehaviour {
 
     public GameObject mine;
     public int minesSpawnAmt;
+
+    public GameObject satellite;
+    public int satelliteSpawnAmt;
+
+    public GameObject allyRaptor;
+    public int allyRaptorSpawnAmt;
+
+    public GameObject orbitalRefinery;
+    public int orbitalRefSpawnAmt;
+
+    public GameObject gatherer;
+    public int gathererSpawnAmt;
+
+    public GameObject allyOrbitalBase;
+    public int allyOrbitalBaseSpawnAmt;
+
+    public GameObject orbitalBase;
+    public int orbitalBaseSpawnAmt;
+
+    public GameObject allyCarrier;
+    public int allyCarrierSpawnAmt;
+
+    public GameObject carrier;
+    public int carrierSpawnAmt;
+
+    public GameObject baseShip;
+    public int baseShipSpawnAmt;
+
+    
+
  
    
     //Lists
@@ -26,6 +56,15 @@ public class PoolingManager : MonoBehaviour {
     public List<GameObject> raptors;
     public List<GameObject> motherShips;
     public List<GameObject> mines;
+    public List<GameObject> satellites;
+    public List<GameObject> allyRaptors;
+    public List<GameObject> orbitalRefinerys;
+    public List<GameObject> gatherers;
+    public List<GameObject> allyOrbitalBases;
+    public List<GameObject> orbitalBases;
+    public List<GameObject> allyCarriers;
+    public List<GameObject> carriers;
+    public List<GameObject> baseShips;
     //Collectors
     public GameObject shipCollector;
     public GameObject bulletCollector;
@@ -41,6 +80,15 @@ public class PoolingManager : MonoBehaviour {
         raptors = op.PoolObjects(rpShip, rpSpawnAmt, shipCollector);
         motherShips = op.PoolObjects(mShip, mShipSpawnAmt, shipCollector);
         mines = op.PoolObjects(mine, minesSpawnAmt, shipCollector);
+        satellites = op.PoolObjects(satellite, satelliteSpawnAmt, shipCollector);
+        allyRaptors = op.PoolObjects(allyRaptor, allyRaptorSpawnAmt, shipCollector);
+        orbitalRefinerys = op.PoolObjects(orbitalRefinery, orbitalRefSpawnAmt, shipCollector);
+        gatherers = op.PoolObjects(gatherer, gathererSpawnAmt, shipCollector);
+        allyOrbitalBases = op.PoolObjects(allyOrbitalBase, allyOrbitalBaseSpawnAmt, shipCollector);
+        orbitalBases = op.PoolObjects(orbitalBase, orbitalBaseSpawnAmt, shipCollector);
+        allyCarriers = op.PoolObjects(allyCarrier, allyCarrierSpawnAmt, shipCollector);
+        carriers = op.PoolObjects(carrier, carrierSpawnAmt, shipCollector);
+        baseShips = op.PoolObjects(baseShip, baseShipSpawnAmt, shipCollector);
         
 	}
 	
