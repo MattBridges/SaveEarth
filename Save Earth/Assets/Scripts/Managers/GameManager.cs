@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	private List<GameObject> objects = new List<GameObject>();
     public Camera mainCam;
     public GameObject currentMission;
+    public int playerLives;
 	   
 	// Use this for initialization
 	void Start () {
@@ -30,23 +31,25 @@ public class GameManager : MonoBehaviour {
 		}
 
 		objects.Clear();
-
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if(Input.GetKeyDown(KeyCode.A))
+    public void LoseALife()
+    {
+        playerLives--;
+        GameObject.FindObjectOfType<UIManager>().UpdatePlayerLivesText();
+        if(playerLives<=0)
         {
-           player.SpawnPlayer();
+            TogglePause();
+            GameObject.FindObjectOfType<MainMenuManager>().ToggleMenu();
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        else
         {
             player.RespawnPlayer();
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            player.TakeDamage(5);
-        }
+    }
+	
+	// Update is called once per frame
+	void Update () {
+
 		if (Input.GetKeyDown (KeyCode.Escape)) 
 		{
 			TogglePause ();

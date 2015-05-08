@@ -25,7 +25,7 @@ public class MainMenuManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape))
             ToggleMenu();
 	}
-    void ToggleMenu()
+    public void ToggleMenu()
     {
         if (menuImage.activeSelf)
             menuImage.SetActive(false);
@@ -37,6 +37,8 @@ public class MainMenuManager : MonoBehaviour {
     {
         string[] str = level.Split(' ');
         int num = int.Parse(str[1]);
+        gm.playerLives = 3;
+        GameObject.FindObjectOfType<UIManager>().UpdatePlayerLivesText();
         mManager.ToggleMenu();
         gm.TogglePause();        
         player.SpawnPlayer();

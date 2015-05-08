@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\Managers\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MessageManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PoolingManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\RegisterLevel.cs" />
     <Compile Include="Assets\Scripts\SpawnNode.cs" />

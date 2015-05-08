@@ -61,6 +61,7 @@ public class LevelCreator : MonoBehaviour {
     public void LoadLevel(GameObject Mission)
     {
         ClearAllMissionNodes(lastMission);
+        ClearAllEnemyShips();
         Mission.SetActive(true);
         SpawnEnemies();
         lastMission = Mission;
@@ -78,6 +79,14 @@ public class LevelCreator : MonoBehaviour {
         {
             mis.SetActive(false);
         }        
+    }
+    public void ClearAllEnemyShips()
+    {
+        GameObject[] ships = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject ship in ships)
+        {
+            ship.SetActive(false);
+        }
     }
     public GameObject[] GetActiveNodes()
     {

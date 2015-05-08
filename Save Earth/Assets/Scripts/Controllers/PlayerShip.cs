@@ -21,6 +21,7 @@ public class PlayerShip : Ship
 	private Vector2 oldVelocity;
     public Camera mainCam;
     private GameObject spawnPoint;
+    private UIManager ui;
 
  
     
@@ -38,6 +39,7 @@ public class PlayerShip : Ship
         audioSrc = this.gameObject.GetComponent<AudioSource>();
         curPlayer = this;
         mainCam = GameObject.FindObjectOfType<GameManager>().mainCam;
+        ui = GameObject.FindObjectOfType<UIManager>();
         
   
         //Register joysticks
@@ -148,7 +150,7 @@ public class PlayerShip : Ship
             if (spawnPoint != null)
             {
                 Instantiate(this.gameObject, spawnPoint.transform.position, Quaternion.identity);
-                this.health = 1000;
+                this.health = 100;
             }
      
         }
@@ -176,14 +178,14 @@ public class PlayerShip : Ship
                 {
                     ship.transform.position = spawnPoint.transform.position;
                     ship.transform.rotation = Quaternion.identity;
-
+                    cam.ReturnCam();
+                    this.health = 100;
                 }
                 if (spawnPoint == null)
                 {
                     Debug.Log("No Player Spawn Point");
                 }
-                cam.ReturnCam();
-                this.health = 1000;
+                
                 break;
             }                
         }
@@ -204,7 +206,10 @@ public class PlayerShip : Ship
 
         if (this.health <= 0)
         {
-            RespawnPlayer();
+            GameObject.FindObjectOfType<GameManager>().LoseALife();
+            this.health = 100;
+
+            
         }
     }
 
@@ -212,7 +217,7 @@ public class PlayerShip : Ship
     {
         if(other.tag == "EnemyBullet")
         {
-            TakeDamage(5);            
+            TakeDamage(1);            
         }
 
 		if (other.tag == "Enemy") 
@@ -224,7 +229,7 @@ public class PlayerShip : Ship
             TakeDamage(25);
             Debug.Log("Hit Mine");
         }
-        
+        ui.UpdatePlayerHealthText();
     }
     
 }
