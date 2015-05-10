@@ -150,7 +150,7 @@ MonoBehaviour:
   speed: 2
   currentWeapon: 0
   health: 0
-  currentState: 1
+  currentState: 0
   attack: 0
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}

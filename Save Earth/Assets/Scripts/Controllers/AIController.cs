@@ -125,14 +125,16 @@ public class AIController : Ship {
 		if (!paused) 
 		{
 			if (target)
+			{
 				UpdateRotation ();
 
-			if (!target.activeSelf)
-			{
-				currentState = AIstate.AI_Idle;
-				attack = false;
+				if (!target.activeSelf)
+				{
+					currentState = AIstate.AI_Idle;
+					attack = false;
+				}
 			}
-
+			
 			switch (currentState) 
 			{
 				case AIstate.AI_Idle:
