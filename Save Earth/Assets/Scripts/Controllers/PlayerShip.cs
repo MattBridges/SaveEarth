@@ -22,6 +22,18 @@ public class PlayerShip : Ship
     public Camera mainCam;
     private GameObject spawnPoint;
     private UIManager ui;
+    private static PlayerShip _instance;
+    public static PlayerShip Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<PlayerShip>();
+            }
+            return _instance;
+        }
+    }
 
  
     

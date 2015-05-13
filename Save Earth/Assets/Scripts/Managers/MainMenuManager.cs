@@ -12,8 +12,7 @@ public class MainMenuManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         levelCreator = GameObject.FindObjectOfType<LevelCreator>();
-        gm = GameObject.FindObjectOfType<GameManager>();
-        mManager = GameObject.FindObjectOfType<MainMenuManager>();
+
         
         
 
@@ -35,13 +34,16 @@ public class MainMenuManager : MonoBehaviour {
     }
     public void LoadLevel(string level)
     {
+        
         string[] str = level.Split(' ');
         int num = int.Parse(str[1]);
-        gm.playerLives = 3;
-        GameObject.FindObjectOfType<UIManager>().UpdatePlayerLivesText();
-        mManager.ToggleMenu();
-        gm.TogglePause();        
-        player.SpawnPlayer();
+        GameManager.Instance.currentZone = str[0];
+        GameManager.Instance.currentMissionNum = num;
+        GameManager.Instance.playerLives = 3;
+        UIManager.Instance.UpdatePlayerLivesText();
+        ToggleMenu();
+        GameManager.Instance.TogglePause();        
+        PlayerShip.Instance.SpawnPlayer();
         levelCreator.LoadRandomMission(str[0], num);
     }
 }

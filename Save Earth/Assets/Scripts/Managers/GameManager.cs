@@ -8,7 +8,21 @@ public class GameManager : MonoBehaviour {
 	private List<GameObject> objects = new List<GameObject>();
     public Camera mainCam;
     public GameObject currentMission;
+    public string currentZone;
+    public int currentMissionNum;
     public int playerLives;
+    private static GameManager _instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<GameManager>();
+            }
+            return _instance;
+        }
+    }
 	   
 	// Use this for initialization
 	void Start () {
@@ -16,6 +30,7 @@ public class GameManager : MonoBehaviour {
         player.SpawnPlayer();
         TogglePause();
 	}
+
 
 	public void TogglePause()
 	{
@@ -46,6 +61,11 @@ public class GameManager : MonoBehaviour {
             player.RespawnPlayer();
         }
     }
+    public void StartLevel()
+    {
+        PlayerShip.Instance.SpawnPlayer();
+        Debug.Log("Started Level");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -54,6 +74,10 @@ public class GameManager : MonoBehaviour {
 		{
 			TogglePause ();
 		}
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            StartLevel();
+        }
 	}
 
 }

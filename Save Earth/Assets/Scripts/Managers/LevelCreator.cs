@@ -60,11 +60,12 @@ public class LevelCreator : MonoBehaviour {
     }
     public void LoadLevel(GameObject Mission)
     {
-        ClearAllMissionNodes(lastMission);
+        ClearAllMissionNodes(gameManager.currentMission);
         ClearAllEnemyShips();
+        UIManager.Instance.UpdatePlayerHealthText();
+        UIManager.Instance.UpdatePlayerLivesText();
         Mission.SetActive(true);
         SpawnEnemies();
-        lastMission = Mission;
         gameManager.currentMission = Mission;
         Debug.Log("Loaded Level: " + Mission.name);
     }
@@ -72,7 +73,16 @@ public class LevelCreator : MonoBehaviour {
     {
         LoadLevel(GetRandomMission(curLevel, mission));
     }
-
+    public void LoadNextMission()
+    {
+        int nextMission = gameManager.currentMissionNum + 1;
+        if(nextMission>5)
+        {
+            nextMission =5;
+        }
+        LoadLevel(GetRandomMission(gameManager.currentZone, nextMission));
+        gameManager.currentMissionNum = nextMission;
+    }
     public void ClearAllMissionNodes(GameObject mis)
     {
         if(mis!=null)
@@ -82,10 +92,14 @@ public class LevelCreator : MonoBehaviour {
     }
     public void ClearAllEnemyShips()
     {
-        GameObject[] ships = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach(GameObject ship in ships)
+      
+        GameObject[] objs = GameObject.FindObjectsOfType<GameObject>();
+        foreach(GameObject obj in objs)
         {
-            ship.SetActive(false);
+            if (obj.tag == "Enemy" || obj.tag == "Mine" || obj.tag == "Satellite" || obj.tag == "Station" || obj.tag == "Collectable")
+            {
+                obj.SetActive(false);
+            }
         }
     }
     public GameObject[] GetActiveNodes()
@@ -129,6 +143,8 @@ public class LevelCreator : MonoBehaviour {
                 SpawnCarrier(node);
             if (nodeName == "BaseShipSpawn")
                 SpawnBaseShip(node);
+            if (nodeName == "PlayerShipSpawn" || nodeName == "PlayerSpawn")
+                SpawnPlayerShip();
         }
     }
     public void SpawnDragonfly(GameObject Position)
@@ -208,6 +224,12 @@ public class LevelCreator : MonoBehaviour {
         GameObject ship = op.ReturnObject(pm.baseShips, pm.baseShip, pm.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
+    }
+    public void SpawnPlayerShip()
+    {
+        PlayerShip ship = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShip>();
+        ship.SpawnPlayer();
+        
     }
     #endregion
 }
