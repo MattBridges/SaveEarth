@@ -22367,7 +22367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62256618453709e468666259583dbc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curEndCondition: 1
+  curEndCondition: 0
   destroyObject: {fileID: 0}
 --- !u!1 &1871573611
 GameObject:
