@@ -2,7 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PoolingManager : MonoBehaviour {
+public class PoolingManager : MonoBehaviour
+{
+    #region Singlton Block
+
+    private static PoolingManager _instance;
+    public static PoolingManager Instance
+    {
+        get
+        {
+            if(_instance==null)
+            {
+                _instance = GameObject.FindObjectOfType<PoolingManager>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
+    #region Variables
     //Objects
     public GameObject bullet;
     public int bulletSpawnAmt;
@@ -69,31 +87,25 @@ public class PoolingManager : MonoBehaviour {
     public GameObject shipCollector;
     public GameObject bulletCollector;
 
-    private ObjectPooler op;
-	// Use this for initialization
-	void Start () {
-       // dragonFlies = new List<GameObject>();
-       // bullets = new List<GameObject>();
-        op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
-        bullets = op.PoolObjects(bullet, bulletSpawnAmt, bulletCollector);
-        dragonFlies = op.PoolObjects(dfShip, dfSpawnAmt, shipCollector);
-        raptors = op.PoolObjects(rpShip, rpSpawnAmt, shipCollector);
-        motherShips = op.PoolObjects(mShip, mShipSpawnAmt, shipCollector);
-        mines = op.PoolObjects(mine, minesSpawnAmt, shipCollector);
-        satellites = op.PoolObjects(satellite, satelliteSpawnAmt, shipCollector);
-        allyRaptors = op.PoolObjects(allyRaptor, allyRaptorSpawnAmt, shipCollector);
-        orbitalRefinerys = op.PoolObjects(orbitalRefinery, orbitalRefSpawnAmt, shipCollector);
-        gatherers = op.PoolObjects(gatherer, gathererSpawnAmt, shipCollector);
-        allyOrbitalBases = op.PoolObjects(allyOrbitalBase, allyOrbitalBaseSpawnAmt, shipCollector);
-        orbitalBases = op.PoolObjects(orbitalBase, orbitalBaseSpawnAmt, shipCollector);
-        allyCarriers = op.PoolObjects(allyCarrier, allyCarrierSpawnAmt, shipCollector);
-        carriers = op.PoolObjects(carrier, carrierSpawnAmt, shipCollector);
-        baseShips = op.PoolObjects(baseShip, baseShipSpawnAmt, shipCollector);
+    #endregion
+
+   	void Start () {
+
+        bullets = ObjectPooler.Instance.PoolObjects(bullet, bulletSpawnAmt, bulletCollector);
+        dragonFlies = ObjectPooler.Instance.PoolObjects(dfShip, dfSpawnAmt, shipCollector);
+        raptors = ObjectPooler.Instance.PoolObjects(rpShip, rpSpawnAmt, shipCollector);
+        motherShips = ObjectPooler.Instance.PoolObjects(mShip, mShipSpawnAmt, shipCollector);
+        mines = ObjectPooler.Instance.PoolObjects(mine, minesSpawnAmt, shipCollector);
+        satellites = ObjectPooler.Instance.PoolObjects(satellite, satelliteSpawnAmt, shipCollector);
+        allyRaptors = ObjectPooler.Instance.PoolObjects(allyRaptor, allyRaptorSpawnAmt, shipCollector);
+        orbitalRefinerys = ObjectPooler.Instance.PoolObjects(orbitalRefinery, orbitalRefSpawnAmt, shipCollector);
+        gatherers = ObjectPooler.Instance.PoolObjects(gatherer, gathererSpawnAmt, shipCollector);
+        allyOrbitalBases = ObjectPooler.Instance.PoolObjects(allyOrbitalBase, allyOrbitalBaseSpawnAmt, shipCollector);
+        orbitalBases = ObjectPooler.Instance.PoolObjects(orbitalBase, orbitalBaseSpawnAmt, shipCollector);
+        allyCarriers = ObjectPooler.Instance.PoolObjects(allyCarrier, allyCarrierSpawnAmt, shipCollector);
+        carriers = ObjectPooler.Instance.PoolObjects(carrier, carrierSpawnAmt, shipCollector);
+        baseShips = ObjectPooler.Instance.PoolObjects(baseShip, baseShipSpawnAmt, shipCollector);
         
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

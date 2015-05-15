@@ -4,13 +4,8 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
    
-    public PlayerShip player;
-	private List<GameObject> objects = new List<GameObject>();
-    public Camera mainCam;
-    public GameObject currentMission;
-    public string currentZone;
-    public int currentMissionNum;
-    public int playerLives;
+
+    #region Singlton Block
     private static GameManager _instance;
     public static GameManager Instance
     {
@@ -23,16 +18,20 @@ public class GameManager : MonoBehaviour {
             return _instance;
         }
     }
-	   
-	// Use this for initialization
-	void Start () {
-         
-        player.SpawnPlayer();
-        TogglePause();
-	}
+#endregion  
 
+    #region Variables
 
-	public void TogglePause()
+    private List<GameObject> objects = new List<GameObject>();
+    public Camera mainCam;
+    public GameObject currentMission;
+    public string currentZone;
+    public int currentMissionNum;
+    public int playerLives;
+    #endregion
+
+    #region Methods
+    public void TogglePause()
 	{
 		objects.Add(GameObject.FindGameObjectWithTag("Player"));
 		objects.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
@@ -58,7 +57,7 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
-            player.RespawnPlayer();
+            PlayerShip.Instance.RespawnPlayer();
         }
     }
     public void StartLevel()
@@ -66,8 +65,14 @@ public class GameManager : MonoBehaviour {
         PlayerShip.Instance.SpawnPlayer();
         Debug.Log("Started Level");
     }
-	
-	// Update is called once per frame
+    #endregion
+
+    void Start()
+    {
+        PlayerShip.Instance.SpawnPlayer();
+        TogglePause();
+    }
+
 	void Update () {
 
 		if (Input.GetKeyDown (KeyCode.Escape)) 

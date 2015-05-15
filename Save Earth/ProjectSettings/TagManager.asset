@@ -17,6 +17,7 @@ TagManager:
   - Station
   - Collectable
   - Background
+  - PathNode
   layers:
   - Default
   - TransparentFX

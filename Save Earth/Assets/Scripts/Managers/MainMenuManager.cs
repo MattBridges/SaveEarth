@@ -3,27 +3,26 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour {
+    #region Singlton Block
+    private static MainMenuManager _instance;
+    public static MainMenuManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<MainMenuManager>();
+            }
+            return _instance;
+        }
+    }
+    #endregion 
+
+    #region Variables
     public GameObject menuImage;
-    private LevelCreator levelCreator;
-    private GameManager gm;
-    private MainMenuManager mManager;
-    public PlayerShip player;
+     #endregion
 
-	// Use this for initialization
-	void Awake () {
-        levelCreator = GameObject.FindObjectOfType<LevelCreator>();
-
-        
-        
-
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            ToggleMenu();
-	}
+    #region Methods
     public void ToggleMenu()
     {
         if (menuImage.activeSelf)
@@ -44,6 +43,13 @@ public class MainMenuManager : MonoBehaviour {
         ToggleMenu();
         GameManager.Instance.TogglePause();        
         PlayerShip.Instance.SpawnPlayer();
-        levelCreator.LoadRandomMission(str[0], num);
+        LevelCreator.Instance.LoadRandomMission(str[0], num);
+    }
+    #endregion
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ToggleMenu();
     }
 }

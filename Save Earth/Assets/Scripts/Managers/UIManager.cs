@@ -3,8 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
-    public Text playerLives;
-    public Text playerHealth;
+    #region Singlton Block
     private static UIManager _instance;
     public static UIManager Instance
     {
@@ -17,11 +16,14 @@ public class UIManager : MonoBehaviour {
             return _instance;
         }
     }
-    void Start()
-    {
+    #endregion 
 
-    }
+    #region Variables
+    public Text playerLives;
+    public Text playerHealth;
+    #endregion
 
+    #region Methods
     public void UpdatePlayerLivesText()
     {
         playerLives.text = "Player Lives: " + GameManager.Instance.playerLives.ToString();
@@ -30,4 +32,5 @@ public class UIManager : MonoBehaviour {
     {
         playerHealth.text = "Player Health: " + PlayerShip.Instance.health.ToString();
     }
+    #endregion
 }

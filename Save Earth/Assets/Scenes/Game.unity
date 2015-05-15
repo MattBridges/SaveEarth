@@ -170,7 +170,7 @@ RectTransform:
   - {fileID: 918958441}
   - {fileID: 549187408}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1886,7 +1886,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuImage: {fileID: 447026431}
-  player: {fileID: 11436020, guid: 0ba5a3a82d6cd1f48ae6d606951393ef, type: 2}
 --- !u!4 &144148508 stripped
 Transform:
   m_PrefabParentObject: {fileID: 444848, guid: cef1113fda227ba4eb0c79523c48f440, type: 2}
@@ -12836,6 +12835,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1009056496}
   - 114: {fileID: 1009056495}
+  - 114: {fileID: 1009056497}
   m_Layer: 0
   m_Name: LevelCreator
   m_TagString: Untagged
@@ -12866,6 +12866,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1967758684}
   m_RootOrder: 2
+--- !u!114 &1009056497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009056494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eadd7e988a9375e408e2f15b089dad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1011827800
 Prefab:
   m_ObjectHideFlags: 0
@@ -21180,7 +21191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d66a2c27eb3534b93c2ef299df27af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 11436020, guid: 0ba5a3a82d6cd1f48ae6d606951393ef, type: 2}
   mainCam: {fileID: 1094680303}
   currentMission: {fileID: 0}
   currentZone: 
@@ -25127,7 +25137,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1 &2076003980
 GameObject:
   m_ObjectHideFlags: 0

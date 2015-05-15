@@ -4,9 +4,27 @@ using System.Collections.Generic;
 
 public class ObjectPooler : MonoBehaviour
 {
+    #region Singlton Block
 
+    private static ObjectPooler _instance;
+    public static ObjectPooler Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<ObjectPooler>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
+    #region Variables
     public bool dynamicPooling = true;
+    #endregion
 
+    #region Methods
     public GameObject ReturnObject(List<GameObject> List, GameObject Obj, GameObject Collector)
     {
         for (int i = 0; i < List.Count; i++)
@@ -37,6 +55,7 @@ public class ObjectPooler : MonoBehaviour
         }
         return objects;
     }
+    #endregion
 
 
 }

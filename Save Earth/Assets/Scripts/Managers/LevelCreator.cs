@@ -4,20 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class LevelCreator : MonoBehaviour {
-    private Dictionary<string, Dictionary<int, Dictionary<int, GameObject>>> levelData;
-    private ObjectPooler op;
-    private PoolingManager pm;
-    private GameObject lastMission;
-    private GameManager gameManager;
-
-	// Use this for initialization
-    public void Start()
+    #region Singlton Block
+    private static LevelCreator _instance;
+    public static LevelCreator Instance
     {
-        op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
-        pm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
-        gameManager = GameObject.FindObjectOfType<GameManager>();
-
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<LevelCreator>();
+            }
+            return _instance;
+        }
     }
+    #endregion 
+
+    #region Variables
+    private Dictionary<string, Dictionary<int, Dictionary<int, GameObject>>> levelData;
+    #endregion
 
     #region Level Spawn Methods
     public void AddLevel(string level, int mission, int variant, GameObject LevelObject)
@@ -60,13 +64,13 @@ public class LevelCreator : MonoBehaviour {
     }
     public void LoadLevel(GameObject Mission)
     {
-        ClearAllMissionNodes(gameManager.currentMission);
+        ClearAllMissionNodes(GameManager.Instance.currentMission);
         ClearAllEnemyShips();
         UIManager.Instance.UpdatePlayerHealthText();
         UIManager.Instance.UpdatePlayerLivesText();
         Mission.SetActive(true);
         SpawnEnemies();
-        gameManager.currentMission = Mission;
+        GameManager.Instance.currentMission = Mission;
         Debug.Log("Loaded Level: " + Mission.name);
     }
     public void LoadRandomMission(string curLevel, int mission)
@@ -75,13 +79,13 @@ public class LevelCreator : MonoBehaviour {
     }
     public void LoadNextMission()
     {
-        int nextMission = gameManager.currentMissionNum + 1;
+        int nextMission = GameManager.Instance.currentMissionNum + 1;
         if(nextMission>5)
         {
             nextMission =5;
         }
-        LoadLevel(GetRandomMission(gameManager.currentZone, nextMission));
-        gameManager.currentMissionNum = nextMission;
+        LoadLevel(GetRandomMission(GameManager.Instance.currentZone, nextMission));
+        GameManager.Instance.currentMissionNum = nextMission;
     }
     public void ClearAllMissionNodes(GameObject mis)
     {
@@ -108,6 +112,7 @@ public class LevelCreator : MonoBehaviour {
         return activeNodes;
     }
     #endregion
+
     #region Object Spawning Methods
     public void SpawnEnemies()
     {
@@ -149,79 +154,79 @@ public class LevelCreator : MonoBehaviour {
     }
     public void SpawnDragonfly(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.dragonFlies, pm.dfShip, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.dragonFlies, PoolingManager.Instance.dfShip, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnRaptor(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.raptors, pm.rpShip, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.raptors, PoolingManager.Instance.rpShip, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnMotherShip(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.motherShips, pm.mShip, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.motherShips, PoolingManager.Instance.mShip, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnMines(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.mines , pm.mine, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.mines, PoolingManager.Instance.mine, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnSatellite(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.satellites, pm.satellite, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.satellites, PoolingManager.Instance.satellite, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnAllyRaptor(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.allyCarriers, pm.allyCarrier, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.allyCarriers, PoolingManager.Instance.allyCarrier, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnOrbitalRefinery(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.orbitalRefinerys, pm.orbitalRefinery, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.orbitalRefinerys, PoolingManager.Instance.orbitalRefinery, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnGatherer(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.gatherers, pm.gatherer, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.gatherers, PoolingManager.Instance.gatherer, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnAllyOrbital(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.allyOrbitalBases, pm.allyOrbitalBase, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.allyOrbitalBases, PoolingManager.Instance.allyOrbitalBase, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnOrbitalBase(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.orbitalBases, pm.orbitalBase, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.orbitalBases, PoolingManager.Instance.orbitalBase, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnAllyCarrier(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.allyCarriers, pm.allyCarrier, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.allyCarriers, PoolingManager.Instance.allyCarrier, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnCarrier(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.carriers, pm.carrier, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.carriers, PoolingManager.Instance.carrier, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnBaseShip(GameObject Position)
     {
-        GameObject ship = op.ReturnObject(pm.baseShips, pm.baseShip, pm.shipCollector);
+        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.baseShips, PoolingManager.Instance.baseShip, PoolingManager.Instance.shipCollector);
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
@@ -232,4 +237,5 @@ public class LevelCreator : MonoBehaviour {
         
     }
     #endregion
+
 }
