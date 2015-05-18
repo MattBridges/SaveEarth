@@ -5,9 +5,6 @@ public class RaptorShip: AIController  {
     
 	public float distanceFromPlayer;
 	public bool canWake;
-	public int mothershipShieldDelay;
-	private bool hasMothershipShield;
-	private int shieldHealth;
 	public float strafeSpeed;
 	public bool strafeDir;
 	private Vector2 impulse;
@@ -24,7 +21,7 @@ public class RaptorShip: AIController  {
 		base.Start ();
 		weaponShotPosition = transform.FindChild ("RaptorCannon").gameObject.transform;
 
-		currentLevel = GameObject.FindObjectOfType<GameManager>().currentMission;
+		currentLevel = GameManager.Instance.currentMission;
 		updateTarget(currentLevel);
 
 		if (this.gameObject.tag == "Ally") 
