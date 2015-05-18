@@ -3497,6 +3497,56 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed6ff2ab179920c49b164d5800a2d998, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &288425587
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 883595847}
+    m_Modifications:
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -27.1642323
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -8.86823654
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: .0390625
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: SpawnType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: DestroyEndCond
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &288561411
 GameObject:
   m_ObjectHideFlags: 0
@@ -4029,6 +4079,10 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 412796, guid: 074e37d3304693342a82796e70f43019, type: 2}
   m_PrefabInternal: {fileID: 975930689}
+--- !u!4 &338337067 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+  m_PrefabInternal: {fileID: 288425587}
 --- !u!4 &340587651 stripped
 Transform:
   m_PrefabParentObject: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
@@ -11373,6 +11427,7 @@ Transform:
   - {fileID: 1890328397}
   - {fileID: 633084905}
   - {fileID: 123132756}
+  - {fileID: 338337067}
   m_Father: {fileID: 1839592905}
   m_RootOrder: 0
 --- !u!114 &883595848
@@ -17871,6 +17926,10 @@ Prefab:
       propertyPath: m_Name
       value: OrbitalRefinery
       objectReference: {fileID: 0}
+    - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: DestroyEndCond
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -21191,11 +21250,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d66a2c27eb3534b93c2ef299df27af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 159676, guid: 0ba5a3a82d6cd1f48ae6d606951393ef, type: 2}
   mainCam: {fileID: 1094680303}
   currentMission: {fileID: 0}
   currentZone: 
   currentMissionNum: 0
   playerLives: 0
+  currentEndLevel: {fileID: 0}
 --- !u!1001 &1791764923
 Prefab:
   m_ObjectHideFlags: 0

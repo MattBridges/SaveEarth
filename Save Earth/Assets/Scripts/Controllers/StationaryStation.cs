@@ -3,6 +3,7 @@ using System.Collections;
 
 public class StationaryStation : SpaceStation {
 
+
 	public override void Start () {
 		base.Start ();
 		currentState = AIstate.AI_Stationary;
@@ -33,6 +34,13 @@ public class StationaryStation : SpaceStation {
 	
 	public override void OnDisable()
 	{
-		base.OnDisable ();
+		base.OnDisable ();        
 	}
+    void OnEnable()
+    {
+        if (endCondidtionObject)
+        {
+            RegisterAsEndCondition(this.gameObject);
+        }
+    }
 }

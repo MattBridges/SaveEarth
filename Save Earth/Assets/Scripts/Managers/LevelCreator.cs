@@ -191,6 +191,8 @@ public class LevelCreator : MonoBehaviour {
     public void SpawnOrbitalRefinery(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.orbitalRefinerys, PoolingManager.Instance.orbitalRefinery, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<OrbitalRefinery>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }

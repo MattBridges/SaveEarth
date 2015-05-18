@@ -8,6 +8,11 @@ public class EndLevel : MonoBehaviour {
     private GameObject[] enemyShips;
     public GameObject destroyObject;
 
+    void OnEnable()
+    {
+        GameManager.Instance.currentEndLevel = this;
+    }
+
 	// Use this for initialization
 	void Start () {
 	
@@ -38,5 +43,10 @@ public class EndLevel : MonoBehaviour {
         {
             GameObject.FindObjectOfType<LevelCreator>().LoadNextMission();
         }
+    }
+    public void RegisterAsEndCondition(GameObject EndObject)
+    {
+        EndLevel endLevelObj = GameManager.Instance.currentMission.GetComponent<EndLevel>();
+        endLevelObj.destroyObject = EndObject;
     }
 }

@@ -37,7 +37,7 @@ public class AIController : Ship {
 		rb = this.gameObject.GetComponent<Rigidbody2D>();
 	}
 
-	void OnEnable()
+    void OnEnable()
 	{
 		pShip = GameObject.FindGameObjectWithTag ("Player");
 
@@ -45,6 +45,10 @@ public class AIController : Ship {
 		{
 			Debug.Log ("Error: No player ship found");
 		}
+        if(endCondidtionObject)
+        {
+            GameManager.Instance.currentEndLevel.RegisterAsEndCondition(this.gameObject);
+        }
 	}
 
 	private void UpdateRotation()

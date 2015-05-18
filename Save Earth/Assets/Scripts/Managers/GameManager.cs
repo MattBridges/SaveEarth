@@ -23,11 +23,13 @@ public class GameManager : MonoBehaviour {
     #region Variables
 
     private List<GameObject> objects = new List<GameObject>();
+    public GameObject player;
     public Camera mainCam;
     public GameObject currentMission;
     public string currentZone;
     public int currentMissionNum;
     public int playerLives;
+    public EndLevel currentEndLevel;
     #endregion
 
     #region Methods
@@ -69,7 +71,7 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
-        PlayerShip.Instance.SpawnPlayer();
+        player.GetComponent<PlayerShip>().SpawnPlayer();
         TogglePause();
     }
 
@@ -83,6 +85,25 @@ public class GameManager : MonoBehaviour {
         {
             StartLevel();
         }
-	}
 
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            TestMethod(true);
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            TestMethod();
+        }
+	}
+    void TestMethod(bool testBool = false)
+    {
+        if(testBool)
+        {
+            Debug.Log("TestBool is true");
+        }
+        if(!testBool)
+        {
+            Debug.Log("TestBool is default/false");
+        }
+    }
 }

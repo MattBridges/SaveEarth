@@ -4,6 +4,7 @@ using System.Collections;
 public class SpaceStation : AIController {
 
 	public float areaOfEffect;
+    
 
 	public override void Start () {
 		base.Start ();
@@ -36,5 +37,11 @@ public class SpaceStation : AIController {
 	public virtual void OnDisable()
 	{
 		health = maxHealth;
+        endCondidtionObject = false;
 	}
+    public void RegisterAsEndCondition(GameObject EndObject)
+    {
+        EndLevel endLevelObj = GameManager.Instance.currentMission.GetComponent<EndLevel>();
+        endLevelObj.destroyObject = EndObject;
+    }
 }

@@ -6,9 +6,11 @@ public class Ship : MonoBehaviour {
     public enum Weapons { BlueWeapon, RedWeapon };
     public Weapons currentWeapon;
     private Vector3 rotDir;
+    public bool endCondidtionObject;
 
 	[HideInInspector]
     public int health;
+
 
     #region Movement Methods
     public void MoveLeft(Rigidbody2D rb)
@@ -101,4 +103,5 @@ public class Ship : MonoBehaviour {
 
 #endregion
 
+  
 }
