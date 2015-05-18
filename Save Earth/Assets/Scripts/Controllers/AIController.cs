@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AIController : Ship {
 	
-	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary, AI_Defend, AI_Strafe };
+	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary, AI_Defend, AI_Strafe, AI_Assist };
 
 	public AIstate currentState;
 
@@ -22,6 +22,11 @@ public class AIController : Ship {
     public Color bulletColor = Color.magenta;
 	public bool paused;
 	public Rigidbody2D rb;
+
+	public bool hasMothershipShield;
+	public float mothershipShieldDelay;
+	public int shieldHealth;
+	public float shieldTime;
 
 	public float wakeupDistance;
 
@@ -74,6 +79,11 @@ public class AIController : Ship {
 	public virtual void AIRetreat()
 	{
 
+	}
+	
+	public virtual void AIAssist()
+	{
+	
 	}
 	
 	public virtual void AIAttack()
@@ -160,15 +170,39 @@ public class AIController : Ship {
 					AIStrafe ();
 					AIAttack ();
 					break;
+				case AIstate.AI_Assist:
+					AIAssist();
+					break;
 				default:
 					break;
+			}
+			
+			if (hasMothershipShield)
+			{
+				if ((Time.time - shieldTime) > mothershipShieldDelay)
+				{
+					hasMothershipShield = false;	
+				}
 			}
 		}
 	}
 
     public void TakeDamage(int amt)
     {
-        this.health -= amt;
+    	if (hasMothershipShield)
+    	{
+    		this.shieldHealth -= amt;
+    		
+    		if (shieldHealth <= 0)
+    		{
+    			this.health -= shieldHealth;
+    			hasMothershipShield = false;
+    		}
+    	}
+    	else
+	        this.health -= amt;
+	        
+	    
         if (this.health <= 0)
         {
             this.gameObject.SetActive(false);

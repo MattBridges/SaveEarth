@@ -12,17 +12,21 @@ public class DragonflyShip : AIController {
 		base.Start ();
 		attack = false;
 		weaponShotPosition = transform.FindChild ("DragonflyCannon").gameObject.transform;
+		target = pShip;
     }
 
 	public override void AIFollow()
 	{
 		base.AIFollow();
 
-		if (Vector3.Distance(transform.position, pShip.transform.position) < rushDistance)
-			speed = 5;
-
-		//transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
-		rb.AddForce((pShip.transform.position - transform.position) * speed);
+		if (target)
+		{
+			if (Vector3.Distance(transform.position, target.transform.position) < rushDistance)
+				speed = 5;
+	
+			//transform.position = Vector3.Lerp (transform.position, pShip.transform.position, (speed * Time.fixedDeltaTime));
+			rb.AddForce((target.transform.position - transform.position) * speed);
+		}
 	}
 
 	public override void AIRetreat()
@@ -37,8 +41,11 @@ public class DragonflyShip : AIController {
 
 	public override void AIStationary()
 	{
-		if (Vector3.Distance (transform.position, pShip.transform.position) < wakeupDistance)
-			currentState = AIstate.AI_Follow;
+		if (target)
+		{
+			if (Vector3.Distance (transform.position, target.transform.position) < wakeupDistance)
+				currentState = AIstate.AI_Follow;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)

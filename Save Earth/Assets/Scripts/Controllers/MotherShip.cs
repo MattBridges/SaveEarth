@@ -8,7 +8,7 @@ public class MotherShip : AIController {
 		base.Start ();
 		currentState = AIstate.AI_Follow;
 		attack = true;
-		weaponShotPosition = transform.FindChild ("MothershipCannon").gameObject.transform;
+		weaponShotPosition = transform.FindChild("MothershipCannon").gameObject.transform;
 	}
 	
 	public override void AIFollow()
