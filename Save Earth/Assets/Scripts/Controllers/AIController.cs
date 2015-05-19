@@ -36,16 +36,22 @@ public class AIController : Ship {
 
 	// Use this for initialization
 	public virtual void Start () 
-	{
+	{		
 		health = maxHealth;
         currentWeapon = Weapons.RedWeapon;
 		rb = this.gameObject.GetComponent<Rigidbody2D>();
 	}
 
+	void ResetTarget()
+	{
+		target = null;
+	}
+
     void OnEnable()
 	{
 		pShip = PlayerShip.Instance.gameObject;
-
+		EventManager.rT += ResetTarget;
+		
 		if (!pShip) 
 		{
 			Debug.Log ("Error: No player ship found");
@@ -54,6 +60,11 @@ public class AIController : Ship {
         {
             GameManager.Instance.currentEndLevel.RegisterAsEndCondition(this.gameObject);
         }
+	}
+
+	void OnDisable()
+	{
+		EventManager.rT -= ResetTarget;
 	}
 
 	private void UpdateRotation()

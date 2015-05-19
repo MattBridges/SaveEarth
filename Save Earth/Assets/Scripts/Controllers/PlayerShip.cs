@@ -22,6 +22,7 @@ public class PlayerShip : Ship
     public Camera mainCam;
     private GameObject spawnPoint;
     private UIManager ui;
+    
     private static PlayerShip _instance;
     public static PlayerShip Instance
     {
@@ -52,7 +53,6 @@ public class PlayerShip : Ship
         curPlayer = this;
         mainCam = GameObject.FindObjectOfType<GameManager>().mainCam;
         ui = GameObject.FindObjectOfType<UIManager>();
-        
   
         //Register joysticks
         RegisterJoysticks();
@@ -163,12 +163,13 @@ public class PlayerShip : Ship
             {
                 Instantiate(this.gameObject, spawnPoint.transform.position, Quaternion.identity);
                 this.health = 100;
-            }
-     
+				EventManager.ResetTargets();
+			}
         }
         else 
         {
-            RespawnPlayer();            
+            RespawnPlayer(); 
+			EventManager.ResetTargets();				
         }
            
     }
