@@ -71,7 +71,6 @@
      <Compile Include="Assets\Scripts\Controllers\SpaceStation.cs" />
      <Compile Include="Assets\Scripts\Controllers\StationaryStation.cs" />
      <Compile Include="Assets\Scripts\EndLevel.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\IEventManager.cs" />
      <Compile Include="Assets\Scripts\Managers\Bulletpooler.cs" />
      <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
