@@ -6,6 +6,7 @@ public class ShieldManager : MonoBehaviour {
 
 	public float shieldRange = 5.0f;
 	public int shieldHealth = 100;
+	public float shieldDelay = 10.0f;
 	private AIController tempAI;
 	private List<AIController> AIlist;
 
@@ -53,6 +54,7 @@ public class ShieldManager : MonoBehaviour {
 					ai.hasMothershipShield = true;
 					ai.shieldTime = Time.time;	
 					ai.shieldHealth = shieldHealth;
+					ai.mothershipShieldDelay = shieldDelay;
 				}
 			}
 		}	

@@ -5,6 +5,8 @@ public class DragonflyShip : AIController {
 
 	public float rushDistance;
 	public bool canWake;
+	public Sprite[] shipSprites;
+	private SpriteRenderer sprite;
 
     // Use this for initialization
     public override void Start () 
@@ -13,6 +15,9 @@ public class DragonflyShip : AIController {
 		attack = false;
 		weaponShotPosition = transform.FindChild ("DragonflyCannon").gameObject.transform;
 		target = pShip;
+		
+		sprite = this.gameObject.GetComponent<SpriteRenderer>();
+		shipSprites = Resources.LoadAll<Sprite>("Ships/RedShips/RD2");
     }
 
 	public override void AIFollow()
@@ -57,6 +62,16 @@ public class DragonflyShip : AIController {
 
 		if (other.gameObject.tag == "Player") 
 			this.gameObject.SetActive (false);
+	}
+	
+	public override void FixedUpdate ()
+	{
+		base.FixedUpdate();
+		
+		if (hasMothershipShield)
+			sprite.sprite = shipSprites[1];
+		else
+			sprite.sprite = shipSprites[0];
 	}
 	
     void OnDisable()

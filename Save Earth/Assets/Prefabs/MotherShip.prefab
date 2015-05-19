@@ -25,6 +25,7 @@ GameObject:
   - 4: {fileID: 405594}
   - 58: {fileID: 5860114}
   - 114: {fileID: 11414752}
+  - 50: {fileID: 5069234}
   m_Layer: 0
   m_Name: ShieldManager
   m_TagString: Untagged
@@ -102,6 +103,21 @@ Rigidbody2D:
   m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+--- !u!50 &5069234
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143282}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -199,7 +215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldRange: 5
-  shieldHealth: 100
+  shieldHealth: 30
+  shieldDelay: 10
 --- !u!114 &11447172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -213,8 +230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   currentWeapon: 0
+  endCondidtionObject: 0
   health: 0
-  currentState: 1
+  currentState: 3
   attack: 0
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
@@ -224,8 +242,8 @@ MonoBehaviour:
   paused: 0
   rb: {fileID: 0}
   hasMothershipShield: 0
-  mothershipShieldDelay: 0
-  shieldHealth: 0
+  mothershipShieldDelay: 10
+  shieldHealth: 100
   shieldTime: 0
   wakeupDistance: 0
   maxHealth: 40

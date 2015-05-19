@@ -44,7 +44,7 @@ public class AIController : Ship {
 
     void OnEnable()
 	{
-		pShip = GameObject.FindGameObjectWithTag ("Player");
+		pShip = PlayerShip.Instance.gameObject;
 
 		if (!pShip) 
 		{
@@ -70,7 +70,7 @@ public class AIController : Ship {
 
 	public virtual void AIFollow()
 	{
-		if (pShip) 
+		if (target) 
 		{
 			if (Vector3.Distance (transform.position, target.transform.position) > 3.5)
 			{
@@ -206,7 +206,6 @@ public class AIController : Ship {
     	else
 	        this.health -= amt;
 	        
-	    
         if (this.health <= 0)
         {
             this.gameObject.SetActive(false);

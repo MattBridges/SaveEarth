@@ -11,6 +11,8 @@ public class RaptorShip: AIController  {
 	private Vector2 direction;
 	public GameObject currentLevel;
 	public float swapTarget;
+	public Sprite[] shipSprites;
+	private SpriteRenderer sprite;
 
 	// Ally specific variables
 
@@ -23,6 +25,9 @@ public class RaptorShip: AIController  {
 
 		currentLevel = GameManager.Instance.currentMission;
 		updateTarget(currentLevel);
+		
+		sprite = this.gameObject.GetComponent<SpriteRenderer>();
+		shipSprites = Resources.LoadAll<Sprite>("Ships/RedShips/RD3");
 
 		if (this.gameObject.tag == "Ally") 
 		{
@@ -155,6 +160,12 @@ public class RaptorShip: AIController  {
 				swapTarget = 0;
 			}
 		}
+		
+		if (hasMothershipShield)
+			sprite.sprite = shipSprites[1];
+		else
+			sprite.sprite = shipSprites[0];
+		
 	}
 
 	public void CallAssist(GameObject newTarget)
