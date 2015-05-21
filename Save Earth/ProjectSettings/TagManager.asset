@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - PlayerBullet
+  - SpawnNode
+  - EnemyBullet
+  - Enemy
+  - Bullet
+  - Messenger
+  - Mine
+  - Satellite
+  - Ally
+  - AllyBullet
+  - Station
+  - Collectable
+  - Background
+  - PathNode
+<<<<<<< HEAD
+  - OrbitalBase
+=======
+  - EndLevel
+>>>>>>> 84b6860ca34c17d9ac14f075f223458b81525c14
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - MenuUI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
