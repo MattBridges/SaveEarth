@@ -8,6 +8,9 @@ public class EventManager : MonoBehaviour {
 	public delegate void ResetTarget();
 	public static event ResetTarget rT;
 
+    public delegate void GameLoadLevel();
+    public static event GameLoadLevel loadLvl;
+
 	public static EventManager Instance
 	{
 		get
@@ -25,4 +28,11 @@ public class EventManager : MonoBehaviour {
 		if (rT != null)
 			rT();
 	}
+    public static void LoadLevel()
+    {
+        if(loadLvl != null)
+        {
+            loadLvl();
+        }
+    }
 }

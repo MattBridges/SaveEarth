@@ -18,7 +18,11 @@ TagManager:
   - Collectable
   - Background
   - PathNode
+<<<<<<< HEAD
   - OrbitalBase
+=======
+  - EndLevel
+>>>>>>> 84b6860ca34c17d9ac14f075f223458b81525c14
   layers:
   - Default
   - TransparentFX
