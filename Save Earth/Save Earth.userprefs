@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controllers/AIController.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Controllers/AIController.cs" Line="48" Column="1" />
+      <File FileName="Assets/Scripts/Controllers/PlayerShip.cs" Line="172" Column="36" />
+      <File FileName="Assets/Scripts/Managers/EventManager.cs" Line="7" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
