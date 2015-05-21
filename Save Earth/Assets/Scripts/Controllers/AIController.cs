@@ -50,23 +50,27 @@ public class AIController : Ship {
     void OnEnable()
 	{
 		pShip = PlayerShip.Instance.gameObject;
+
 		EventManager.rT += ResetTarget;
-		
+        EventManager.loadLvl += AddEndConditionObj;
 		if (!pShip) 
 		{
 			Debug.Log ("Error: No player ship found");
 		}
-        if(endCondidtionObject)
-        {
-            GameManager.Instance.currentEndLevel.RegisterAsEndCondition(this.gameObject);
-        }
 	}
 
 	void OnDisable()
 	{
 		EventManager.rT -= ResetTarget;
+        EventManager.loadLvl -= AddEndConditionObj;
+        endCondidtionObject = false;
 	}
-
+    
+    void AddEndConditionObj()
+    {
+        if (this.endCondidtionObject)
+            GameManager.Instance.currentEndLevel.AddDestroyObject(this.gameObject);
+    }
 	public void UpdateRotation(float tAngle)
 	{
 		dir = target.transform.position - transform.position;
@@ -219,6 +223,8 @@ public class AIController : Ship {
 	        
         if (this.health <= 0)
         {
+            if (endCondidtionObject)
+                GameManager.Instance.currentEndLevel.destroyObjects.Remove(this.gameObject);
             this.gameObject.SetActive(false);
         }
     }

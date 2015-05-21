@@ -2315,11 +2315,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: SpawnType
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: m_Name
       value: Ally Orbital Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: DestroyEndCond
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -2966,7 +2970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEndCondition: 0
-  destroyObject: {fileID: 0}
+  destroyObjects: []
 --- !u!1001 &248326867
 Prefab:
   m_ObjectHideFlags: 0
@@ -11108,7 +11112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEndCondition: 0
-  destroyObject: {fileID: 0}
+  destroyObjects: []
 --- !u!4 &842772854 stripped
 Transform:
   m_PrefabParentObject: {fileID: 412796, guid: 074e37d3304693342a82796e70f43019, type: 2}
@@ -11463,7 +11467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEndCondition: 0
-  destroyObject: {fileID: 0}
+  destroyObjects: []
 --- !u!4 &890964942 stripped
 Transform:
   m_PrefabParentObject: {fileID: 412796, guid: 074e37d3304693342a82796e70f43019, type: 2}
@@ -12315,7 +12319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEndCondition: 0
-  destroyObject: {fileID: 0}
+  destroyObjects: []
 --- !u!4 &946385513 stripped
 Transform:
   m_PrefabParentObject: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
@@ -12769,7 +12773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEndCondition: 0
-  destroyObject: {fileID: 0}
+  destroyObjects: []
 --- !u!4 &986461633 stripped
 Transform:
   m_PrefabParentObject: {fileID: 412796, guid: 074e37d3304693342a82796e70f43019, type: 2}
@@ -14295,7 +14299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEndCondition: 0
-  destroyObject: {fileID: 0}
+  destroyObjects: []
 --- !u!1 &1109986183
 GameObject:
   m_ObjectHideFlags: 0
@@ -15449,7 +15453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEndCondition: 0
-  destroyObject: {fileID: 0}
+  destroyObjects: []
 --- !u!1 &1222519871
 GameObject:
   m_ObjectHideFlags: 0
@@ -16136,7 +16140,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1262952378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: -3.5, z: 0}
+  m_LocalPosition: {x: 5.33333349, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 535304300}
@@ -17601,7 +17605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEndCondition: 0
-  destroyObject: {fileID: 0}
+  destroyObjects: []
 --- !u!1001 &1424211417
 Prefab:
   m_ObjectHideFlags: 0
@@ -19870,7 +19874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEndCondition: 0
-  destroyObject: {fileID: 0}
+  destroyObjects: []
 --- !u!4 &1679136769 stripped
 Transform:
   m_PrefabParentObject: {fileID: 444848, guid: cef1113fda227ba4eb0c79523c48f440, type: 2}
@@ -22336,8 +22340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62256618453709e468666259583dbc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curEndCondition: 0
-  destroyObject: {fileID: 0}
+  curEndCondition: 1
+  destroyObjects: []
 --- !u!1 &1871573611
 GameObject:
   m_ObjectHideFlags: 0
@@ -22529,7 +22533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEndCondition: 0
-  destroyObject: {fileID: 0}
+  destroyObjects: []
 --- !u!4 &1884819244 stripped
 Transform:
   m_PrefabParentObject: {fileID: 412796, guid: 074e37d3304693342a82796e70f43019, type: 2}
@@ -25120,7 +25124,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2076003980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: -3.5, z: 0}
+  m_LocalPosition: {x: -5.33333349, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 51983745}

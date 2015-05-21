@@ -7,11 +7,12 @@ public class EndLevel : MonoBehaviour {
     public enum EndCondition { KillAll, DestroyObject };
     public EndCondition curEndCondition;
     private GameObject[] enemyShips;
-    public GameObject destroyObject;
+    public List<GameObject> destroyObjects;
 
     void OnEnable()
     {
         GameManager.Instance.currentEndLevel = this;
+        destroyObjects.Clear();
     }
 
 	// Use this for initialization
@@ -36,18 +37,15 @@ public class EndLevel : MonoBehaviour {
     }
     public void DestroyShipCondition()
     {
-        if(destroyObject == null)
-        {
-            Debug.Log("No End Condition Object Set");
-        }
-        if(destroyObject!=null && !destroyObject.activeInHierarchy)
+        if(destroyObjects.Count == 0)
         {
             GameObject.FindObjectOfType<LevelCreator>().LoadNextMission();
         }
     }
-    public void RegisterAsEndCondition(GameObject EndObject)
+
+    public void AddDestroyObject(GameObject obj)
     {
-        EndLevel endLevelObj = GameManager.Instance.currentMission.GetComponent<EndLevel>();
-        endLevelObj.destroyObject = EndObject;
+        if (!destroyObjects.Contains(obj))
+            destroyObjects.Add(obj);
     }
 }

@@ -39,9 +39,5 @@ public class SpaceStation : AIController {
 		health = maxHealth;
         endCondidtionObject = false;
 	}
-    public void RegisterAsEndCondition(GameObject EndObject)
-    {
-        EndLevel endLevelObj = GameManager.Instance.currentMission.GetComponent<EndLevel>();
-        endLevelObj.destroyObject = EndObject;
-    }
+
 }

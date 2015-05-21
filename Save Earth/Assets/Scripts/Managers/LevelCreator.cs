@@ -70,7 +70,9 @@ public class LevelCreator : MonoBehaviour {
         UIManager.Instance.UpdatePlayerLivesText();
         Mission.SetActive(true);
         SpawnEnemies();
+        
         GameManager.Instance.currentMission = Mission;
+        EventManager.LoadLvl();
         Debug.Log("Loaded Level: " + Mission.name);
     }
     public void LoadRandomMission(string curLevel, int mission)
@@ -155,36 +157,46 @@ public class LevelCreator : MonoBehaviour {
     public void SpawnDragonfly(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.dragonFlies, PoolingManager.Instance.dfShip, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<DragonflyShip>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnRaptor(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.raptors, PoolingManager.Instance.rpShip, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<RaptorShip>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnMotherShip(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.motherShips, PoolingManager.Instance.mShip, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<MotherShip>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnMines(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.mines, PoolingManager.Instance.mine, PoolingManager.Instance.shipCollector);
+       
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnSatellite(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.satellites, PoolingManager.Instance.satellite, PoolingManager.Instance.shipCollector);
+        
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnAllyRaptor(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.allyCarriers, PoolingManager.Instance.allyCarrier, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<RaptorShip>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
@@ -199,30 +211,40 @@ public class LevelCreator : MonoBehaviour {
     public void SpawnGatherer(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.gatherers, PoolingManager.Instance.gatherer, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<Gatherer>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnAllyOrbital(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.allyOrbitalBases, PoolingManager.Instance.allyOrbitalBase, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<OrbitalBase>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnOrbitalBase(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.orbitalBases, PoolingManager.Instance.orbitalBase, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<OrbitalBase>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnAllyCarrier(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.allyCarriers, PoolingManager.Instance.allyCarrier, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<Carrier>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
     public void SpawnCarrier(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.carriers, PoolingManager.Instance.carrier, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<Carrier>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
