@@ -69,5 +69,9 @@ public class BulletDestroy : MonoBehaviour {
 		{
 			Destroy();
 		}
+		if (other.tag == "OrbitalBase" && this.gameObject.tag == "EnemyBullet")
+		{
+			Destroy();
+		}
     }
 }

@@ -67,11 +67,11 @@ public class AIController : Ship {
 		EventManager.rT -= ResetTarget;
 	}
 
-	private void UpdateRotation()
+	public void UpdateRotation(float tAngle)
 	{
 		dir = target.transform.position - transform.position;
 		angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-		angle -= 90;
+		angle -= tAngle;
 
 		if (currentState == AIstate.AI_Follow || currentState == AIstate.AI_Strafe) 
 		{
@@ -151,7 +151,7 @@ public class AIController : Ship {
 		{
 			if (target)
 			{
-				UpdateRotation ();
+				UpdateRotation (90);
 
 				if (!target.activeSelf)
 				{
@@ -202,7 +202,7 @@ public class AIController : Ship {
 		}
 	}
 
-    public void TakeDamage(int amt)
+    public virtual void TakeDamage(int amt)
     {
     	if (hasMothershipShield)
     	{

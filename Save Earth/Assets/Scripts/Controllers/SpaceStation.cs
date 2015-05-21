@@ -5,7 +5,6 @@ public class SpaceStation : AIController {
 
 	public float areaOfEffect;
     
-
 	public override void Start () {
 		base.Start ();
 		currentState = AIstate.AI_Stationary;
