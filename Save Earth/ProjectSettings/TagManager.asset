@@ -18,6 +18,7 @@ TagManager:
   - Collectable
   - Background
   - PathNode
+  - EndLevel
   layers:
   - Default
   - TransparentFX

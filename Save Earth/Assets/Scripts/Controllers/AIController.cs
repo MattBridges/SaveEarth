@@ -33,6 +33,7 @@ public class AIController : Ship {
 	public int maxHealth;
 
 	public GameObject target;
+    
 
 	// Use this for initialization
 	public virtual void Start () 
@@ -51,20 +52,20 @@ public class AIController : Ship {
 	{
 		pShip = PlayerShip.Instance.gameObject;
 		EventManager.rT += ResetTarget;
+        EventManager.loadLvl += AddEndConditionObj;
 		
 		if (!pShip) 
 		{
 			Debug.Log ("Error: No player ship found");
 		}
-        if(endCondidtionObject)
-        {
-            GameManager.Instance.currentEndLevel.RegisterAsEndCondition(this.gameObject);
-        }
+  
 	}
 
 	void OnDisable()
 	{
-		EventManager.rT -= ResetTarget;
+        EventManager.rT -= ResetTarget;
+        EventManager.loadLvl -= AddEndConditionObj;
+        endCondidtionObject = false;
 	}
 
 	private void UpdateRotation()
@@ -219,7 +220,23 @@ public class AIController : Ship {
 	        
         if (this.health <= 0)
         {
+            if (endCondidtionObject)
+            {
+                GameManager.Instance.currentEndLevel.destroyObjects.Remove(this.gameObject);
+            }
             this.gameObject.SetActive(false);
+       
+                
         }
     }
+
+    public void AddEndConditionObj()
+    {
+        if (endCondidtionObject)
+        {
+            GameManager.Instance.currentEndLevel.AddDestroyObject(this.gameObject);
+        }
+    }
+
+   
 }

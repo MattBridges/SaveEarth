@@ -36,11 +36,5 @@ public class StationaryStation : SpaceStation {
 	{
 		base.OnDisable ();        
 	}
-    void OnEnable()
-    {
-        if (endCondidtionObject)
-        {
-            RegisterAsEndCondition(this.gameObject);
-        }
-    }
+
 }

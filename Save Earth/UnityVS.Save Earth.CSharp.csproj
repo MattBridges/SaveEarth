@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -89,6 +92,7 @@
     <Compile Include="Assets\Scripts\Controllers\StationaryStation.cs" />
     <Compile Include="Assets\Scripts\EndLevel.cs" />
     <Compile Include="Assets\Scripts\Managers\Bulletpooler.cs" />
+    <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LevelCreator.cs" />
     <Compile Include="Assets\Scripts\Managers\MainMenuManager.cs" />
@@ -96,6 +100,7 @@
     <Compile Include="Assets\Scripts\Managers\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\Managers\PathNodeManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PoolingManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\ShieldManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\PathNode.cs" />
     <Compile Include="Assets\Scripts\RegisterLevel.cs" />

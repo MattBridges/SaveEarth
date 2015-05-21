@@ -70,7 +70,8 @@ public class LevelCreator : MonoBehaviour {
         UIManager.Instance.UpdatePlayerLivesText();
         Mission.SetActive(true);
         SpawnEnemies();
-        GameManager.Instance.currentMission = Mission;
+        EventManager.LoadLevel();
+        GameManager.Instance.currentMission = Mission;        
         Debug.Log("Loaded Level: " + Mission.name);
     }
     public void LoadRandomMission(string curLevel, int mission)
@@ -199,6 +200,8 @@ public class LevelCreator : MonoBehaviour {
     public void SpawnGatherer(GameObject Position)
     {
         GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.gatherers, PoolingManager.Instance.gatherer, PoolingManager.Instance.shipCollector);
+        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
+            ship.GetComponent<Gatherer>().endCondidtionObject = true;
         ship.SetActive(true);
         ship.transform.position = Position.transform.position;
     }
