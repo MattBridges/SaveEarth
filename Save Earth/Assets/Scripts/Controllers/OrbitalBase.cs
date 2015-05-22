@@ -15,18 +15,20 @@ public class OrbitalBase : StationaryStation {
 	
 	public override void TakeDamage(int amt)
 	{
-		this.health -= amt;
-		
-		if (this.health <= 0)
+		if (baseType == BaseType.Ally)
 		{
-			this.health = 1;
+			this.health -= amt;
+			
+			if (this.health <= 0)
+			{
+				this.health = 1;
+			}
 		}
 	}
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (this.baseType == BaseType.Ally && other.tag == "EnemyBullet" ||
-			this.baseType == BaseType.Enemy && other.tag == "PlayerBullet")
+		if (this.baseType == BaseType.Ally && other.tag == "EnemyBullet")
 		{
 			TakeDamage(5);
 		}

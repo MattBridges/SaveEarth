@@ -13,6 +13,8 @@ public class Carrier : AIController {
 	private float distance;
 	private OrbitalBase oB;
 	private float healRate;
+	public float repairRange = 7.0f;
+	public OrbitalBaseCannon cannon1, cannon2, cannon3, hacking;
 	
 //	private SpriteRenderer sprite;
 		
@@ -63,6 +65,8 @@ public class Carrier : AIController {
 						
 			if (Vector3.Distance (transform.position, target.transform.position) > distanceFromBase + 4) 
 				currentState = AIstate.AI_Follow;
+				
+			HealOrbitalBase();
 		} 
 	}
 	
@@ -72,19 +76,111 @@ public class Carrier : AIController {
 
 		foreach (OrbitalBase go in GameObject.FindObjectsOfType<OrbitalBase>()) 
 		{
-			if ((this.gameObject.tag == "Ally" && go.tag == "Enemy")
-			||	(this.gameObject.tag == "Enemy" && go.tag == "Ally"))
+			if ((this.gameObject.tag == "Ally" && go.baseType == OrbitalBase.BaseType.Enemy)
+			||	(this.gameObject.tag == "Enemy" && go.baseType == OrbitalBase.BaseType.Ally))
 				continue;
 				
 			if (temp == null)
+			{
 				temp = go.gameObject;
+			}
 			else if (Vector3.Distance (transform.position, go.transform.position) < Vector3.Distance (transform.position, temp.transform.position))
+			{
 				temp = go.gameObject;
-			else
-				continue;
+			}
+			
+			if (temp != null)
+			{
+				if (temp == go.gameObject && go.baseType == OrbitalBase.BaseType.Enemy)
+				{
+					cannon1 = go.transform.GetChild(0).gameObject.GetComponent<OrbitalBaseCannon>();
+					cannon2 = go.transform.GetChild(1).gameObject.GetComponent<OrbitalBaseCannon>();
+					cannon3 = go.transform.GetChild(2).gameObject.GetComponent<OrbitalBaseCannon>();
+					hacking = go.transform.GetChild(3).gameObject.GetComponent<OrbitalBaseCannon>();
+				}
+			}
 		}
 			
 		target = temp;
+	}
+	
+	private void HealOrbitalBase()
+	{
+		if (oB == null)
+		{
+			if (target)
+				oB = target.GetComponent<OrbitalBase>();
+		}
+		else
+		{			
+			if (oB.gameObject != target.gameObject)
+				oB = null;
+			else
+			{
+				if (oB.baseType == OrbitalBase.BaseType.Ally)
+				{
+					if (oB.health < maxHealth)
+					{
+						if ((Time.time - healRate) > 3.0f)
+						{
+							oB.health += 20;
+							healRate = Time.time;
+						}	
+						
+						if (oB.health > oB.maxHealth)
+							oB.health = oB.maxHealth;
+					}
+				}
+				
+				if (oB.baseType == OrbitalBase.BaseType.Enemy && this.gameObject.tag == "Enemy")
+				{
+					if (Vector3.Distance(this.transform.position, cannon1.gameObject.transform.position) < repairRange)
+					{
+						if ((Time.time - healRate) > 3.0f)
+						{
+							cannon1.health += 20;
+							healRate = Time.time;
+						}	
+						
+						if (cannon1.health > cannon1.maxHealth)
+							cannon1.health = cannon1.maxHealth;
+					}
+					else if (Vector3.Distance(this.transform.position, cannon2.gameObject.transform.position) < repairRange)
+					{
+						if ((Time.time - healRate) > 3.0f)
+						{
+							cannon2.health += 20;
+							healRate = Time.time;
+						}	
+						
+						if (cannon2.health > cannon2.maxHealth)
+							cannon2.health = cannon2.maxHealth;
+					}
+					else if (Vector3.Distance(this.transform.position, cannon3.gameObject.transform.position) < repairRange)
+					{
+						if ((Time.time - healRate) > 3.0f)
+						{
+							cannon3.health += 20;
+							healRate = Time.time;
+						}	
+						
+						if (cannon3.health > cannon3.maxHealth)
+							cannon3.health = cannon3.maxHealth;
+					}
+					else if (Vector3.Distance(this.transform.position, hacking.gameObject.transform.position) < repairRange)
+					{
+						if ((Time.time - healRate) > 3.0f)
+						{
+							hacking.health += 20;
+							healRate = Time.time;
+						}	
+						
+						if (hacking.health > hacking.maxHealth)
+							hacking.health = hacking.maxHealth;
+					}
+				}
+			}
+		}
 	}
 	
 	public override void FixedUpdate()
@@ -100,31 +196,7 @@ public class Carrier : AIController {
 //			sprite.sprite = shipSprites[1];
 //		else
 //			sprite.sprite = shipSprites[0];
-		
-		if (oB == null)
-		{
-			if (target)
-				oB = target.GetComponent<OrbitalBase>();
-		}
-		else
-		{			
-			if (oB.gameObject != target.gameObject)
-				oB = null;
-			else
-			{
-				if (oB.health < maxHealth)
-				{
-					if ((Time.time - healRate) > 3.0f)
-					{
-						oB.health += 20;
-						healRate = Time.time;
-					}	
-					
-					if (oB.health > oB.maxHealth)
-						oB.health = oB.maxHealth;
-				}
-			}
-		}			
+			
 	}
 	
 	void OnTriggerEnter2D(Collider2D other)

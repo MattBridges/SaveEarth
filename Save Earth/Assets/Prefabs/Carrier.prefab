@@ -11,10 +11,10 @@ GameObject:
   - 212: {fileID: 21281690}
   - 114: {fileID: 11448842}
   - 50: {fileID: 5066550}
-  - 58: {fileID: 5884972}
+  - 58: {fileID: 5868606}
   m_Layer: 0
-  m_Name: AllyCarrier
-  m_TagString: Ally
+  m_Name: Carrier
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!58 &5884972
+--- !u!58 &5868606
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -90,12 +90,17 @@ MonoBehaviour:
   wakeupDistance: 0
   maxHealth: 1500
   target: {fileID: 0}
-  distanceFromBase: 7
+  distanceFromBase: 11
   canWake: 0
   strafeSpeed: 2
   strafeDir: 0
   currentLevel: {fileID: 0}
   shipSprites: []
+  repairRange: 7
+  cannon1: {fileID: 0}
+  cannon2: {fileID: 0}
+  cannon3: {fileID: 0}
+  hacking: {fileID: 0}
 --- !u!212 &21281690
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -121,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 331c245cd563844c79f3d70aa809ca52, type: 3}
-  m_Color: {r: .448529422, g: .497971743, b: 1, a: 1}
+  m_Color: {r: 1, g: .475862056, b: 0, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
