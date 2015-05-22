@@ -21977,8 +21977,8 @@ MonoBehaviour:
   allyCarrierSpawnAmt: 1
   carrier: {fileID: 192768, guid: 74fe98bcab1db4d7582dae5b3a8dcede, type: 2}
   carrierSpawnAmt: 1
-  baseShip: {fileID: 0}
-  baseShipSpawnAmt: 0
+  baseShip: {fileID: 122966, guid: 92778d84f687c4e66a0fc82ccbe8b5fc, type: 2}
+  baseShipSpawnAmt: 1
   bullets: []
   dragonFlies: []
   raptors: []
