@@ -22,6 +22,7 @@ public class PathNodeManager : MonoBehaviour {
     #region Global Variables
     public Dictionary<int, List<NodeInfo>> nodes;
     public NodeInfo currentNode;
+    public bool inRev = false;
 
     #endregion 
 
@@ -99,7 +100,7 @@ public class PathNodeManager : MonoBehaviour {
         }
         else
         {
-            int number = nextNode.nodeNumber;
+            int number = currentNode.nodeNumber;
             if(!inReverse)
                 number++;
             if (inReverse)
@@ -114,6 +115,51 @@ public class PathNodeManager : MonoBehaviour {
                 if(node.nodeNumber == number)
                 {
                     nextNode = node;
+                }
+            }
+        }
+        return nextNode.transform;
+    }
+    public Transform GetNextNodePingPong(int groupNumber)
+    {
+        List<NodeInfo> NodeGroup = GetNodeGroup(groupNumber);
+        NodeInfo nextNode = null;
+        if (currentNode == null)
+        {
+            foreach (NodeInfo node in NodeGroup)
+            {
+                if (node.nodeNumber == 1)
+                {
+                    currentNode = node;
+                    nextNode = currentNode;
+                }
+            }
+        }
+        else
+        {
+            int number = currentNode.nodeNumber;
+            if (!inRev)
+                number++;
+            if (inRev)
+                number--;
+            if (number > NodeGroup.Count)
+            {
+                inRev = true;
+                number -=2;
+            }
+            if (number <1 )
+            {
+                inRev = false;
+                number += 2;
+            }
+        
+
+            foreach (NodeInfo node in NodeGroup)
+            {
+                if (node.nodeNumber == number)
+                {
+                    nextNode = node;
+                    currentNode = node;
                 }
             }
         }
