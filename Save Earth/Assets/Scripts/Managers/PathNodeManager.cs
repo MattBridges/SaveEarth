@@ -21,9 +21,10 @@ public class PathNodeManager : MonoBehaviour {
 
     #region Global Variables
     public Dictionary<int, Transform[]> pathNodes;
+    public Dictionary<int, List<GameObject>> nodes;
     #endregion 
 
-    #region Methods
+    #region Group Methods
     void InitPathNodeDict()
     {
         if (pathNodes != null)
@@ -31,6 +32,7 @@ public class PathNodeManager : MonoBehaviour {
         else
             pathNodes = new Dictionary<int, Transform[]>();
     }
+
     public void AddNodeGroup(int GroupNumber, Transform[] NodeList)
     {
         InitPathNodeDict();
@@ -52,4 +54,24 @@ public class PathNodeManager : MonoBehaviour {
         }
     }
     #endregion
+
+    public Transform GetClosestNode(Transform[] NodeGroup, GameObject Ship)
+    {
+        Transform closestNode = null;
+        float dist = 0;
+        float bestDist = 0;
+        foreach(Transform node in NodeGroup)
+        {
+            dist = Vector2.Distance(Ship.transform.position, node.position);
+            if (dist < bestDist)
+            {
+                closestNode = node;
+                bestDist = dist;
+            }
+        }
+        return closestNode;
+    }
+
+
+
 }
