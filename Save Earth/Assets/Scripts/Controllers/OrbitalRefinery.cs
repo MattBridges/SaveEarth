@@ -6,6 +6,8 @@ public class OrbitalRefinery : AIController {
 	public int rawMaterials;
 	private int damageTaken;
 	public GameObject material;
+	
+	[HideInInspector]
 	public GameObject newMat;
 	private bool tooClose;
 	private Vector3 randomPos;

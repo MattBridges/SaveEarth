@@ -6,14 +6,19 @@ public class Carrier : AIController {
 	public float distanceFromBase;
 	public bool canWake;
 	public float strafeSpeed;
+	
+	[HideInInspector]
 	public bool strafeDir;
 	private Vector2 direction;
+	[HideInInspector]
 	public GameObject currentLevel;
+	[HideInInspector]
 	public Sprite[] shipSprites;
 	private float distance;
 	private OrbitalBase oB;
 	private float healRate;
 	public float repairRange = 7.0f;
+	[HideInInspector]
 	public OrbitalBaseCannon cannon1, cannon2, cannon3, hacking;
 	
 //	private SpriteRenderer sprite;
@@ -190,7 +195,7 @@ public class Carrier : AIController {
 		if (!target || !target.gameObject.activeSelf)
 			updateTarget(currentLevel);
 		else 
-			UpdateRotation(0);
+			UpdateRotation(target.transform, 0);
 
 //		if (hasMothershipShield)
 //			sprite.sprite = shipSprites[1];

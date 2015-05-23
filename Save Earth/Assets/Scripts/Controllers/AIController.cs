@@ -3,36 +3,59 @@ using System.Collections;
 
 public class AIController : Ship {
 	
-	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary, AI_Defend, AI_Strafe, AI_Assist };
+	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary, AI_Defend, AI_Strafe, AI_Assist, AI_Patrol };
 
 	public AIstate currentState;
-
-	public bool attack = false;
-
-	public GameObject pShip;
-
+	
+	public float bulletSpeed;
+	public float fireRate;
+	public float wakeupDistance;
+	public int maxHealth;
+	
 	private Vector3 dir;
 	private float angle;
-	public Transform weaponShotPosition;
-	public float bulletSpeed;
+	private float lastFired;
 	private Vector3 cDir;
 	private bool canFire;
-	public float fireRate;
-	private float lastFired;
+	
+//	[HideInInspector]
+	public Transform nextNode;
+	
+	[HideInInspector]
+	public int pathNodeGroup;
+	
+	[HideInInspector]
     public Color bulletColor = Color.magenta;
+    
+    [HideInInspector]
 	public bool paused;
+	
+	[HideInInspector]
 	public Rigidbody2D rb;
 
+	[HideInInspector]
 	public bool hasMothershipShield;
+	
+	[HideInInspector]
 	public float mothershipShieldDelay;
+	
+	[HideInInspector]
 	public int shieldHealth;
+	
+	[HideInInspector]
 	public float shieldTime;
 
-	public float wakeupDistance;
-
-	public int maxHealth;
-
+	[HideInInspector]
 	public GameObject target;
+
+	[HideInInspector]
+	public bool attack = false;
+	
+	[HideInInspector]
+	public GameObject pShip;
+	
+	[HideInInspector]
+	public Transform weaponShotPosition;
 
 	// Use this for initialization
 	public virtual void Start () 
@@ -71,13 +94,13 @@ public class AIController : Ship {
         if (this.endCondidtionObject)
             GameManager.Instance.currentEndLevel.AddDestroyObject(this.gameObject);
     }
-	public void UpdateRotation(float tAngle)
+	public void UpdateRotation(Transform faceDir, float tAngle)
 	{
-		dir = target.transform.position - transform.position;
+		dir = faceDir.position - transform.position;
 		angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		angle -= tAngle;
 
-		if (currentState == AIstate.AI_Follow || currentState == AIstate.AI_Strafe) 
+		if (currentState == AIstate.AI_Follow || currentState == AIstate.AI_Strafe || currentState == AIstate.AI_Patrol) 
 		{
 			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		}
@@ -143,6 +166,21 @@ public class AIController : Ship {
 
 	}
 
+	public virtual void AIPatrol()
+	{
+		if (nextNode == null)
+		{
+			nextNode = PathNodeManager.Instance.GetNextNodePingPong(pathNodeGroup);
+		}
+			
+		if (Vector3.Distance(transform.position, nextNode.position) > 1.0f)
+			rb.AddForce((nextNode.position - transform.position).normalized * speed, ForceMode2D.Force);
+		else
+			nextNode = PathNodeManager.Instance.GetNextNodePingPong(pathNodeGroup);
+			
+		UpdateRotation(nextNode, 90);
+	}
+
 	private void TogglePause()
 	{
 		paused = !paused;
@@ -155,7 +193,7 @@ public class AIController : Ship {
 		{
 			if (target)
 			{
-				UpdateRotation (90);
+				UpdateRotation(target.transform, 90);
 
 				if (!target.activeSelf)
 				{
@@ -191,6 +229,9 @@ public class AIController : Ship {
 					break;
 				case AIstate.AI_Assist:
 					AIAssist();
+					break;
+				case AIstate.AI_Patrol:
+					AIPatrol();
 					break;
 				default:
 					break;

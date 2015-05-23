@@ -5,7 +5,10 @@ public class DragonflyShip : AIController {
 
 	public float rushDistance;
 	public bool canWake;
+	
+	[HideInInspector]
 	public Sprite[] shipSprites;
+	
 	private SpriteRenderer sprite;
 
     // Use this for initialization

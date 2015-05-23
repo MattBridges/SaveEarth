@@ -3,13 +3,16 @@ using System.Collections;
 
 public class OrbitalBaseCannon : Ship {
 
+	[HideInInspector]
 	public GameObject target;
 	private Vector3 cDir;
 	private bool canFire;
 	private float lastFired;
 	public float fireRate;
 	public float bulletSpeed;
+	[HideInInspector]
 	public Transform weaponShotPosition;
+	[HideInInspector]
 	public Color bulletColor = Color.red;
 	public int maxHealth;
 	public bool hackingEquip;

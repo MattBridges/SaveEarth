@@ -6,16 +6,26 @@ public class RaptorShip: AIController  {
 	public float distanceFromPlayer;
 	public bool canWake;
 	public float strafeSpeed;
-	public bool strafeDir;
+	
 	private Vector2 impulse;
 	private Vector2 direction;
-	public GameObject currentLevel;
-	public float swapTarget;
-	public Sprite[] shipSprites;
 	private SpriteRenderer sprite;
-
+	
+	[HideInInspector]
+	public bool strafeDir;
+		
+//	[HideInInspector]
+	public GameObject currentLevel;
+	
+	[HideInInspector]
+	public float swapTarget;
+	
+	[HideInInspector]
+	public Sprite[] shipSprites;
+		
 	// Ally specific variables
 
+	[HideInInspector]
 	public GameObject protectedSatellite;
 
 	// Use this for initialization
@@ -73,6 +83,11 @@ public class RaptorShip: AIController  {
 		}
 	}
 
+	public override void AIPatrol()
+	{
+		base.AIPatrol();
+	}
+
 	public override void AIStrafe()
 	{
 		direction = target.transform.position - transform.position;
@@ -103,28 +118,31 @@ public class RaptorShip: AIController  {
 	private void updateTarget(GameObject level)
 	{
 		GameObject temp = null;
-
-		if (level.name == "Level1_1" && level != null) 
+		
+		if (level != null)
 		{
-			foreach (GameObject go in GameObject.FindGameObjectsWithTag("Satellite")) 
+			if (level.name == "Level1_1") 
 			{
-				if (temp == null)
-					temp = go;
-				else if (Vector3.Distance (transform.position, go.transform.position) < Vector3.Distance (transform.position, temp.transform.position))
-					temp = go;
+				foreach (GameObject go in GameObject.FindGameObjectsWithTag("Satellite")) 
+				{
+					if (temp == null)
+						temp = go;
+					else if (Vector3.Distance (transform.position, go.transform.position) < Vector3.Distance (transform.position, temp.transform.position))
+						temp = go;
+					else
+						continue;
+				}
+	
+				if (!temp)
+					target = pShip;
 				else
-					continue;
-			}
-
-			if (!temp)
-				target = pShip;
+					target = temp;
+	
+				attack = true;
+			} 
 			else
-				target = temp;
-
-			attack = true;
-		} 
-		else
-			target = pShip;
+				target = pShip;
+		}
 	}
 
 	private void updateProtected()

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Gatherer : AIController {
 
+	[HideInInspector]
 	public GameObject matHeld;
 	private Vector3 spawnPoint;
 	private GameObject currentLevel;
