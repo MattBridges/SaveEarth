@@ -7,11 +7,13 @@ public class AddNodeMenu : EditorWindow {
     [MenuItem("GameObject/Create Other/Save Earth/Create Path Node")]
     static void CreatePathNode()
     {
-        GameObject node= AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SpawnNodes/PathNode.prefab", 
-            typeof(GameObject)) as GameObject;
+        var node= AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SpawnNodes/PathNode.prefab", 
+            typeof(GameObject));
         if(Selection.activeGameObject.name == "PathNodeGroup")
         {
-            GameObject obj = GameObject.Instantiate(node, Vector3.zero, Quaternion.identity) as GameObject;
+            
+            GameObject obj = PrefabUtility.InstantiatePrefab(node) as GameObject;
+            obj.transform.position = Vector2.zero;
             obj.name = "PathNode";
             obj.transform.SetParent(Selection.activeGameObject.transform);
             Selection.activeGameObject = obj;
@@ -27,10 +29,11 @@ public class AddNodeMenu : EditorWindow {
     {
         GameObject node = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SpawnNodes/SpawnNode.prefab",
             typeof(GameObject)) as GameObject;
-        GameObject obj = GameObject.Instantiate(node, Vector3.zero, Quaternion.identity) as GameObject;
+        GameObject obj = PrefabUtility.InstantiatePrefab(node) as GameObject;
+        obj.transform.position = Vector2.zero;
         obj.name = "SpawnNode";
         obj.transform.SetParent(Selection.activeGameObject.transform);
-        Selection.activeGameObject = node;
+        Selection.activeGameObject = obj;
     }
 
 

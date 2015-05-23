@@ -20,33 +20,39 @@ public class PathNodeManager : MonoBehaviour {
     #endregion
 
     #region Global Variables
-    public Dictionary<int, Transform[]> pathNodes;
-    public Dictionary<int, List<GameObject>> nodes;
+    public Dictionary<int, List<NodeInfo>> nodes;
+    public NodeInfo currentNode;
+
     #endregion 
 
     #region Group Methods
     void InitPathNodeDict()
     {
-        if (pathNodes != null)
+        if (nodes != null)
             return;
         else
-            pathNodes = new Dictionary<int, Transform[]>();
+            nodes = new Dictionary<int, List<NodeInfo>>();
     }
 
-    public void AddNodeGroup(int GroupNumber, Transform[] NodeList)
+    public void AddNodeGroup(int GroupNumber, List<NodeInfo> NodeList)
     {
         InitPathNodeDict();
 
-        if (pathNodes.ContainsKey(GroupNumber) == true)
-            Debug.LogError("PathNode Group " + GroupNumber + " Already Exists!");
-        else
-            pathNodes[GroupNumber] = NodeList;
+        if (nodes.ContainsKey(GroupNumber) == true)
+        {
+            nodes[GroupNumber].Clear();
+            Debug.Log(nodes[GroupNumber].Count);
+        }
+        
+        nodes[GroupNumber] = NodeList;
+        Debug.Log(nodes[GroupNumber].Count);   
+            
     }
 
-    public Transform[] GetNodeGroup(int GroupNumber)
+    public List<NodeInfo> GetNodeGroup(int GroupNumber)
     {
-        if (pathNodes.ContainsKey(GroupNumber) == true)
-            return pathNodes[GroupNumber];
+        if (nodes.ContainsKey(GroupNumber) == true)
+            return nodes[GroupNumber];
         else
         {
             Debug.LogError("No PathNode Group " + GroupNumber + " Found");
@@ -55,23 +61,72 @@ public class PathNodeManager : MonoBehaviour {
     }
     #endregion
 
-    public Transform GetClosestNode(Transform[] NodeGroup, GameObject Ship)
+    #region Get Methods
+    public Transform GetClosestNode(int groupNumber, GameObject Ship)
     {
-        Transform closestNode = null;
+        List<NodeInfo> NodeGroup = GetNodeGroup(groupNumber);
+        
+        NodeInfo closestNode = null;
         float dist = 0;
         float bestDist = 0;
-        foreach(Transform node in NodeGroup)
+        foreach(NodeInfo node in NodeGroup)
         {
-            dist = Vector2.Distance(Ship.transform.position, node.position);
+            dist = Vector2.Distance(Ship.transform.position, node.transform.position);
             if (dist < bestDist)
             {
                 closestNode = node;
                 bestDist = dist;
             }
         }
-        return closestNode;
+        currentNode = closestNode;
+        return closestNode.transform;
     }
 
+    public Transform GetNextNode(int groupNumber, bool inReverse = false)
+    {
+       List<NodeInfo> NodeGroup = GetNodeGroup(groupNumber); 
+       NodeInfo nextNode = null;
+        if(currentNode==null)
+        {
+            foreach(NodeInfo node in NodeGroup)
+            {
+                if(node.nodeNumber == 1)
+                {
+                    currentNode = node;
+                    nextNode = currentNode;
+                }
+            }
+        }
+        else
+        {
+            int number = nextNode.nodeNumber;
+            if(!inReverse)
+                number++;
+            if (inReverse)
+                number--;
+            if (number > NodeGroup.Count)
+                number = NodeGroup.Count;
+            if (number < 1)
+                number = 1;
+
+            foreach (NodeInfo node in NodeGroup)
+            {
+                if(node.nodeNumber == number)
+                {
+                    nextNode = node;
+                }
+            }
+        }
+        return nextNode.transform;
+    }
+
+    public Transform GetRandomNode(int groupNumber)
+    {
+        List<NodeInfo> NodeGroup = GetNodeGroup(groupNumber);
+        return NodeGroup[Random.Range(0, NodeGroup.Count)].transform;
+    }
+
+    #endregion
 
 
 }

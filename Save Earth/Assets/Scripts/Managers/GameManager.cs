@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
     public int currentMissionNum;
     public int playerLives;
     public EndLevel currentEndLevel;
+    
     #endregion
 
     #region Methods

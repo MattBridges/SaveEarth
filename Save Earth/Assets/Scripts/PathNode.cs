@@ -4,20 +4,21 @@ using System.Collections.Generic;
 
 public class PathNode : MonoBehaviour {
     public int groupNumber;
-    private Transform[] nodes;
-    private NodeInfo[] ni;
-
-	// Use this for initialization
+    private NodeInfo[] nodes;
+    private List<NodeInfo> ni;
   
 	void OnEnable () {
+        ni = new List<NodeInfo>();
         FindAllChildNodes();
 	}
 	
     void FindAllChildNodes()
     {
-        nodes = gameObject.GetComponentsInChildren<Transform>();
-        ni = gameObject.GetComponentsInChildren<NodeInfo>();
-        Debug.Log(ni.Length);
-        PathNodeManager.Instance.AddNodeGroup(groupNumber, nodes);
+        nodes = gameObject.GetComponentsInChildren<NodeInfo>();
+        foreach (NodeInfo node in nodes)
+        {
+            ni.Add(node);
+        }
+        PathNodeManager.Instance.AddNodeGroup(groupNumber, ni);
     }
 }
