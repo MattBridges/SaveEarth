@@ -18,6 +18,8 @@ TagManager:
   - Collectable
   - Background
   - PathNode
+  - OrbitalBase
+  - Debris
   layers:
   - Default
   - TransparentFX
