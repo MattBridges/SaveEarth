@@ -16,8 +16,7 @@ public class DebrisManager : MonoBehaviour {
 	[HideInInspector]
 	public Sprite[] debrisSprites;
 
-	private List<GameObject> debrisList;
-	private Dictionary<float, GameObject> activeDebris;
+	private List<Debris> debrisList;
 	private static DebrisManager _instance;
 	private float lastTime;
 	
@@ -38,8 +37,7 @@ public class DebrisManager : MonoBehaviour {
 	void Start () 
 	{
 		debrisSprites = Resources.LoadAll<Sprite>(debris.name);		
-		debrisList = new List<GameObject>();
-		activeDebris = new Dictionary<float, GameObject>();
+		debrisList = new List<Debris>();
 	
 		InitializeDebris();
 	}
@@ -49,21 +47,24 @@ public class DebrisManager : MonoBehaviour {
 		for (int i = 0; i < spawnCount; i++)
 		{
 			GameObject go = GameObject.Instantiate<GameObject>(debris) as GameObject;
-			debrisList.Add(go);
+			
+			debrisList.Add(go.GetComponent<Debris>());
 			go.transform.SetParent(transform);
 			go.SetActive(false);
 		}	
 	}
 	
-	private GameObject GetInactiveDebris()
+	private Debris GetInactiveDebris()
 	{
-		foreach (GameObject go in debrisList)
+		foreach (Debris go in debrisList)
 		{
-			if (!go.activeSelf)
+			if (!go.gameObject.activeSelf)
 				return go;
 		}
 		
-		return GameObject.Instantiate<GameObject>(debris) as GameObject;
+		GameObject deb = GameObject.Instantiate<GameObject>(debris) as GameObject;
+		
+		return deb.GetComponent<Debris>();
 	}
 	
 	// Update is called once per frame
@@ -75,37 +76,8 @@ public class DebrisManager : MonoBehaviour {
 			{
 				lastTime = Time.time;
 				
-				Vector3 loc = new Vector3(-50, Random.Range(lowRange, hiRange), 0);
-				GameObject sendDebris = GetInactiveDebris();
-				
-				Destroy(sendDebris.GetComponent<PolygonCollider2D>());
-				
-				sendDebris.transform.position = loc;
-				sendDebris.GetComponent<SpriteRenderer>().sprite = debrisSprites[Random.Range(0, debrisSprites.Length)];
-				
-				PolygonCollider2D pC = sendDebris.AddComponent<PolygonCollider2D>();
-				pC.isTrigger = true;
-				
-				float scale = Random.Range(0.25f, 2.0f);
-				int rot = Random.Range (0, 360);
-				
-				sendDebris.transform.localScale = new Vector3(scale, scale, scale);
-				sendDebris.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rot));
-				
-				sendDebris.SetActive(true);
-				
-				sendDebris.GetComponent<Rigidbody2D>().AddForce(new Vector3(debrisSpeed, 0, 0), ForceMode2D.Impulse);
-				activeDebris.Add(Time.time, sendDebris);
-			}
-			
-			foreach (KeyValuePair<float, GameObject> keyValue in activeDebris)
-			{
-				if ((Time.time - keyValue.Key) > lifetime)
-				{
-					keyValue.Value.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-					keyValue.Value.SetActive(false);
-					activeDebris.Remove(keyValue.Key);
-				}
+				Debris sendDebris = GetInactiveDebris();
+				sendDebris.RandomizeDebris(lowRange, hiRange, lifetime, debrisSpeed);
 			}
 		}
 	}
