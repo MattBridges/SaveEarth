@@ -21,7 +21,7 @@ public class AIController : Ship {
 //	[HideInInspector]
 	public Transform nextNode;
 	
-	[HideInInspector]
+	
 	public int pathNodeGroup;
 	
 	[HideInInspector]
@@ -168,17 +168,27 @@ public class AIController : Ship {
 
 	public virtual void AIPatrol()
 	{
-		if (nextNode == null)
-		{
-			nextNode = PathNodeManager.Instance.GetNextNodePingPong(pathNodeGroup);
-		}
-			
-		if (Vector3.Distance(transform.position, nextNode.position) > 1.0f)
-			rb.AddForce((nextNode.position - transform.position).normalized * speed, ForceMode2D.Force);
-		else
-			nextNode = PathNodeManager.Instance.GetNextNodePingPong(pathNodeGroup);
-			
-		UpdateRotation(nextNode, 90);
+        if (PathNodeManager.Instance.GetNodeGroup(pathNodeGroup) != null)
+        {
+            if (nextNode == null)
+            {
+                nextNode = PathNodeManager.Instance.GetNextNodePingPong(pathNodeGroup);
+            }
+
+            if (Vector3.Distance(transform.position, nextNode.position) > 1.0f)
+                rb.AddForce((nextNode.position - transform.position).normalized * speed, ForceMode2D.Force);
+            else
+                nextNode = PathNodeManager.Instance.GetNextNodePingPong(pathNodeGroup);
+
+            UpdateRotation(nextNode, 90);
+        }
+        else
+        {
+            Debug.LogError("Assignd Group is null for " + this.gameObject.name);
+            //Put default back checked behavior here if group is null
+        }
+            
+        
 	}
 
 	private void TogglePause()
