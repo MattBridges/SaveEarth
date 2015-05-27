@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11480476}
   m_Layer: 0
   m_Name: HackingEquip
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,7 @@ GameObject:
   - 50: {fileID: 5044620}
   m_Layer: 0
   m_Name: Cannon 3
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ GameObject:
   - 50: {fileID: 5060792}
   m_Layer: 0
   m_Name: Cannon 1
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +189,7 @@ GameObject:
   - 50: {fileID: 5042356}
   m_Layer: 0
   m_Name: Cannon 2
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1451,11 +1451,12 @@ MonoBehaviour:
   endCondidtionObject: 0
   health: 0
   currentState: 3
-  attack: 0
-  pShip: {fileID: 0}
-  weaponShotPosition: {fileID: 0}
   bulletSpeed: 0
   fireRate: 0
+  wakeupDistance: 0
+  maxHealth: 2000
+  nextNode: {fileID: 0}
+  pathNodeGroup: 0
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
   paused: 0
   rb: {fileID: 0}
@@ -1463,9 +1464,10 @@ MonoBehaviour:
   mothershipShieldDelay: 0
   shieldHealth: 0
   shieldTime: 0
-  wakeupDistance: 0
-  maxHealth: 2000
   target: {fileID: 0}
+  attack: 0
+  pShip: {fileID: 0}
+  weaponShotPosition: {fileID: 0}
   areaOfEffect: 0
   baseType: 1
 --- !u!114 &11448712

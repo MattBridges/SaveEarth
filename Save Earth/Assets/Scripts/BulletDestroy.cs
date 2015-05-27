@@ -69,5 +69,13 @@ public class BulletDestroy : MonoBehaviour {
 		{
 			Destroy();
 		}
+		if (other.tag == "Cannon" && this.gameObject.tag == "PlayerBullet")
+		{
+			Destroy();
+		}
+		if (other.tag == "Debris" && this.gameObject.tag == "PlayerBullet")
+		{
+			Destroy();
+		}
     }
 }
