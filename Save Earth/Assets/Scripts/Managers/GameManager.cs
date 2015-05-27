@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour {
     public int currentMissionNum;
     public int playerLives;
     public EndLevel currentEndLevel;
+
+    public GameObject curPlayerSpawn;
     
     #endregion
 
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour {
     }
     #endregion
 
-    void Start()
+    void Awake()
     {
         player.GetComponent<PlayerShip>().SpawnPlayer();
         TogglePause();

@@ -155,16 +155,25 @@ public class PlayerShip : Ship
     #endregion
     public void SpawnPlayer()
     {
-        GameObject spawnPoint = GameObject.Find("PlayerSpawn");
+        GameObject spawnPoint = GameObject.Find("PlayerShip_Spawn");
         GameObject ship = GameObject.FindGameObjectWithTag("Player");
         if(ship==null)
         {
             if (spawnPoint != null)
             {
-                Instantiate(this.gameObject, spawnPoint.transform.position, Quaternion.identity);
+                GameObject obj = (GameObject)Instantiate(this.gameObject, spawnPoint.transform.position, Quaternion.identity) as GameObject;
+                PoolingManager.Instance.pooled.Add(obj);
                 this.health = 100;
 				EventManager.ResetTargets();
 			}
+            else
+            {
+                GameObject obj = (GameObject)Instantiate(this.gameObject, Vector2.zero, Quaternion.identity)as GameObject;
+                PoolingManager.Instance.pooled.Add(obj);
+                this.health = 100;
+                EventManager.ResetTargets();
+            }
+
         }
         else 
         {
@@ -182,7 +191,8 @@ public class PlayerShip : Ship
         
         foreach(GameObject node in nodes)
         {
-            if (node.name == "PlayerSpawn")
+            string nme = "PlayerShip_Spawn";
+            if (node.name == nme)
             {
                 spawnPoint = node;
                 Debug.Log("Found Player Spawn");
@@ -233,7 +243,7 @@ public class PlayerShip : Ship
             TakeDamage(1);            
         }
 
-		if (other.tag == "Enemy") 
+		if (other.tag == "Enemy" ) 
 		{
 			TakeDamage (20);
 		}

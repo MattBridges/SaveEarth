@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.1642323, y: -8.86823654, z: .0390625}
+  m_LocalPosition: {x: 15, y: -2.70000005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,8 +39,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5412fdd2bbf762408a4336af34c3255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnType: 2
-  DestroyEndCond: 0
+  SpawnType: 7
+  PathNodeGroup: 1
+  DestroyEndCond: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

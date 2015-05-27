@@ -70,9 +70,9 @@ public class Ship : MonoBehaviour {
             audioSrc.Play();
         }
 
-        ObjectPooler op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
-        PoolingManager gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
-        GameObject projectile = op.ReturnObject(gm.bullets, gm.bullet, gm.bulletCollector);
+        //ObjectPooler op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
+        //PoolingManager gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
+        GameObject projectile = ObjectPooler.Instance.ReturnObject("Bullet");
         SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
         ren.color = Color.blue;
         projectile.tag = Tag;
@@ -89,9 +89,9 @@ public class Ship : MonoBehaviour {
             audioSrc.Play();
         }
 
-        ObjectPooler op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
-        PoolingManager gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
-        GameObject projectile = op.ReturnObject(gm.bullets, gm.bullet, gm.bulletCollector);
+       // ObjectPooler op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
+        //PoolingManager gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
+        GameObject projectile = ObjectPooler.Instance.ReturnObject("Bullet");
         SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
         ren.color = Color.red;
         projectile.tag = Tag;

@@ -69,10 +69,11 @@ public class LevelCreator : MonoBehaviour {
         UIManager.Instance.UpdatePlayerHealthText();
         UIManager.Instance.UpdatePlayerLivesText();
         Mission.SetActive(true);
-        SpawnEnemies();
+        SpawnShips();
         
         GameManager.Instance.currentMission = Mission;
         EventManager.LoadLvl();
+        EventManager.ResetTargets();
         Debug.Log("Loaded Level: " + Mission.name);
     }
     public void LoadRandomMission(string curLevel, int mission)
@@ -116,150 +117,26 @@ public class LevelCreator : MonoBehaviour {
     #endregion
 
     #region Object Spawning Methods
-    public void SpawnEnemies()
+    public void SpawnShips()
     {
         GameObject[] an = GetActiveNodes();
         foreach (GameObject node in an)
         {
-            string[] ns = node.name.Split(' ');
+            string[] ns = node.name.Split('_');
             string nodeName = ns[0];
-
-            if (nodeName == "DragonFlySpawn")
-                SpawnDragonfly(node);
-            if (nodeName == "RaptorSpawn")
-                SpawnRaptor(node);
-            if (nodeName == "MotherShipSpawn")
-                SpawnMotherShip(node);
-            if (nodeName == "MineSpawn")
-                SpawnMines(node);
-            if (nodeName == "SatelliteSpawn")
-                SpawnSatellite(node);
-            if (nodeName == "AllyRaptorSpawn")
-                SpawnAllyRaptor(node);
-            if (nodeName == "OrbitalRefinerySpawn")
-                SpawnOrbitalRefinery(node);
-            if (nodeName == "GathererSpawn")
-                SpawnGatherer(node);
-            if (nodeName == "AllyOrbitalSpawn")
-                SpawnAllyOrbital(node);
-            if (nodeName == "OrbitalBaseSpawn")
-                SpawnOrbitalBase(node);
-            if (nodeName == "AllyCarrierSpawn")
-                SpawnAllyCarrier(node);
-            if (nodeName == "CarrierSpawn")
-                SpawnCarrier(node);
-            if (nodeName == "BaseShipSpawn")
-                SpawnBaseShip(node);
-            if (nodeName == "PlayerShipSpawn" || nodeName == "PlayerSpawn")
-                SpawnPlayerShip();
+       
+            SpawnShip(nodeName, node);
+            
         }
     }
-    public void SpawnDragonfly(GameObject Position)
+    public void SpawnShip( string nodeName, GameObject Position)
     {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.dragonFlies, PoolingManager.Instance.dfShip, PoolingManager.Instance.shipCollector);
-        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
-            ship.GetComponent<DragonflyShip>().endCondidtionObject = true;
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
+        GameObject shp = ObjectPooler.Instance.ReturnObject(nodeName);
+        shp.SetActive(true);
+        shp.transform.position = Position.transform.position;
     }
-    public void SpawnRaptor(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.raptors, PoolingManager.Instance.rpShip, PoolingManager.Instance.shipCollector);
-        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
-            ship.GetComponent<RaptorShip>().endCondidtionObject = true;
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnMotherShip(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.motherShips, PoolingManager.Instance.mShip, PoolingManager.Instance.shipCollector);
-        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
-            ship.GetComponent<MotherShip>().endCondidtionObject = true;
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnMines(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.mines, PoolingManager.Instance.mine, PoolingManager.Instance.shipCollector);
-       
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnSatellite(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.satellites, PoolingManager.Instance.satellite, PoolingManager.Instance.shipCollector);
-        
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnAllyRaptor(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.allyCarriers, PoolingManager.Instance.allyCarrier, PoolingManager.Instance.shipCollector);
-        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
-            ship.GetComponent<RaptorShip>().endCondidtionObject = true;
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnOrbitalRefinery(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.orbitalRefinerys, PoolingManager.Instance.orbitalRefinery, PoolingManager.Instance.shipCollector);
-        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
-            ship.GetComponent<OrbitalRefinery>().endCondidtionObject = true;
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnGatherer(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.gatherers, PoolingManager.Instance.gatherer, PoolingManager.Instance.shipCollector);
-        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
-            ship.GetComponent<Gatherer>().endCondidtionObject = true;
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnAllyOrbital(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.allyOrbitalBases, PoolingManager.Instance.allyOrbitalBase, PoolingManager.Instance.shipCollector);
-        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
-            ship.GetComponent<OrbitalBase>().endCondidtionObject = true;
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnOrbitalBase(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.orbitalBases, PoolingManager.Instance.orbitalBase, PoolingManager.Instance.shipCollector);
-        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
-            ship.GetComponent<OrbitalBase>().endCondidtionObject = true;
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnAllyCarrier(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.allyCarriers, PoolingManager.Instance.allyCarrier, PoolingManager.Instance.shipCollector);
-        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
-            ship.GetComponent<Carrier>().endCondidtionObject = true;
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnCarrier(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.carriers, PoolingManager.Instance.carrier, PoolingManager.Instance.shipCollector);
-        if (Position.GetComponent<SpawnNode>().DestroyEndCond)
-            ship.GetComponent<Carrier>().endCondidtionObject = true;
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnBaseShip(GameObject Position)
-    {
-        GameObject ship = ObjectPooler.Instance.ReturnObject(PoolingManager.Instance.baseShips, PoolingManager.Instance.baseShip, PoolingManager.Instance.shipCollector);
-        ship.SetActive(true);
-        ship.transform.position = Position.transform.position;
-    }
-    public void SpawnPlayerShip()
-    {
-        PlayerShip ship = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShip>();
-        ship.SpawnPlayer();
-        
-    }
+
+ 
     #endregion
 
 }

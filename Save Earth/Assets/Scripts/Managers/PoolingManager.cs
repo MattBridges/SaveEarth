@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
-
+public struct PoolObject
+{
+    public GameObject obj;
+    public int poolAmount;
+}
 public class PoolingManager : MonoBehaviour
 {
     #region Singlton Block
@@ -18,94 +23,78 @@ public class PoolingManager : MonoBehaviour
             return _instance;
         }
     }
-    #endregion
+    #endregion    
 
     #region Variables
-    //Objects
-    public GameObject bullet;
-    public int bulletSpawnAmt;
 
-    public GameObject dfShip;
-    public int dfSpawnAmt;
-
-    public GameObject rpShip;
-    public int rpSpawnAmt;
-
-    public GameObject mShip;
-    public int mShipSpawnAmt;
-
-    public GameObject mine;
-    public int minesSpawnAmt;
-
-    public GameObject satellite;
-    public int satelliteSpawnAmt;
-
-    public GameObject allyRaptor;
-    public int allyRaptorSpawnAmt;
-
-    public GameObject orbitalRefinery;
-    public int orbitalRefSpawnAmt;
-
-    public GameObject gatherer;
-    public int gathererSpawnAmt;
-
-    public GameObject allyOrbitalBase;
-    public int allyOrbitalBaseSpawnAmt;
-
-    public GameObject orbitalBase;
-    public int orbitalBaseSpawnAmt;
-
-    public GameObject allyCarrier;
-    public int allyCarrierSpawnAmt;
-
-    public GameObject carrier;
-    public int carrierSpawnAmt;
-
-    public GameObject baseShip;
-    public int baseShipSpawnAmt;
-
+    public int bulletAmt, dragonFlyAmt, motherShipAmt, mineAmt, satelliteAmt, allyRaptorAmt, orbitalRefAmt, gathererAmt, allyOrbitalAmt, orbitalAmt, allyCarrierAmt, carrierAmt, baseShipAmt, raptorAmt;
+    public Dictionary<string, PoolObject> pooledObjects;
+    public Dictionary<string, PoolObject> pooledDebris;
     
-
- 
-   
-    //Lists
-    public List<GameObject> bullets;
-    public List<GameObject> dragonFlies;
-    public List<GameObject> raptors;
-    public List<GameObject> motherShips;
-    public List<GameObject> mines;
-    public List<GameObject> satellites;
-    public List<GameObject> allyRaptors;
-    public List<GameObject> orbitalRefinerys;
-    public List<GameObject> gatherers;
-    public List<GameObject> allyOrbitalBases;
-    public List<GameObject> orbitalBases;
-    public List<GameObject> allyCarriers;
-    public List<GameObject> carriers;
-    public List<GameObject> baseShips;
-    //Collectors
-    public GameObject shipCollector;
-    public GameObject bulletCollector;
+    public List<GameObject> pooled;
 
     #endregion
+    
+    #region Methods
 
-   	void Start () {
+    // Initialize Pool Manager Dictionary
+    void InitPool()
+    {
+        if (pooledObjects == null)
+            pooledObjects = new Dictionary<string, PoolObject>();
+        else
+            return;
+    }
 
-        bullets = ObjectPooler.Instance.PoolObjects(bullet, bulletSpawnAmt, bulletCollector);
-        dragonFlies = ObjectPooler.Instance.PoolObjects(dfShip, dfSpawnAmt, shipCollector);
-        raptors = ObjectPooler.Instance.PoolObjects(rpShip, rpSpawnAmt, shipCollector);
-        motherShips = ObjectPooler.Instance.PoolObjects(mShip, mShipSpawnAmt, shipCollector);
-        mines = ObjectPooler.Instance.PoolObjects(mine, minesSpawnAmt, shipCollector);
-        satellites = ObjectPooler.Instance.PoolObjects(satellite, satelliteSpawnAmt, shipCollector);
-        allyRaptors = ObjectPooler.Instance.PoolObjects(allyRaptor, allyRaptorSpawnAmt, shipCollector);
-        orbitalRefinerys = ObjectPooler.Instance.PoolObjects(orbitalRefinery, orbitalRefSpawnAmt, shipCollector);
-        gatherers = ObjectPooler.Instance.PoolObjects(gatherer, gathererSpawnAmt, shipCollector);
-        allyOrbitalBases = ObjectPooler.Instance.PoolObjects(allyOrbitalBase, allyOrbitalBaseSpawnAmt, shipCollector);
-        orbitalBases = ObjectPooler.Instance.PoolObjects(orbitalBase, orbitalBaseSpawnAmt, shipCollector);
-        allyCarriers = ObjectPooler.Instance.PoolObjects(allyCarrier, allyCarrierSpawnAmt, shipCollector);
-        carriers = ObjectPooler.Instance.PoolObjects(carrier, carrierSpawnAmt, shipCollector);
-        baseShips = ObjectPooler.Instance.PoolObjects(baseShip, baseShipSpawnAmt, shipCollector);
+    //Create a new PoolObject for the dictionary
+    public PoolObject NewPoolObject(GameObject newObject, int poolAmount )
+    {
+        PoolObject obj = new PoolObject();
+        obj.obj = newObject;
+        obj.poolAmount = poolAmount;
+
+        return obj;
+    }
+
+    //Add PoolObject to dictionary
+    public void AddPoolObject(string name, int poolAmount)
+    {
+        InitPool();
+
+        GameObject ship = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/"+ name + ".prefab",
+            typeof(GameObject)) as GameObject;
+
+        pooledObjects.Add(name, NewPoolObject(ship, poolAmount));
         
-	}
+    }
+
+    //Iterate through pooled objects manager dictionay and pool objects into pooled list;
+    void PoolObjects()
+    {
+        foreach(KeyValuePair<string,PoolObject> entry in pooledObjects)
+        {
+               ObjectPooler.Instance.PoolObjects(entry.Value.obj, entry.Value.poolAmount, GameObject.Find("ShipCollector"));           
+        }
+    }
+    #endregion
+
+    void Start()
+    {
+        AddPoolObject("Dragonfly", dragonFlyAmt);
+        AddPoolObject("Raptor", raptorAmt);
+        AddPoolObject("MotherShip", motherShipAmt);
+        AddPoolObject("EnemyMine", mineAmt);
+        AddPoolObject("Satellite", satelliteAmt);
+        AddPoolObject("AllyRaptor", allyRaptorAmt);
+        AddPoolObject("OrbitalRefinery", orbitalRefAmt);
+        AddPoolObject("Gatherer", gathererAmt);
+        AddPoolObject("AllyOrbitalBase", allyOrbitalAmt);
+        AddPoolObject("OrbitalBase", orbitalAmt);
+        AddPoolObject("AllyCarrier", allyCarrierAmt);
+        AddPoolObject("Carrier", carrierAmt);
+        AddPoolObject("EnemyBaseShip", baseShipAmt);
+        AddPoolObject("Bullet", bulletAmt);
+        PoolObjects();
+    }
 
 }

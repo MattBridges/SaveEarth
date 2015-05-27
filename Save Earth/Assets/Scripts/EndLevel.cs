@@ -22,10 +22,10 @@ public class EndLevel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (curEndCondition == EndCondition.KillAll)
+       /* if (curEndCondition == EndCondition.KillAll)
             FindAllEnemyShips();
         if (curEndCondition == EndCondition.DestroyObject)
-            DestroyShipCondition();
+            DestroyShipCondition();*/
 	}
     public void FindAllEnemyShips()
     {

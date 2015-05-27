@@ -25,35 +25,56 @@ public class ObjectPooler : MonoBehaviour
     #endregion
 
     #region Methods
-    public GameObject ReturnObject(List<GameObject> List, GameObject Obj, GameObject Collector)
+    public GameObject ReturnObject(string obj)
     {
-        for (int i = 0; i < List.Count; i++)
+      
+        foreach(GameObject objt in PoolingManager.Instance.pooled)
         {
-            if (!List[i].activeInHierarchy)
-                return List[i];
+            if(objt!=null)
+            {
+                string[] ar = objt.name.Split('(');
+                if(ar[0]=="PlayerShip" && obj == "PlayerShip")
+                {
+                    return objt;
+                }
+                if (ar[0] == obj && !objt.activeInHierarchy)
+                {
+                    return objt;
+                }
+            }
+          
         }
+        
         if (dynamicPooling)
         {
-            GameObject obj = (GameObject)Instantiate(Obj);
-            obj.SetActive(false);
-            obj.gameObject.transform.parent = Collector.transform;
-            List.Add(obj);
-            return obj;
+            GameObject objt = (GameObject)Instantiate(PoolingManager.Instance.pooledObjects[obj].obj);
+            objt.SetActive(false);
+            
+            if(obj == "Bullet")
+                objt.gameObject.transform.parent = GameObject.Find("BulletCollector").transform;
+            else
+                objt.gameObject.transform.parent = GameObject.Find("ShipCollector").transform;
+           
+            PoolingManager.Instance.pooled.Add(objt);
+            return objt;
         }
         return null;
 
     }
-    public List<GameObject> PoolObjects(GameObject PoolObject, int PoolAmount, GameObject Collector)
+    public void PoolObjects(GameObject PoolObject, int PoolAmount, GameObject Collector)
     {
-        List<GameObject> objects = new List<GameObject>();
         for (int i = 0; i < PoolAmount; i++)
         {
             GameObject obj = (GameObject)Instantiate(PoolObject);
             obj.SetActive(false);
-            obj.gameObject.transform.parent = Collector.transform;
-            objects.Add(obj);
+
+            if (PoolObject.name == "Bullet")
+                obj.gameObject.transform.parent = GameObject.Find("BulletCollector").transform;
+            else
+                obj.gameObject.transform.parent = GameObject.Find("ShipCollector").transform;
+        
+            PoolingManager.Instance.pooled.Add(obj);
         }
-        return objects;
     }
     #endregion
 
