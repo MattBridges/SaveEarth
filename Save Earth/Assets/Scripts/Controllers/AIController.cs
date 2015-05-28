@@ -18,7 +18,7 @@ public class AIController : Ship {
 	private Vector3 cDir;
 	private bool canFire;
 	
-//	[HideInInspector]
+	[HideInInspector]
 	public Transform nextNode;
 	
 	

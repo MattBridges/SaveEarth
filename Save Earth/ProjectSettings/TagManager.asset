@@ -21,6 +21,9 @@ TagManager:
   - OrbitalBase
   - Debris
   - Cannon
+  - Resource
+  - Aphrodite
+  - Dropzone
   layers:
   - Default
   - TransparentFX

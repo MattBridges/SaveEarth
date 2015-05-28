@@ -22,6 +22,7 @@ public class PlayerShip : Ship
     public Camera mainCam;
     private GameObject spawnPoint;
     private UIManager ui;
+    public GameObject[] resources;
     
     private static PlayerShip _instance;
     public static PlayerShip Instance
@@ -61,6 +62,7 @@ public class PlayerShip : Ship
         this.rightStick.ControllerMovedEvent += RotateShip;
         this.rightStick.FingerTouchedEvent += StartFire;
         this.rightStick.FingerLiftedEvent += StopFire;
+        resources = new GameObject[2];
 	}
     void FixedUpdate()
     {
@@ -236,6 +238,33 @@ public class PlayerShip : Ship
         }
     }
 
+	private int checkResourceSlot()
+	{
+		if (resources[0] == null)
+			return 0;
+		else if (resources[1] == null)
+			return 1;
+		else
+			return -1;	
+	}
+
+	private void clearResources(AphroditeController aphrodite)
+	{
+		
+		for (int i = 0; i < resources.Length; i++)
+		{
+			if (resources[i] != null)
+			{
+				GameObject go = resources[i];
+			
+				aphrodite.preciousResources++;
+				aphrodite.checkResources();
+				resources[i] = null;
+				Destroy(go);
+			}
+		}
+	}
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "EnemyBullet")
@@ -252,6 +281,25 @@ public class PlayerShip : Ship
             TakeDamage(25);
             Debug.Log("Hit Mine");
         }
+        if (other.tag == "Resource")
+        {
+        	int slot = checkResourceSlot();
+        	
+        	if (slot != -1)
+        	{
+        		resources[slot] = other.gameObject;
+        		other.gameObject.SetActive(false);
+        	}
+        }
+        
+        if (other.tag == "Dropzone")
+        {
+        	if (other.transform.parent.tag == "Aphrodite")
+        	{
+        		clearResources(other.gameObject.GetComponent<AphroditeController>());
+        	}
+        }
+        
         ui.UpdatePlayerHealthText();
     }
     
