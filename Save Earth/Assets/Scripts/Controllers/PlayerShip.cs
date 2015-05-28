@@ -22,7 +22,12 @@ public class PlayerShip : Ship
     public Camera mainCam;
     private GameObject spawnPoint;
     private UIManager ui;
+    
+    [HideInInspector]
     public GameObject[] resources;
+    
+    [HideInInspector]
+    public Collectible towingObject;
     
     private static PlayerShip _instance;
     public static PlayerShip Instance
