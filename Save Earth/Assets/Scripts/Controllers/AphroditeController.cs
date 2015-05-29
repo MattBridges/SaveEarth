@@ -56,7 +56,7 @@ public class AphroditeController : AIController {
 		herc.crewMembers--;
 		evacuees++;
 		
-		if (evacuees >= 3)
+		if (evacuees >= 20)
 		{
 			rb.isKinematic = false;
 			currentState = AIstate.AI_Patrol;
