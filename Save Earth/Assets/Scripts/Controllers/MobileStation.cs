@@ -26,9 +26,6 @@ public class MobileStation : SpaceStation {
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		/*		if (other.gameObject.tag == "PlayerBullet") {
-			TakeDamage(5);
-		} */
 	}
 	
 	public override void OnDisable()

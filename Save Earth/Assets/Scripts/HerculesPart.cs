@@ -35,6 +35,32 @@ public class HerculesPart : Collectible {
 		
 		Destroy(this.gameObject.GetComponent<PolygonCollider2D>());
 		this.gameObject.AddComponent<PolygonCollider2D>().isTrigger = true;
+		
+		EventManager.doTow += checkTow;
+	}
+	
+	void checkTow(PlayerShip pShip, HerculesPart part, bool towDrop)
+	{
+		if (part == this)
+		{
+			if (towDrop)
+			{
+				if (pShip.towingObject == null)
+				{
+					beingTowed = true;
+					towedBy = pShip.gameObject;
+				}
+			}
+			else
+			{
+				if (pShip.towingObject != null)
+				{
+					towedBy = null;
+					beingTowed = false;
+					this.gameObject.SetActive(false);
+				}
+			}
+		}
 	}
 	
 	public override void OnTriggerEnter2D(Collider2D other)
@@ -43,27 +69,15 @@ public class HerculesPart : Collectible {
 		{
 			if (type == CollectTypes.Towable)
 			{
-				PlayerShip plr = other.gameObject.GetComponent<PlayerShip>();
-				
-				if (plr.towingObject == null)
-				{
-					beingTowed = true;
-					towedBy = other.gameObject;
-					plr.towingObject = this;
-				}
+				EventManager.checkTow(this, true);
 			}
 		}
 		
 		if (other.tag == "Hercules")
 		{
-			if (towedBy)
+			if (type == CollectTypes.Towable)
 			{
-				PlayerShip plr = towedBy.GetComponent<PlayerShip>();
-				
-				plr.towingObject = null;
-				towedBy = null;
-				beingTowed = false;
-				this.gameObject.SetActive(false);
+				EventManager.checkTow(this, false);
 			}
 		}
 	}

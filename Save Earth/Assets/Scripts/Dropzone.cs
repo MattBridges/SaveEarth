@@ -5,6 +5,9 @@ public class Dropzone : MonoBehaviour {
 
 	public delegate void Evacuate(HerculesController herc);
 	public static event Evacuate evac;
+	
+	public delegate void CollectResources(int resources);
+	public static event CollectResources collection;
 
 	private float theTime;
 	private float timer;
@@ -33,6 +36,12 @@ public class Dropzone : MonoBehaviour {
 			herc = null;
 			evacuating = false;
 		}
+	}
+	
+	public static void CollectResourceEvent(int resources)
+	{
+		if (collection != null)
+			collection(resources);
 	}
 	
 	// Update is called once per frame

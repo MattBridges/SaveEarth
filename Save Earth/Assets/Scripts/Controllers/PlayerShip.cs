@@ -28,7 +28,7 @@ public class PlayerShip : Ship
     
     [HideInInspector]
     public Collectible towingObject;
-    
+        
     private static PlayerShip _instance;
     public static PlayerShip Instance
     {
@@ -43,7 +43,19 @@ public class PlayerShip : Ship
     }
 
  
-    
+    void checkTow(PlayerShip pShip, HerculesPart part, bool towDrop)
+    {
+		if (towDrop)
+		{
+			if (towingObject == null)
+				towingObject = part;
+		}
+		else
+		{
+			if (towingObject != null)
+				towingObject = null;
+		}
+    }
     
 
     #endregion
@@ -68,6 +80,7 @@ public class PlayerShip : Ship
         this.rightStick.FingerTouchedEvent += StartFire;
         this.rightStick.FingerLiftedEvent += StopFire;
         resources = new GameObject[2];
+        EventManager.doTow += checkTow;
 	}
     void FixedUpdate()
     {
@@ -253,7 +266,7 @@ public class PlayerShip : Ship
 			return -1;	
 	}
 
-	private void clearResources(AphroditeController aphrodite)
+	private void clearResources()
 	{
 		
 		for (int i = 0; i < resources.Length; i++)
@@ -262,13 +275,13 @@ public class PlayerShip : Ship
 			{
 				GameObject go = resources[i];
 			
-				aphrodite.preciousResources++;
-				aphrodite.checkResources();
+				Dropzone.CollectResourceEvent(1);
 				resources[i] = null;
 				Destroy(go);
 			}
 		}
 	}
+
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -299,9 +312,9 @@ public class PlayerShip : Ship
         
         if (other.tag == "Dropzone")
         {
-        	if (other.transform.parent.tag == "Aphrodite")
+        	if (other.transform.parent.tag == "Aphrodite" && checkResourceSlot() != -1)
         	{
-        		clearResources(other.gameObject.GetComponent<AphroditeController>());
+        		clearResources();
         	}
         }
         

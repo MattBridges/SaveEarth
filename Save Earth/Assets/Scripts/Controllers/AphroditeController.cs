@@ -16,6 +16,7 @@ public class AphroditeController : AIController {
 		base.Start ();
 		attack = false;	
 		Dropzone.evac += Evacuate;
+		Dropzone.collection += checkResources;
 	}
 	
 	public override void AIFollow()
@@ -63,8 +64,10 @@ public class AphroditeController : AIController {
 		}
 	}
 		
-	public void checkResources()
+	void checkResources(int resources)
 	{
+		preciousResources += resources;
+		
 		if (preciousResources >= 10)
 			currentState = AIstate.AI_Patrol;
 	}	

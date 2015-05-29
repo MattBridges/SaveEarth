@@ -10,6 +10,10 @@ public class EventManager : MonoBehaviour {
 
     public delegate void LoadLevel();
     public static event LoadLevel loadLvl;
+    
+    // For towing collectibles
+    public delegate void towObject(PlayerShip pShip, HerculesPart part, bool towDrop);
+	public static event towObject doTow;    
 
 	public static EventManager Instance
 	{
@@ -28,9 +32,15 @@ public class EventManager : MonoBehaviour {
 		if (rT != null)
 			rT();
 	}
+	
     public static void LoadLvl()
     {
         if (loadLvl != null)
             loadLvl();
+    }
+    
+    public static void checkTow(HerculesPart part, bool towDrop)
+    {
+    	doTow(PlayerShip.Instance, part, towDrop);
     }
 }

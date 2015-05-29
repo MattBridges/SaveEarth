@@ -29,9 +29,7 @@ public class SpaceStation : AIController {
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
-/*		if (other.gameObject.tag == "PlayerBullet") {
-			TakeDamage(5);
-		} */
+
 	}
 	
 	public virtual void OnDisable()

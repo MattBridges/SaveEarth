@@ -21,6 +21,7 @@ public class OrbitalBaseCannon : Ship {
 	void Start () {
 		currentWeapon = Weapons.RedWeapon;
 		health = maxHealth;
+		CannonRadar.newTarget += UpdateTarget;
 	}
 	
 	void TakeDamage(int amt)
@@ -57,7 +58,7 @@ public class OrbitalBaseCannon : Ship {
 			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.Euler (0, 0, 0), Time.fixedDeltaTime * 1.0f);
 	}
 	
-	public void UpdateTarget(GameObject newTarget)
+	void UpdateTarget(GameObject newTarget)
 	{
 		target = newTarget;
 	}

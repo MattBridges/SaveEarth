@@ -18,7 +18,7 @@ public class Gatherer : AIController {
 		health = maxHealth;
 		spawnPoint = transform.position;
 		weaponShotPosition = transform.FindChild ("GathererCannon").gameObject.transform;
-		currentLevel = GameObject.FindObjectOfType<GameManager>().currentMission;
+		currentLevel = GameManager.Instance.currentMission;
 		updateTarget(currentLevel);
 	}
 	
