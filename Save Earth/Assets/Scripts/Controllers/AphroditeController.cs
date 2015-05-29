@@ -4,13 +4,18 @@ using System.Collections;
 public class AphroditeController : AIController {
 
 	public bool canWake;
+	
+	[HideInInspector]
 	public int preciousResources;
+
+	public int evacuees;
 	
 	// Use this for initialization
 	public override void Start () 
 	{
 		base.Start ();
-		attack = false;		
+		attack = false;	
+		Dropzone.evac += Evacuate;
 	}
 	
 	public override void AIFollow()
@@ -46,6 +51,18 @@ public class AphroditeController : AIController {
 		}		
 	}
 	
+	void Evacuate(HerculesController herc)
+	{
+		herc.crewMembers--;
+		evacuees++;
+		
+		if (evacuees >= 3)
+		{
+			rb.isKinematic = false;
+			currentState = AIstate.AI_Patrol;
+		}
+	}
+		
 	public void checkResources()
 	{
 		if (preciousResources >= 10)
