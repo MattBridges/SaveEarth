@@ -87,6 +87,7 @@ public class AIController : Ship {
 		EventManager.rT -= ResetTarget;
         EventManager.loadLvl -= AddEndConditionObj;
         endCondidtionObject = false;
+        
 	}
     
     void AddEndConditionObj()
@@ -277,12 +278,11 @@ public class AIController : Ship {
             if (GameManager.Instance.currentEndLevel.destroyObjects.Contains(this.gameObject))
             {
                 GameManager.Instance.currentEndLevel.destroyObjects.Remove(this.gameObject);
-                GameManager.Instance.currentEndLevel.CheckWinCondition(); 
-            }
                 
-
-               
+            }               
             this.gameObject.SetActive(false);
+            GameManager.Instance.currentEndLevel.CheckWinCondition(); 
+            
         }
     }
 }
