@@ -63,8 +63,8 @@ public class DragonflyShip : AIController {
             TakeDamage(5);
 		}
 
-		if (other.gameObject.tag == "Player") 
-			this.gameObject.SetActive (false);
+		if (other.gameObject.tag == "Player")
+            TakeDamage(500);
 	}
 	
 	public override void FixedUpdate ()

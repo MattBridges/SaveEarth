@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 
 public class EndLevel : MonoBehaviour {
 
-    public enum EndCondition { KillAll, DestroyObject };
+    public enum EndCondition { KillAll, DestroyObject, Nothing };
     public EndCondition curEndCondition;
-    private GameObject[] enemyShips;
+    //private GameObject[] enemyShips;
     public List<GameObject> destroyObjects;
 
     void OnEnable()
@@ -15,37 +16,41 @@ public class EndLevel : MonoBehaviour {
         destroyObjects.Clear();
     }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-       /* if (curEndCondition == EndCondition.KillAll)
-            FindAllEnemyShips();
-        if (curEndCondition == EndCondition.DestroyObject)
-            DestroyShipCondition();*/
-	}
-    public void FindAllEnemyShips()
-    {
-        enemyShips = GameObject.FindGameObjectsWithTag("Enemy");
-        if(enemyShips.Length<=0)
-        {
-            GameObject.FindObjectOfType<LevelCreator>().LoadNextMission();
-        }
-    }
-    public void DestroyShipCondition()
-    {
-        if(destroyObjects.Count == 0)
-        {
-            GameObject.FindObjectOfType<LevelCreator>().LoadNextMission();
-        }
-    }
 
     public void AddDestroyObject(GameObject obj)
     {
         if (!destroyObjects.Contains(obj))
             destroyObjects.Add(obj);
+    }
+
+    public void CheckWinCondition()
+    {
+        
+        if(curEndCondition == EndCondition.KillAll)
+        {
+            GameObject[]  enemyShips = GameObject.FindGameObjectsWithTag("Enemy");
+            Debug.Log(enemyShips.Length);
+            foreach(GameObject ship in enemyShips)
+            {
+                Debug.Log(ship.name);
+                Selection.activeObject = ship.gameObject;
+            }
+           
+            if (enemyShips.Length <= 0)
+            {
+                Debug.Log("Level Complete");
+                GameObject.FindObjectOfType<LevelCreator>().LoadNextMission();
+            }
+        }
+
+        if (curEndCondition == EndCondition.DestroyObject)
+        {
+            if(destroyObjects.Count==0)
+            {
+                Debug.Log("Level Complete");
+                GameObject.FindObjectOfType<LevelCreator>().LoadNextMission();
+            }
+                
+        }
     }
 }

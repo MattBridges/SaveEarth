@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21205534}
   - 50: {fileID: 5070354}
   - 60: {fileID: 6026916}
+  - 114: {fileID: 11446972}
   m_Layer: 0
   m_Name: redship4
   m_TagString: Untagged
@@ -81,6 +82,18 @@ PolygonCollider2D:
     - - {x: .00499999989, y: -.370000005}
       - {x: -.00499999989, y: -.310000002}
       - {x: -.0149999997, y: -.310000002}
+--- !u!114 &11446972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f5094556acc6247b84bd7ddab189f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEndObject: 0
 --- !u!212 &21205534
 SpriteRenderer:
   m_ObjectHideFlags: 1

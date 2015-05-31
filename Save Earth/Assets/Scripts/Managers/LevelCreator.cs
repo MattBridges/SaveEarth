@@ -122,10 +122,7 @@ public class LevelCreator : MonoBehaviour {
         GameObject[] an = GetActiveNodes();
         foreach (GameObject node in an)
         {
-
-
             SpawnShip(node, node);
-            
         }
     }
     public void SpawnShip( GameObject node, GameObject Position)
@@ -134,6 +131,13 @@ public class LevelCreator : MonoBehaviour {
         string nodeName = ns[0];
 
         GameObject shp = ObjectPooler.Instance.ReturnObject(nodeName);
+        if (node.GetComponent<SpawnNode>().DestroyEndCond)
+        {
+            EndObject eo = shp.GetComponent<EndObject>();
+            eo.isEndObject = true;
+            eo.UpdateEndObject();
+        }
+
         shp.SetActive(true);
         if(nodeName != "PlayerShip")
             shp.GetComponent<AIController>().pathNodeGroup = node.GetComponent<SpawnNode>().PathNodeGroup;

@@ -274,8 +274,14 @@ public class AIController : Ship {
 	        
         if (this.health <= 0)
         {
-            if (endCondidtionObject)
+            if (GameManager.Instance.currentEndLevel.destroyObjects.Contains(this.gameObject))
+            {
                 GameManager.Instance.currentEndLevel.destroyObjects.Remove(this.gameObject);
+                GameManager.Instance.currentEndLevel.CheckWinCondition(); 
+            }
+                
+
+               
             this.gameObject.SetActive(false);
         }
     }
