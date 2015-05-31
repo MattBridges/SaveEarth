@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EventManager : MonoBehaviour {
 
@@ -13,8 +14,20 @@ public class EventManager : MonoBehaviour {
     
     // For towing collectibles
     public delegate void towObject(PlayerShip pShip, HerculesPart part, bool towDrop);
-	public static event towObject doTow;    
+	public static event towObject doTow;   
+	
+	public delegate void Cannons(GameObject orbBase);
+	public static event Cannons findCannons;
+	
+	public delegate void sendCannon(Carrier carrier, List<OrbitalBaseCannon> attachment);
+	public static event sendCannon sendCannonReference;
 
+	public List<OrbitalBaseCannon> cannons;
+	public List<OrbitalBaseCannon> theCannons;
+	
+	public delegate void collectObject(GameObject collector);
+	public static event collectObject collectIt;
+	
 	public static EventManager Instance
 	{
 		get
@@ -41,6 +54,21 @@ public class EventManager : MonoBehaviour {
     
     public static void checkTow(HerculesPart part, bool towDrop)
     {
-    	doTow(PlayerShip.Instance, part, towDrop);
+    	if (doTow != null)
+	    	doTow(PlayerShip.Instance, part, towDrop);
     }
+    
+	public void GetCannons(Carrier carrier, GameObject orbBase)
+	{
+		if (findCannons != null)
+			findCannons(orbBase);
+		
+		if (sendCannonReference != null)
+			sendCannonReference(carrier, cannons);			
+	}
+	
+	public void takeObject(GameObject collector)
+	{
+		collectIt(collector);
+	}
 }

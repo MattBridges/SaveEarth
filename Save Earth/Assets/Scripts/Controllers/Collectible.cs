@@ -18,16 +18,19 @@ public class Collectible : MonoBehaviour {
 	[HideInInspector]
 	public GameObject towedBy;
 		
+	public SpriteRenderer sprite;
+	
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+		sprite = this.gameObject.GetComponent<SpriteRenderer>();		
+		EventManager.collectIt += collectMe;
 	}
 	
 	public virtual void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag == "Enemy")
 		{
-			gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			sprite.enabled = false;
 			isHeld = other.gameObject;
 		} 
 
@@ -36,6 +39,12 @@ public class Collectible : MonoBehaviour {
 			beingTowed = true;
 			towedBy = other.gameObject;
 		}
+	}
+	
+	void collectMe(GameObject collector)
+	{
+		isHeld = collector;
+		sprite.enabled = false;
 	}
 	
 	// Update is called once per frame

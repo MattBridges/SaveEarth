@@ -5,14 +5,14 @@ public class OrbitalBase : StationaryStation {
 
 	public enum BaseType { Ally, Enemy };
 	public BaseType baseType;
-
+	
 	// Use this for initialization
 	public override void Start () {
 		base.Start ();
 		
 		health = 500;
 	}
-	
+		
 	public override void TakeDamage(int amt)
 	{
 		if (baseType == BaseType.Ally)
