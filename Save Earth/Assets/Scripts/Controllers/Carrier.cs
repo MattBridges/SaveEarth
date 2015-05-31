@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Carrier : AIController {
 
@@ -18,7 +19,8 @@ public class Carrier : AIController {
 	private OrbitalBase oB;
 	private float healRate;
 	public float repairRange = 7.0f;
-	[HideInInspector]
+
+//	[HideInInspector]
 	public OrbitalBaseCannon cannon1, cannon2, cannon3, hacking;
 	
 //	private SpriteRenderer sprite;
@@ -27,11 +29,14 @@ public class Carrier : AIController {
 	public override void Start () {
 		base.Start ();
 		
+		EventManager.sendCannonReference += populateOrbitalCannons;
+		
 		currentLevel = GameManager.Instance.currentMission;
 		updateTarget(currentLevel);
 		
 //		sprite = this.gameObject.GetComponent<SpriteRenderer>();
 //		shipSprites = Resources.LoadAll<Sprite>("Ships/RedShips/RD3");
+
 	}
 	
 	public override void AIFollow()
@@ -98,15 +103,23 @@ public class Carrier : AIController {
 			{
 				if (temp == go.gameObject && go.baseType == OrbitalBase.BaseType.Enemy)
 				{
-					cannon1 = go.transform.GetChild(0).gameObject.GetComponent<OrbitalBaseCannon>();
-					cannon2 = go.transform.GetChild(1).gameObject.GetComponent<OrbitalBaseCannon>();
-					cannon3 = go.transform.GetChild(2).gameObject.GetComponent<OrbitalBaseCannon>();
-					hacking = go.transform.GetChild(3).gameObject.GetComponent<OrbitalBaseCannon>();
+					EventManager.Instance.GetCannons(this, go.gameObject);
 				}
 			}
 		}
 			
 		target = temp;
+	}
+	
+	void populateOrbitalCannons(Carrier carrier, List<OrbitalBaseCannon> cannons)
+	{	
+		if (carrier == this)
+		{
+			cannon1 = cannons[0];
+			cannon2 = cannons[1];
+			cannon3 = cannons[2];
+			hacking = cannons[3];
+		}
 	}
 	
 	private void HealOrbitalBase()

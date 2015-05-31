@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Gatherer : AIController {
 
-	[HideInInspector]
+//	[HideInInspector]
 	public GameObject matHeld;
 	private Vector3 spawnPoint;
 	private GameObject currentLevel;
@@ -54,7 +54,7 @@ public class Gatherer : AIController {
 		{
 			if (Vector3.Distance (transform.position, target.transform.position) > 4.0f)
 				rb.AddForce((target.transform.position - transform.position).normalized * speed, ForceMode2D.Force);
-			else if (Vector3.Distance(target.transform.position, transform.position) < 4.0 && target.tag != "Collectible")
+			else if (Vector3.Distance(target.transform.position, transform.position) < 4.0 && target.tag != "Collectable")
 				rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, 2.0f);
 			else
 				rb.AddForce((target.transform.position - transform.position).normalized * speed, ForceMode2D.Force);
@@ -79,7 +79,7 @@ public class Gatherer : AIController {
 	private void dropItem(GameObject held)
 	{
 		matHeld = null;
-		Destroy(held);
+		Destroy (held);
 		updateTarget(currentLevel);
 		currentState = AIstate.AI_Follow;
 		attack = true;
@@ -101,10 +101,11 @@ public class Gatherer : AIController {
 	{
 		if (other.tag == "PlayerBullet")
 			TakeDamage(5);
-		if (other.tag == "Collectible")
+			
+		if (other.tag == "Collectable")
 		{
-			other.gameObject.GetComponent<Collectible>().isHeld = this.gameObject;
-			other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			Debug.Log ("Called");
+			EventManager.Instance.takeObject(this.gameObject);
 			CollectMe(other.gameObject);
 		}
 	}

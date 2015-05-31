@@ -22,6 +22,13 @@ public class OrbitalBaseCannon : Ship {
 		currentWeapon = Weapons.RedWeapon;
 		health = maxHealth;
 		CannonRadar.newTarget += UpdateTarget;
+		EventManager.findCannons += findCannons;
+	}
+
+	void findCannons(GameObject orbBase)
+	{
+		if (orbBase == this.transform.parent.gameObject)	
+			EventManager.Instance.cannons.Add(this);
 	}
 	
 	void TakeDamage(int amt)

@@ -66,8 +66,8 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178894}
   m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 2
+  m_LinearDrag: .5
+  m_AngularDrag: .0500000007
   m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
@@ -100,19 +100,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   currentWeapon: 0
+  endCondidtionObject: 0
   health: 0
   currentState: 1
-  attack: 0
-  pShip: {fileID: 0}
-  weaponShotPosition: {fileID: 0}
   bulletSpeed: 2
   fireRate: .75
+  wakeupDistance: 0
+  maxHealth: 250
+  nextNode: {fileID: 0}
+  pathNodeGroup: 0
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
   paused: 0
   rb: {fileID: 0}
-  wakeupDistance: 0
-  maxHealth: 250
+  hasMothershipShield: 0
+  mothershipShieldDelay: 0
+  shieldHealth: 0
+  shieldTime: 0
   target: {fileID: 0}
+  attack: 0
+  pShip: {fileID: 0}
+  weaponShotPosition: {fileID: 0}
   matHeld: {fileID: 0}
 --- !u!212 &21279412
 SpriteRenderer:
