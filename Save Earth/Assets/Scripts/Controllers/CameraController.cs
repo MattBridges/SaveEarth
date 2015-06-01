@@ -2,7 +2,18 @@
 using System.Collections;
 
 public class CameraController : MonoBehaviour {
-
+    private static CameraController _instance;
+    public static CameraController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<CameraController>();
+            }
+            return _instance;
+        }
+    }
     private Vector3 moveTemp;
 
     private Transform player;

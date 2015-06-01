@@ -27,18 +27,6 @@ public class SpawnNode : MonoBehaviour {
     {
         this.name = SpawnType.ToString() + "_Spawn ";
         string[] str = this.name.Split('_');
-        if (str[0] == "PlayerShip")
-        {
-            GameObject[] psNodes = GameObject.FindGameObjectsWithTag("SpawnNode");
-            foreach(GameObject node in psNodes)
-            {
-                string[] nd = node.name.Split('_');
-                if(nd[0] == "PlayerShip"&& node != this.gameObject)
-                {
-                    node.SetActive(false);
-                    Debug.LogError("There was more than one player spawn node");
-                }
-            }
-        }
+
     }
 }

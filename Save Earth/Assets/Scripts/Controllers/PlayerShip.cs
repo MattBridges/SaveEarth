@@ -204,29 +204,32 @@ public class PlayerShip : Ship
     }
     public void RespawnPlayer()
     {
+        
         iTween.Stop();
         GameObject[] nodes = GameObject.FindGameObjectsWithTag("SpawnNode");
         CameraController cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         GameObject ship = GameObject.FindGameObjectWithTag("Player");
-        
+      
         foreach(GameObject node in nodes)
         {
-            string nme = "PlayerShip_Spawn";
-            if (node.name == nme)
+            string[] nme = node.name.Split('_');
+    
+            if (nme[0] == "PlayerShip")
             {
                 spawnPoint = node;
-                Debug.Log("Found Player Spawn");
+ 
                 ship.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 if (spawnPoint != null)
                 {
                     ship.transform.position = spawnPoint.transform.position;
                     ship.transform.rotation = Quaternion.identity;
+                    ship.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                     cam.ReturnCam();
                     this.health = 100;
                 }
                 if (spawnPoint == null)
                 {
-                    Debug.Log("No Player Spawn Point");
+                    Debug.LogError("No Player Spawn Point");
                 }
                 
                 break;

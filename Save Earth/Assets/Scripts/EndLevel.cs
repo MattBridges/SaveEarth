@@ -29,13 +29,7 @@ public class EndLevel : MonoBehaviour {
         if(curEndCondition == EndCondition.KillAll)
         {
             GameObject[]  enemyShips = GameObject.FindGameObjectsWithTag("Enemy");
-            Debug.Log(enemyShips.Length);
-            foreach(GameObject ship in enemyShips)
-            {
-                Debug.Log(ship.name);
-                Selection.activeObject = ship.gameObject;
-            }
-           
+        
             if (enemyShips.Length <= 0)
             {
                 Debug.Log("Level Complete");

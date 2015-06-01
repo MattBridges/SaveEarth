@@ -35,6 +35,7 @@ public class ObjectPooler : MonoBehaviour
                 string[] ar = objt.name.Split('(');
                 if(ar[0]=="PlayerShip" && obj == "PlayerShip")
                 {
+                    Debug.Log("Found player");
                     return objt;
                 }
                 if (ar[0] == obj && !objt.activeInHierarchy)

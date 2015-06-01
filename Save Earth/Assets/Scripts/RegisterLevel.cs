@@ -15,13 +15,10 @@ public class RegisterLevel : MonoBehaviour {
         AddLevel();
         this.gameObject.SetActive(false);
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
     public void AddLevel()
     {        
         lc.AddLevel(curType.ToString(), mission, variant, this.gameObject);
     }
+
 }

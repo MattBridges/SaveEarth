@@ -85,17 +85,80 @@ public class LevelCreator : MonoBehaviour {
         int nextMission = GameManager.Instance.currentMissionNum + 1;
         if(nextMission>5)
         {
-            nextMission =5;
+            LoadNextZone();
+            nextMission =1;
+
+            Debug.Log(GameManager.Instance.currentZone +" "+ nextMission);
         }
+        GameManager.Instance.currentMission.SetActive(false);
         LoadLevel(GetRandomMission(GameManager.Instance.currentZone, nextMission));
         GameManager.Instance.currentMissionNum = nextMission;
     }
+    public void LoadNextZone()
+    {
+        
+        if(GameManager.Instance.currentZone == "Earth")
+        {
+            GameManager.Instance.currentZone = "Mars";
+            return;
+        }
+
+        if (GameManager.Instance.currentZone == "Mars")
+        {
+            GameManager.Instance.currentZone = "AsteroidBelt";
+            return;
+        }
+
+        if (GameManager.Instance.currentZone == "AsteroidBelt")
+        {
+            GameManager.Instance.currentZone = "Jupiter";
+            return;
+        }
+
+        if (GameManager.Instance.currentZone == "Jupiter")
+        {
+            GameManager.Instance.currentZone = "Saturn";
+            return;
+        }
+
+        if (GameManager.Instance.currentZone == "Saturn")
+        {
+            GameManager.Instance.currentZone = "Uranus";
+            return;
+        }
+
+        if (GameManager.Instance.currentZone == "Uranus")
+        {
+            GameManager.Instance.currentZone = "Pluto";
+            return;
+        }
+
+        if (GameManager.Instance.currentZone == "Pluto")
+        {
+            GameManager.Instance.currentZone = "KuiperBelt";
+            return;
+        }
+
+        if (GameManager.Instance.currentZone == "KuiperBelt")
+        {
+           //Put Game Complete Script here!
+
+        }
+
+    }
+
     public void ClearAllMissionNodes(GameObject mis)
     {
-        if(mis!=null)
+        
+        if(GameManager.Instance.currentMission != null)
+            GameManager.Instance.currentMission.SetActive(false);
+
+        GameObject[] nodes = GetActiveNodes();
+        foreach(GameObject node in nodes)
         {
-            mis.SetActive(false);
-        }        
+            node.SetActive(false);
+        }
+        
     }
     public void ClearAllEnemyShips()
     {
@@ -122,26 +185,38 @@ public class LevelCreator : MonoBehaviour {
         GameObject[] an = GetActiveNodes();
         foreach (GameObject node in an)
         {
-            SpawnShip(node, node);
+            SpawnShip(node);
         }
     }
-    public void SpawnShip( GameObject node, GameObject Position)
+    public void SpawnShip( GameObject node)
     {
+        
         string[] ns = node.name.Split('_');
         string nodeName = ns[0];
 
-        GameObject shp = ObjectPooler.Instance.ReturnObject(nodeName);
-        if (node.GetComponent<SpawnNode>().DestroyEndCond)
+
+        if(nodeName == "PlayerShip")
         {
-            EndObject eo = shp.GetComponent<EndObject>();
-            eo.isEndObject = true;
-            eo.UpdateEndObject();
+           
+            PlayerShip player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShip>();
+            player.RespawnPlayer();
+            
         }
 
-        shp.SetActive(true);
-        if(nodeName != "PlayerShip")
+        else
+        {
+            GameObject shp = ObjectPooler.Instance.ReturnObject(nodeName);
             shp.GetComponent<AIController>().pathNodeGroup = node.GetComponent<SpawnNode>().PathNodeGroup;
-        shp.transform.position = Position.transform.position;
+            shp.transform.position = node.transform.position;
+            shp.SetActive(true);
+            
+            if (node.GetComponent<SpawnNode>().DestroyEndCond)
+            {
+                EndObject eo = shp.GetComponent<EndObject>();
+                eo.isEndObject = true;
+                eo.UpdateEndObject();
+            }
+        }
     }
 
  
