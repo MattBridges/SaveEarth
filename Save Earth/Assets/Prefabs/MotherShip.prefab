@@ -47,6 +47,7 @@ GameObject:
   - 114: {fileID: 11447172}
   - 60: {fileID: 6041478}
   - 114: {fileID: 11437204}
+  - 114: {fileID: 11481718}
   m_Layer: 0
   m_Name: MotherShip
   m_TagString: Enemy
@@ -263,6 +264,18 @@ MonoBehaviour:
   attack: 0
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
+--- !u!114 &11481718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f18cba07a8484647babffc806714649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropType: 0
 --- !u!212 &21223158
 SpriteRenderer:
   m_ObjectHideFlags: 1

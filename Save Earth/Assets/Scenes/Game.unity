@@ -20163,6 +20163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9cf8722f412ab4f8c569c455d41ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipSpawns: 
   bulletAmt: 50
   dragonFlyAmt: 10
   motherShipAmt: 5
@@ -20179,6 +20180,7 @@ MonoBehaviour:
   raptorAmt: 10
   IceChunksAmt: 5
   rawMaterialAmt: 5
+  preciousResourceAmt: 5
   pooled: []
 --- !u!4 &1836787544
 Transform:

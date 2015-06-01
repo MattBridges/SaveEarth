@@ -13,6 +13,7 @@ GameObject:
   - 58: {fileID: 5835954}
   - 50: {fileID: 5000448}
   - 114: {fileID: 11409736}
+  - 114: {fileID: 11416336}
   m_Layer: 0
   m_Name: AllyOrbitalBase
   m_TagString: OrbitalBase
@@ -72,6 +73,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEndObject: 0
+--- !u!114 &11416336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f18cba07a8484647babffc806714649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropType: 0
 --- !u!114 &11448688
 MonoBehaviour:
   m_ObjectHideFlags: 1

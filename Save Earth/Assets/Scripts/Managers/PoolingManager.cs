@@ -26,23 +26,26 @@ public class PoolingManager : MonoBehaviour
     #endregion    
 
     #region Variables
-
-    public int bulletAmt, 
-        dragonFlyAmt, 
-        motherShipAmt, 
-        mineAmt, 
-        satelliteAmt, 
-        allyRaptorAmt, 
-        orbitalRefAmt, 
-        gathererAmt, 
-        allyOrbitalAmt, 
-        orbitalAmt, 
-        allyCarrierAmt, 
-        carrierAmt, 
-        baseShipAmt, 
+  
+    
+    
+    public int bulletAmt,
+        dragonFlyAmt,
+        motherShipAmt,
+        mineAmt,
+        satelliteAmt,
+        allyRaptorAmt,
+        orbitalRefAmt,
+        gathererAmt,
+        allyOrbitalAmt,
+        orbitalAmt,
+        allyCarrierAmt,
+        carrierAmt,
+        baseShipAmt,
         raptorAmt,
         IceChunksAmt,
-        rawMaterialAmt;
+        rawMaterialAmt,
+        preciousResourceAmt;
 
     public Dictionary<string, PoolObject> pooledObjects;
     public Dictionary<string, PoolObject> pooledDebris;
@@ -80,7 +83,6 @@ public class PoolingManager : MonoBehaviour
     //Create a new PoolObject for the dictionary
     public PoolObject NewPoolObject(GameObject newObject, int poolAmount )
     {
-        Debug.Log("RUN!");
         PoolObject obj = new PoolObject();
         obj.obj = newObject;
         obj.poolAmount = poolAmount;
@@ -136,6 +138,7 @@ public class PoolingManager : MonoBehaviour
         AddPoolObject(pooledObjects, "Bullet", bulletAmt);
         AddPoolObject(pooledDebris, "IceChunks", IceChunksAmt);
         AddPoolObject(pooledDropObjects, "RawMaterial", rawMaterialAmt);
+        AddPoolObject(pooledDropObjects, "PreciousResource", preciousResourceAmt);
 
         //Pool Objects
         PoolObjects(pooledObjects);

@@ -13,6 +13,7 @@ GameObject:
   - 50: {fileID: 5066550}
   - 58: {fileID: 5868606}
   - 114: {fileID: 11443568}
+  - 114: {fileID: 11443182}
   m_Layer: 0
   m_Name: Carrier
   m_TagString: Enemy
@@ -60,6 +61,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4.80000019
+--- !u!114 &11443182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f18cba07a8484647babffc806714649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropType: 0
 --- !u!114 &11443568
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,6 +13,7 @@ GameObject:
   - 60: {fileID: 6027450}
   - 114: {fileID: 11422146}
   - 114: {fileID: 11465600}
+  - 114: {fileID: 11448008}
   m_Layer: 0
   m_Name: EnemyBaseShip
   m_TagString: Untagged
@@ -205,6 +206,18 @@ MonoBehaviour:
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
   canWake: 0
+--- !u!114 &11448008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f18cba07a8484647babffc806714649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropType: 0
 --- !u!114 &11465600
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -281,8 +281,19 @@ public class AIController : Ship {
                 
             }               
             this.gameObject.SetActive(false);
+            DropItem();
             GameManager.Instance.currentEndLevel.CheckWinCondition(); 
             
+        }
+    }
+    public void DropItem()
+    {
+        ItemDrop item = this.gameObject.GetComponent<ItemDrop>();
+        if(item !=null)
+        {
+            GameObject obj = item.DropItem(item.dropType);
+            obj.transform.position = this.gameObject.transform.position;
+            obj.SetActive(true);
         }
     }
 }

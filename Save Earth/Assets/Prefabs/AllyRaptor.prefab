@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11402200}
   - 58: {fileID: 5891014}
   - 114: {fileID: 11450474}
+  - 114: {fileID: 11413034}
   m_Layer: 0
   m_Name: AllyRaptor
   m_TagString: Ally
@@ -178,6 +179,18 @@ MonoBehaviour:
   swapTarget: 0
   shipSprites: []
   protectedSatellite: {fileID: 0}
+--- !u!114 &11413034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f18cba07a8484647babffc806714649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropType: 0
 --- !u!114 &11450474
 MonoBehaviour:
   m_ObjectHideFlags: 1
