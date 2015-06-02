@@ -19,7 +19,7 @@ public class OrbitalBaseCannon : Ship {
 
 	// Use this for initialization
 	void Start () {
-		currentWeapon = Weapons.RedWeapon;
+		currentWeapon = Weapons.Cannon;
 		health = maxHealth;
 		CannonRadar.newTarget += UpdateTarget;
 		EventManager.findCannons += findCannons;

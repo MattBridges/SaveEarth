@@ -26,7 +26,5 @@ public class SpawnNode : MonoBehaviour {
     public void UpName()
     {
         this.name = SpawnType.ToString() + "_Spawn ";
-        string[] str = this.name.Split('_');
-
     }
 }

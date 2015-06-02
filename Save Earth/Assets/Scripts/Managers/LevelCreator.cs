@@ -72,7 +72,6 @@ public class LevelCreator : MonoBehaviour {
         SpawnShips();
         
         GameManager.Instance.currentMission = Mission;
-        EventManager.LoadLvl();
         EventManager.ResetTargets();
         Debug.Log("Loaded Level: " + Mission.name);
     }

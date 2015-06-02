@@ -2,11 +2,50 @@
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
+
 public struct PoolObject
 {
     public GameObject obj;
     public int poolAmount;
 }
+[System.Serializable]
+public class Ships
+{
+    public int
+       dragonFlyAmt,
+       motherShipAmt,
+       mineAmt,
+       satelliteAmt,
+       allyRaptorAmt,
+       orbitalRefAmt,
+       gathererAmt,
+       allyOrbitalAmt,
+       orbitalAmt,
+       allyCarrierAmt,
+       carrierAmt,
+       baseShipAmt,
+       raptorAmt;
+       
+       
+}
+[System.Serializable]
+public class Projectiles
+{
+    public int bulletAmt;
+}
+[System.Serializable]
+public class Collectibles
+{
+
+}
+[System.Serializable]
+public class Resource
+{
+    public int
+    rawMaterialAmt,
+    preciousResourceAmt;
+}
+
 public class PoolingManager : MonoBehaviour
 {
     #region Singlton Block
@@ -26,26 +65,14 @@ public class PoolingManager : MonoBehaviour
     #endregion    
 
     #region Variables
-  
-    
-    
-    public int bulletAmt,
-        dragonFlyAmt,
-        motherShipAmt,
-        mineAmt,
-        satelliteAmt,
-        allyRaptorAmt,
-        orbitalRefAmt,
-        gathererAmt,
-        allyOrbitalAmt,
-        orbitalAmt,
-        allyCarrierAmt,
-        carrierAmt,
-        baseShipAmt,
-        raptorAmt,
-        IceChunksAmt,
-        rawMaterialAmt,
-        preciousResourceAmt;
+
+
+    public Ships shipTotals = new Ships();
+    public Projectiles projectileTotals = new Projectiles();
+    public Collectibles collectibleTotals = new Collectibles();
+    public Resource resourcesTotals = new Resource();
+
+
 
     public Dictionary<string, PoolObject> pooledObjects;
     public Dictionary<string, PoolObject> pooledDebris;
@@ -122,23 +149,23 @@ public class PoolingManager : MonoBehaviour
         InitPool();
 
         //Add Object types
-        AddPoolObject(pooledObjects, "Dragonfly", dragonFlyAmt);
-        AddPoolObject(pooledObjects, "Raptor", raptorAmt);
-        AddPoolObject(pooledObjects, "MotherShip", motherShipAmt);
-        AddPoolObject(pooledObjects, "EnemyMine", mineAmt);
-        AddPoolObject(pooledObjects, "Satellite", satelliteAmt);
-        AddPoolObject(pooledObjects, "AllyRaptor", allyRaptorAmt);
-        AddPoolObject(pooledObjects, "OrbitalRefinery", orbitalRefAmt);
-        AddPoolObject(pooledObjects, "Gatherer", gathererAmt);
-        AddPoolObject(pooledObjects, "AllyOrbitalBase", allyOrbitalAmt);
-        AddPoolObject(pooledObjects, "OrbitalBase", orbitalAmt);
-        AddPoolObject(pooledObjects, "AllyCarrier", allyCarrierAmt);
-        AddPoolObject(pooledObjects, "Carrier", carrierAmt);
-        AddPoolObject(pooledObjects, "EnemyBaseShip", baseShipAmt);
-        AddPoolObject(pooledObjects, "Bullet", bulletAmt);
-        AddPoolObject(pooledDebris, "IceChunks", IceChunksAmt);
-        AddPoolObject(pooledDropObjects, "RawMaterial", rawMaterialAmt);
-        AddPoolObject(pooledDropObjects, "PreciousResource", preciousResourceAmt);
+
+        AddPoolObject(pooledObjects, "Dragonfly", shipTotals.dragonFlyAmt);
+        AddPoolObject(pooledObjects, "Raptor", shipTotals.raptorAmt);
+        AddPoolObject(pooledObjects, "MotherShip", shipTotals.motherShipAmt);
+        AddPoolObject(pooledObjects, "EnemyMine", shipTotals.mineAmt);
+        AddPoolObject(pooledObjects, "Satellite", shipTotals.satelliteAmt);
+        AddPoolObject(pooledObjects, "AllyRaptor", shipTotals.allyRaptorAmt);
+        AddPoolObject(pooledObjects, "OrbitalRefinery", shipTotals.orbitalRefAmt);
+        AddPoolObject(pooledObjects, "Gatherer", shipTotals.gathererAmt);
+        AddPoolObject(pooledObjects, "AllyOrbitalBase", shipTotals.allyOrbitalAmt);
+        AddPoolObject(pooledObjects, "OrbitalBase", shipTotals.orbitalAmt);
+        AddPoolObject(pooledObjects, "AllyCarrier", shipTotals.allyCarrierAmt);
+        AddPoolObject(pooledObjects, "Carrier", shipTotals.carrierAmt);
+        AddPoolObject(pooledObjects, "EnemyBaseShip", shipTotals.baseShipAmt);
+        AddPoolObject(pooledObjects, "Bullet", projectileTotals.bulletAmt);
+        AddPoolObject(pooledDropObjects, "RawMaterial", resourcesTotals.rawMaterialAmt);
+        AddPoolObject(pooledDropObjects, "PreciousResource", resourcesTotals.preciousResourceAmt);
 
         //Pool Objects
         PoolObjects(pooledObjects);

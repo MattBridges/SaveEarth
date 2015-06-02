@@ -24,6 +24,7 @@ public class BulletDestroy : MonoBehaviour {
     void OnDisable()
     {
         CancelInvoke();
+        this.transform.localScale = new Vector3(1, 1, 1);
     }
 
 	private void TogglePause()

@@ -35,7 +35,7 @@ public class SpaceStation : AIController {
 	public virtual void OnDisable()
 	{
 		health = maxHealth;
-        endCondidtionObject = false;
+        
 	}
 
 }

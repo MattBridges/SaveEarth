@@ -3,10 +3,10 @@ using System.Collections;
 
 public class Ship : MonoBehaviour {
     public float speed;
-    public enum Weapons { BlueWeapon, RedWeapon };
+    public enum Weapons { BlueWeapon, RedWeapon, Cannon };
     public Weapons currentWeapon;
     private Vector3 rotDir;
-    public bool endCondidtionObject;
+ 
 
 	[HideInInspector]
     public int health;
@@ -61,6 +61,10 @@ public class Ship : MonoBehaviour {
         {
             FireRedCannon(bulletSpeed, audioSrc, shotSound, shotPos, shotDirection, enemy, color, Tag, theShip);
         }
+        if (currentWeapon == Weapons.Cannon)
+        {
+            WeaponManager.Instance.FireCannon(shotPos, shotDirection, Tag, theShip);
+        }
     }
 	void FireBlueCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag, GameObject theShip)
     {
@@ -100,6 +104,8 @@ public class Ship : MonoBehaviour {
         projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
 		projectile.GetComponent<BulletDestroy>().shipFired = theShip;
     }
+
+
 
 #endregion
 
