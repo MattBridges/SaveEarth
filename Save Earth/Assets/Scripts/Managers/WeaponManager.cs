@@ -39,5 +39,7 @@ public class WeaponManager : MonoBehaviour {
         projectile.transform.position = shotPos.position;
         projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * canProjectile.projectileSpeed;
         projectile.GetComponent<BulletDestroy>().shipFired = theShip;
+        
+
     }
 }

@@ -66,10 +66,10 @@ public class RaptorShip: AIController  {
 		base.AIRetreat();
 	}
 	
-	public override void AIAttack()
+	/*public override void AIAttack()
 	{
 		base.AIAttack();
-	}
+	}*/
 
 	public override void AIIdle()
 	{

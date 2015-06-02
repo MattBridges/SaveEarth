@@ -175,9 +175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   currentWeapon: 0
-  endCondidtionObject: 0
   health: 0
-  currentState: 7
+  currentState: 1
   bulletSpeed: 2
   fireRate: .75
   wakeupDistance: 10

@@ -136,10 +136,13 @@ public class AIController : Ship {
 			else
 				canFire = true;
 
-			if (canFire) {
-				lastFired = Time.time;
-				FireCannon (currentWeapon, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, this.gameObject.tag == "Ally" ? "AllyBullet" : "EnemyBullet", this.gameObject);
-			}
+            if (canFire)
+            {
+                lastFired = Time.time;
+               
+                FireCannon (currentWeapon, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, "EnemyBullet", this.gameObject);
+            }
+ 
 		} 
 	}
 
