@@ -1,4 +1,4 @@
-5.0.1f1:1.9.8.0
+5.0.2f1:1.9.8.0
 C:/Program Files/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 C:/Program Files/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
 C:/Program Files/Unity5/Editor/Data/Managed/UnityEditor.Graphs.dll
@@ -7,6 +7,7 @@ C:\Program Files\Unity5\Editor\Data\PlaybackEngines\iossupport/UnityEditor.iOS.E
 C:\Program Files\Unity5\Editor\Data\PlaybackEngines\wp8support/UnityEditor.WP8.Extensions.dll
 C:\Program Files\Unity5\Editor\Data\PlaybackEngines\metrosupport/UnityEditor.Metro.Extensions.dll
 C:\Program Files\Unity5\Editor\Data\PlaybackEngines\blackberryplayer/UnityEditor.BB10.Extensions.dll
+C:\Program Files\Unity5\Editor\Data\PlaybackEngines\stvplayer\STVPlayer/UnityEditor.SamsungTV.Extensions.dll
 C:\Program Files\Unity5\Editor\Data\PlaybackEngines\webglsupport/UnityEditor.WebGL.Extensions.dll
 C:\Program Files\Unity5\Editor\Data\PlaybackEngines\linuxstandalonesupport/UnityEditor.LinuxStandalone.Extensions.dll
 C:\Program Files\Unity5\Editor\Data\PlaybackEngines\windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll

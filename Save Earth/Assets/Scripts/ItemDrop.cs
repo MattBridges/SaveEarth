@@ -93,19 +93,6 @@ public class ItemDrop : MonoBehaviour {
         }
         return null;
     }
-    
-    
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-            ShowNum();
-    }
-    public void ShowNum()
-    {
-        Random.seed = (int)System.DateTime.Now.Ticks;
-        int rnd = Random.Range(0, 1001);
-        float num = rnd * .1f;
-        
-        Debug.Log(num);
-    }
+
+ 
 }

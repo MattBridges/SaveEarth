@@ -42,11 +42,11 @@ public class PathNodeManager : MonoBehaviour {
         if (nodes.ContainsKey(GroupNumber) == true)
         {
             nodes[GroupNumber].Clear();
-            Debug.Log(nodes[GroupNumber].Count);
+            
         }
         
         nodes[GroupNumber] = NodeList;
-        Debug.Log(nodes[GroupNumber].Count);   
+        
             
     }
 

@@ -282,7 +282,7 @@ public class PlayerShip : Ship
         if(other.tag == "Mine")
         {
             TakeDamage(25);
-            Debug.Log("Hit Mine");
+            
         }
         if (other.tag == "Resource")
         {

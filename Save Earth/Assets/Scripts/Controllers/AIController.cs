@@ -78,7 +78,7 @@ public class AIController : Ship {
         
 		if (!pShip) 
 		{
-			Debug.Log ("Error: No player ship found");
+			Debug.LogError ("No player ship found");
 		}
 	}
 

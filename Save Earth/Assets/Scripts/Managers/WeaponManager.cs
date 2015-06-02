@@ -50,7 +50,7 @@ public class WeaponManager : MonoBehaviour
     #endregion
     public void FireCannon(Transform shotPos, Vector3 shotDirection, string Tag, GameObject theShip)
     {
-        Debug.Log("Fired");
+        
         GameObject projectile = ObjectPooler.Instance.ReturnObject("Bullet");
         SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
         ren.color = canProjectile.projectileColor;

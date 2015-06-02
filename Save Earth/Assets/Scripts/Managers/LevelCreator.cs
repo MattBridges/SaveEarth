@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+
 public class LevelCreator : MonoBehaviour {
     #region Singlton Block
     private static LevelCreator _instance;
@@ -184,7 +185,13 @@ public class LevelCreator : MonoBehaviour {
         GameObject[] an = GetActiveNodes();
         foreach (GameObject node in an)
         {
-            SpawnShip(node);
+            SpawnNode nod = node.GetComponent<SpawnNode>();
+            if(nod.spawnType == SpawnNode.SpawnType.Delayed)
+            {
+                StartCoroutine(DelaySpawn(nod.delayTime,node));
+            }
+            else
+                SpawnShip(node);
         }
     }
     public void SpawnShip( GameObject node)
@@ -216,6 +223,12 @@ public class LevelCreator : MonoBehaviour {
                 eo.UpdateEndObject();
             }
         }
+    }
+    IEnumerator DelaySpawn(float delay, GameObject node)
+    {
+        yield return new WaitForSeconds(delay);
+        
+        SpawnShip(node);
     }
 
  
