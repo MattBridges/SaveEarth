@@ -78,7 +78,7 @@ public class AIController : Ship {
         
 		if (!pShip) 
 		{
-			Debug.Log ("Error: No player ship found");
+			Debug.LogError ("No player ship found");
 		}
 	}
 
@@ -130,6 +130,7 @@ public class AIController : Ship {
 		if ((attack && target) && target.activeSelf) 
 		{
 			cDir = target.transform.position - transform.position;
+            Vector3 dDir = cDir.normalized;
 
 			if ((Time.time - lastFired) < fireRate)
 				canFire = false;
@@ -140,7 +141,7 @@ public class AIController : Ship {
             {
                 lastFired = Time.time;
                
-                FireCannon (currentWeapon, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, "EnemyBullet", this.gameObject);
+                FireCannon (currentWeapon, weaponShotPosition, dDir, "EnemyBullet", this.gameObject);
             }
  
 		} 
@@ -278,9 +279,9 @@ public class AIController : Ship {
             {
                 GameManager.Instance.currentEndLevel.destroyObjects.Remove(this.gameObject);
                 
-            }               
-            this.gameObject.SetActive(false);
+            }
             DropItem();
+            this.gameObject.SetActive(false);            
             GameManager.Instance.currentEndLevel.CheckWinCondition(); 
             
         }

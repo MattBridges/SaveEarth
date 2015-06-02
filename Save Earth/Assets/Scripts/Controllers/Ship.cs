@@ -51,82 +51,22 @@ public class Ship : MonoBehaviour {
     }
     #endregion
     #region Weapon Methods
-	public void FireCannon(Weapons currentWeapon, float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color , string Tag, GameObject theShip)
+    public void FireCannon(Weapons currentWeapon, Transform shotPos, Vector3 shotDirection, string Tag, GameObject theShip)
     {
 		if(currentWeapon == Weapons.BlueWeapon)
         {
-            FireBlueCannon(bulletSpeed, audioSrc, shotSound, shotPos, shotDirection, enemy, color, Tag, theShip);
+            WeaponManager.Instance.FireBlueCannon(shotPos, shotDirection, Tag, theShip);
         }
         if (currentWeapon == Weapons.RedWeapon)
         {
-            FireRedCannon(bulletSpeed, audioSrc, shotSound, shotPos, shotDirection, enemy, color, Tag, theShip);
+            WeaponManager.Instance.FireRedCannon(shotPos, shotDirection, Tag, theShip);
         }
         if (currentWeapon == Weapons.Cannon)
         {
-           FireCannon1(shotPos, shotDirection, Tag, theShip);
+            WeaponManager.Instance.FireCannon(shotPos, shotDirection, Tag, theShip);
         }
     }
-	void FireBlueCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag, GameObject theShip)
-    {
-        if (!enemy)
-        {
-            audioSrc.clip = shotSound;
-            audioSrc.Play();
-        }
-
-        //ObjectPooler op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
-        //PoolingManager gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
-        GameObject projectile = ObjectPooler.Instance.ReturnObject("Bullet");
-        SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
-        ren.color = Color.blue;
-        projectile.tag = Tag;
-        projectile.SetActive(true);
-        projectile.transform.position = shotPos.position;
-        projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
-        Debug.Log(bulletSpeed + " " + theShip);
-		projectile.GetComponent<BulletDestroy>().shipFired = theShip;
-    }
-    void FireRedCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag, GameObject theShip)
-    {
-        if (!enemy)
-        {
-            audioSrc.clip = shotSound;
-            audioSrc.Play();
-        }
-
-       // ObjectPooler op = GameObject.Find("Pooler").GetComponent<ObjectPooler>();
-        //PoolingManager gm = GameObject.Find("PoolManager").GetComponent<PoolingManager>();
-        GameObject projectile = ObjectPooler.Instance.ReturnObject("Bullet");
-        SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
-        ren.color = Color.red;
-        projectile.tag = Tag;        
-        projectile.transform.position = shotPos.position;
-        projectile.SetActive(true);
-        projectile.GetComponent<BulletDestroy>().bulletSpeed = bulletSpeed;
-        projectile.GetComponent<BulletDestroy>().dir = shotDirection;
-        projectile.GetComponent<BulletDestroy>().StartMove();
-
-        
-        //projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
-        Debug.Log(bulletSpeed + " " + theShip);
-		projectile.GetComponent<BulletDestroy>().shipFired = theShip;
-    }
-    public void FireCannon1(Transform shotPos, Vector3 shotDirection, string Tag, GameObject theShip)
-    {
-        Debug.Log("Fired");
-        GameObject projectile = ObjectPooler.Instance.ReturnObject("Bullet");
-        SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
-        ren.color = WeaponManager.Instance.canProjectile.projectileColor;
-        projectile.transform.localScale = new Vector3(WeaponManager.Instance.canProjectile.projectileSize, WeaponManager.Instance.canProjectile.projectileSize, 1);
-        projectile.tag = Tag;
-        projectile.SetActive(true);
-        projectile.transform.position = shotPos.position;
-        projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * WeaponManager.Instance.canProjectile.projectileSpeed;
-        projectile.GetComponent<BulletDestroy>().shipFired = theShip;
-
-
-    }
-
+	
 
 #endregion
 

@@ -16,7 +16,7 @@ public class PlayerShip : Ship
     private CNAbstractController[] sticks;
     private Rigidbody2D rb;
     private Transform weaponShotPosition;
-    private AudioSource audioSrc;
+    //private AudioSource audioSrc;
 	private bool paused;
 	private Vector2 oldVelocity;
     public Camera mainCam;
@@ -71,7 +71,7 @@ public class PlayerShip : Ship
         //Object references
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         weaponShotPosition = GameObject.Find("PlayerCannon").transform;
-        audioSrc = this.gameObject.GetComponent<AudioSource>();
+        //audioSrc = this.gameObject.GetComponent<AudioSource>();
         curPlayer = this;
         mainCam = GameObject.FindObjectOfType<GameManager>().mainCam;
         ui = GameObject.FindObjectOfType<UIManager>();
@@ -282,7 +282,7 @@ public class PlayerShip : Ship
         if(other.tag == "Mine")
         {
             TakeDamage(25);
-            Debug.Log("Hit Mine");
+            
         }
         if (other.tag == "Resource")
         {
@@ -325,7 +325,7 @@ public class PlayerShip : Ship
             canFire2 = true;
         if (canFire && !paused && canFire1 == true && canFire2 == true)
         {
-            FireCannon(currentWeapon, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet", this.gameObject);
+            FireCannon(currentWeapon, weaponShotPosition, cDir, "PlayerBullet", this.gameObject);
             lastFired = Time.time;
         }
     }

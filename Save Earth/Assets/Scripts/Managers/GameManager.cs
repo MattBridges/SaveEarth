@@ -65,11 +65,7 @@ public class GameManager : MonoBehaviour {
             PlayerShip.Instance.RespawnPlayer();
         }
     }
-    public void StartLevel()
-    {
-        PlayerShip.Instance.SpawnPlayer();
-        Debug.Log("Started Level");
-    }
+
     #endregion
 
     void Awake()
@@ -84,29 +80,7 @@ public class GameManager : MonoBehaviour {
 		{
 			TogglePause ();
 		}
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            StartLevel();
-        }
 
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            TestMethod(true);
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            TestMethod();
-        }
 	}
-    void TestMethod(bool testBool = false)
-    {
-        if(testBool)
-        {
-            Debug.Log("TestBool is true");
-        }
-        if(!testBool)
-        {
-            Debug.Log("TestBool is default/false");
-        }
-    }
+
 }
