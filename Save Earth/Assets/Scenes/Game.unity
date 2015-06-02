@@ -1684,6 +1684,16 @@ MonoBehaviour:
     projectileColor: {r: 0, g: 1, b: .296551704, a: 1}
     damageAmount: 5
     projectileSize: 3
+  redProjectile:
+    projectileSpeed: 12
+    cannonSound: {fileID: 0}
+    projectileColor: {r: 1, g: 0, b: 0, a: 1}
+    damageAmount: 5
+  blueProjectile:
+    projectileSpeed: 15
+    cannonSound: {fileID: 0}
+    projectileColor: {r: 0, g: .211764708, b: 1, a: 1}
+    damageAmount: 5
 --- !u!4 &131656654 stripped
 Transform:
   m_PrefabParentObject: {fileID: 412796, guid: 074e37d3304693342a82796e70f43019, type: 2}
@@ -5133,7 +5143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannons: []
-  theCannons: []
+  theStations: []
+  theOrbitals: []
 --- !u!1001 &428071557
 Prefab:
   m_ObjectHideFlags: 0

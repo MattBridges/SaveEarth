@@ -75,6 +75,7 @@ public class OrbitalBaseCannon : Ship {
 		if (target && target.activeSelf) 
 		{
 			cDir = target.transform.position - transform.position;
+            Vector3 dDir = cDir.normalized;
 			
 			if ((Time.time - lastFired) < fireRate)
 				canFire = false;
@@ -83,7 +84,7 @@ public class OrbitalBaseCannon : Ship {
 			
 			if (canFire) {
 				lastFired = Time.time;
-				FireCannon (currentWeapon, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, "EnemyBullet", this.gameObject);
+                FireCannon(currentWeapon, weaponShotPosition, dDir,  "EnemyBullet", this.gameObject);
 			}
 		}	
 	}
