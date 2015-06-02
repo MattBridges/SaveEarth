@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Gatherer : AIController {
 
-//	[HideInInspector]
+	[HideInInspector]
 	public GameObject matHeld;
 	private Vector3 spawnPoint;
 	private GameObject currentLevel;
@@ -17,7 +18,7 @@ public class Gatherer : AIController {
 		maxHealth = 250;
 		health = maxHealth;
 		spawnPoint = transform.position;
-		weaponShotPosition = transform.FindChild ("GathererCannon").gameObject.transform;
+		weaponShotPosition = transform.FindChild("GathererCannon").gameObject.transform;
 		currentLevel = GameManager.Instance.currentMission;
 		updateTarget(currentLevel);
 	}
@@ -25,15 +26,11 @@ public class Gatherer : AIController {
 	private void updateTarget(GameObject level)
 	{
 		GameObject temp = null;
-		OrbitalRefinery oR = null;
 		
-		foreach (GameObject go in GameObject.FindGameObjectsWithTag("Station")) 
+		List<GameObject> refineries = EventManager.Instance.findStation("Refinery");
+
+		foreach (GameObject go in refineries) 
 		{
-			oR = go.GetComponent<OrbitalRefinery>();
-			
-			if (oR == null)
-				continue;
-				
 			if (temp == null)
 				temp = go;
 			else if (Vector3.Distance (transform.position, go.transform.position) < Vector3.Distance (transform.position, temp.transform.position))
@@ -41,9 +38,9 @@ public class Gatherer : AIController {
 			else
 				continue;
 		}
-		
+				
 		target = temp;
-
+		
 		if (target)
 			attack = true;
 	}
@@ -72,17 +69,24 @@ public class Gatherer : AIController {
 		
 		if (Vector3.Distance(spawnPoint, transform.position) < 1)
 		{
-			dropItem(matHeld);
+			dropItem();
+			updateTarget(currentLevel);
+			currentState = AIstate.AI_Follow;
 		}
 	}
 	
-	private void dropItem(GameObject held)
+	public override void AIIdle()
 	{
-		matHeld = null;
-		Destroy (held);
 		updateTarget(currentLevel);
-		currentState = AIstate.AI_Follow;
-		attack = true;
+		
+		if (target != null)
+			currentState = AIstate.AI_Follow;
+	}
+	
+	private void dropItem()
+	{
+		EventManager.Instance.leaveObject(this.gameObject);
+		matHeld = null;
 	}
 	
 	public void GetRawMaterial(GameObject material)
@@ -104,8 +108,7 @@ public class Gatherer : AIController {
 			
 		if (other.tag == "Collectable")
 		{
-			Debug.Log ("Called");
-			EventManager.Instance.takeObject(this.gameObject);
+			EventManager.Instance.takeObject(this.gameObject, other.gameObject);
 			CollectMe(other.gameObject);
 		}
 	}

@@ -24,6 +24,7 @@ public class Collectible : MonoBehaviour {
 	void Awake () {
 		sprite = this.gameObject.GetComponent<SpriteRenderer>();		
 		EventManager.collectIt += collectMe;
+		EventManager.dropIt += dropMe;
 	}
 	
 	public virtual void OnTriggerEnter2D(Collider2D other)
@@ -41,10 +42,23 @@ public class Collectible : MonoBehaviour {
 		}
 	}
 	
-	void collectMe(GameObject collector)
+	void collectMe(GameObject collector, GameObject item)
 	{
-		isHeld = collector;
-		sprite.enabled = false;
+		if (item == this.gameObject)
+		{
+			isHeld = collector;
+			sprite.enabled = false;
+		}
+	}
+
+	void dropMe(GameObject collector)
+	{
+		if (collector == isHeld)
+		{
+			isHeld = null;
+			this.gameObject.SetActive(false);
+			sprite.enabled = true;
+		}
 	}
 	
 	// Update is called once per frame

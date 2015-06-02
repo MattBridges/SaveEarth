@@ -19,8 +19,11 @@ public class Carrier : AIController {
 	private OrbitalBase oB;
 	private float healRate;
 	public float repairRange = 7.0f;
+	
+	[HideInInspector]
+	public List<OrbitalBase> orbitals;
 
-//	[HideInInspector]
+	[HideInInspector]
 	public OrbitalBaseCannon cannon1, cannon2, cannon3, hacking;
 	
 //	private SpriteRenderer sprite;
@@ -71,7 +74,7 @@ public class Carrier : AIController {
 			
 			distance = Vector3.Distance(target.transform.position, transform.position);
 					
-			rb.AddForce(direction * (target.GetComponent<Rigidbody2D>().mass * rb.mass * 7.0f) / (distance*distance));
+			rb.AddForce(direction * (oB.rb.mass * rb.mass * 7.0f) / (distance*distance));
 						
 			if (Vector3.Distance (transform.position, target.transform.position) > distanceFromBase + 4) 
 				currentState = AIstate.AI_Follow;
@@ -84,7 +87,9 @@ public class Carrier : AIController {
 	{
 		GameObject temp = null;
 
-		foreach (OrbitalBase go in GameObject.FindObjectsOfType<OrbitalBase>()) 
+		orbitals = EventManager.Instance.findOrbitals("OrbitalBase");
+
+		foreach (OrbitalBase go in orbitals) 
 		{
 			if ((this.gameObject.tag == "Ally" && go.baseType == OrbitalBase.BaseType.Enemy)
 			||	(this.gameObject.tag == "Enemy" && go.baseType == OrbitalBase.BaseType.Ally))
@@ -93,10 +98,12 @@ public class Carrier : AIController {
 			if (temp == null)
 			{
 				temp = go.gameObject;
+				oB = go;
 			}
 			else if (Vector3.Distance (transform.position, go.transform.position) < Vector3.Distance (transform.position, temp.transform.position))
 			{
 				temp = go.gameObject;
+				oB = go;
 			}
 			
 			if (temp != null)
@@ -124,12 +131,7 @@ public class Carrier : AIController {
 	
 	private void HealOrbitalBase()
 	{
-		if (oB == null)
-		{
-			if (target)
-				oB = target.GetComponent<OrbitalBase>();
-		}
-		else
+		if (oB != null)
 		{			
 			if (oB.gameObject != target.gameObject)
 				oB = null;
@@ -199,6 +201,8 @@ public class Carrier : AIController {
 				}
 			}
 		}
+		else
+			updateTarget(currentLevel);
 	}
 	
 	public override void FixedUpdate()

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OrbitalRefinery : AIController {
+public class OrbitalRefinery : StationaryStation {
 
 	public int rawMaterials;
 	private int damageTaken;
@@ -15,27 +15,19 @@ public class OrbitalRefinery : AIController {
 	// Use this for initialization
 	public override void Start () {
 		base.Start();
+		EventManager.searchStations += returnStation;
 		maxHealth = 1500;
 		health = maxHealth;
 	}
 	
 	private void dropMaterial()
 	{
-		Gatherer gather;
-		
-		tooClose = true;
-		
-		while (tooClose)
-		{
-			randomPos = Random.insideUnitSphere * 5;
-			
-			if (Vector3.Distance(transform.position, randomPos) <= 5)
-				tooClose = true;
-			else
-				tooClose = false;
-		}
-		
-		newMat = Instantiate(material, transform.position + randomPos, Quaternion.identity) as GameObject;
+		Gatherer gather;		
+		GameObject newMat = ObjectPooler.Instance.ReturnObject("RawMaterial");
+
+		randomPos = Random.insideUnitSphere * 5;		
+		newMat.transform.position = (transform.position + randomPos);
+		newMat.SetActive(true);
 		
 		foreach (GameObject go in GameObject.FindGameObjectsWithTag("Enemy"))
 		{
@@ -49,6 +41,14 @@ public class OrbitalRefinery : AIController {
 			}
 		}
 		rawMaterials -= 1;
+	}
+	
+	void returnStation(string type)
+	{
+		if (type == "Refinery" && this.type == stationType.Refinery)
+		{
+			EventManager.Instance.theStations.Add(this.gameObject);
+		}
 	}
 	
 	public override void AIStationary()

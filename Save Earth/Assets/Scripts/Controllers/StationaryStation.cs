@@ -3,6 +3,8 @@ using System.Collections;
 
 public class StationaryStation : SpaceStation {
 
+	public enum stationType { Refinery, OrbitalBase };
+	public stationType type;
 
 	public override void Start () {
 		base.Start ();

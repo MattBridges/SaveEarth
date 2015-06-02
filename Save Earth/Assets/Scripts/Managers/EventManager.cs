@@ -23,11 +23,21 @@ public class EventManager : MonoBehaviour {
 	public static event sendCannon sendCannonReference;
 
 	public List<OrbitalBaseCannon> cannons;
-	public List<OrbitalBaseCannon> theCannons;
+	public List<GameObject> theStations;
+	public List<OrbitalBase> theOrbitals;
 	
-	public delegate void collectObject(GameObject collector);
+	public delegate void collectObject(GameObject collector, GameObject item);
 	public static event collectObject collectIt;
 	
+	public delegate void dropObject(GameObject collector);
+	public static event dropObject dropIt;
+
+	public delegate void stations(string type);
+	public static event stations searchStations;
+
+	public delegate void orbitals(string type);
+	public static event orbitals searchOrbitals;
+				
 	public static EventManager Instance
 	{
 		get
@@ -67,8 +77,31 @@ public class EventManager : MonoBehaviour {
 			sendCannonReference(carrier, cannons);			
 	}
 	
-	public void takeObject(GameObject collector)
+	public void takeObject(GameObject collector, GameObject item)
 	{
-		collectIt(collector);
+		if (collectIt != null)
+			collectIt(collector, item);
+	}
+	
+	public void leaveObject(GameObject collector)
+	{
+		if (dropIt != null)
+			dropIt(collector);
+	}
+	
+	public List<GameObject> findStation(string type)
+	{
+		if (searchStations != null)
+			searchStations(type);
+		
+		return theStations;
+	}
+	
+	public List<OrbitalBase> findOrbitals(string type)
+	{
+		if (searchOrbitals != null)
+			searchOrbitals(type);
+		
+		return theOrbitals;
 	}
 }

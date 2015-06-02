@@ -11,6 +11,7 @@ public class OrbitalBase : StationaryStation {
 		base.Start ();
 		
 		health = 500;
+		EventManager.searchOrbitals += returnStation;
 	}
 		
 	public override void TakeDamage(int amt)
@@ -25,6 +26,15 @@ public class OrbitalBase : StationaryStation {
 			}
 		}
 	}
+	
+	void returnStation(string type)
+	{
+		if (type == "OrbitalBase" && this.type == stationType.OrbitalBase)
+		{
+				EventManager.Instance.theOrbitals.Add(this);
+		}
+	}
+	
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
