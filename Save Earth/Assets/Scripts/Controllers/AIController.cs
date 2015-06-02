@@ -75,7 +75,7 @@ public class AIController : Ship {
 		pShip = PlayerShip.Instance.gameObject;
 
 		EventManager.rT += ResetTarget;
-        EventManager.loadLvl += AddEndConditionObj;
+        
 		if (!pShip) 
 		{
 			Debug.Log ("Error: No player ship found");
@@ -85,16 +85,12 @@ public class AIController : Ship {
 	void OnDisable()
 	{
 		EventManager.rT -= ResetTarget;
-        EventManager.loadLvl -= AddEndConditionObj;
-        endCondidtionObject = false;
+        
+        
         
 	}
     
-    void AddEndConditionObj()
-    {
-        if (this.endCondidtionObject)
-            GameManager.Instance.currentEndLevel.AddDestroyObject(this.gameObject);
-    }
+  
 	public void UpdateRotation(Transform faceDir, float tAngle)
 	{
 		dir = faceDir.position - transform.position;
@@ -140,10 +136,13 @@ public class AIController : Ship {
 			else
 				canFire = true;
 
-			if (canFire) {
-				lastFired = Time.time;
-				FireCannon (currentWeapon, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, this.gameObject.tag == "Ally" ? "AllyBullet" : "EnemyBullet", this.gameObject);
-			}
+            if (canFire)
+            {
+                lastFired = Time.time;
+               
+                FireCannon (currentWeapon, bulletSpeed, null, null, weaponShotPosition, cDir, true, bulletColor, "EnemyBullet", this.gameObject);
+            }
+ 
 		} 
 	}
 

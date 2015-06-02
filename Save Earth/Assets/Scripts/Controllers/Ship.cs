@@ -3,10 +3,10 @@ using System.Collections;
 
 public class Ship : MonoBehaviour {
     public float speed;
-    public enum Weapons { BlueWeapon, RedWeapon };
+    public enum Weapons { BlueWeapon, RedWeapon, Cannon };
     public Weapons currentWeapon;
     private Vector3 rotDir;
-    public bool endCondidtionObject;
+ 
 
 	[HideInInspector]
     public int health;
@@ -61,6 +61,10 @@ public class Ship : MonoBehaviour {
         {
             FireRedCannon(bulletSpeed, audioSrc, shotSound, shotPos, shotDirection, enemy, color, Tag, theShip);
         }
+        if (currentWeapon == Weapons.Cannon)
+        {
+           FireCannon1(shotPos, shotDirection, Tag, theShip);
+        }
     }
 	void FireBlueCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag, GameObject theShip)
     {
@@ -79,6 +83,7 @@ public class Ship : MonoBehaviour {
         projectile.SetActive(true);
         projectile.transform.position = shotPos.position;
         projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
+        Debug.Log(bulletSpeed + " " + theShip);
 		projectile.GetComponent<BulletDestroy>().shipFired = theShip;
     }
     void FireRedCannon(float bulletSpeed, AudioSource audioSrc, AudioClip shotSound, Transform shotPos, Vector3 shotDirection, bool enemy, Color color, string Tag, GameObject theShip)
@@ -94,12 +99,34 @@ public class Ship : MonoBehaviour {
         GameObject projectile = ObjectPooler.Instance.ReturnObject("Bullet");
         SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
         ren.color = Color.red;
+        projectile.tag = Tag;        
+        projectile.transform.position = shotPos.position;
+        projectile.SetActive(true);
+        projectile.GetComponent<BulletDestroy>().bulletSpeed = bulletSpeed;
+        projectile.GetComponent<BulletDestroy>().dir = shotDirection;
+        projectile.GetComponent<BulletDestroy>().StartMove();
+
+        
+        //projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
+        Debug.Log(bulletSpeed + " " + theShip);
+		projectile.GetComponent<BulletDestroy>().shipFired = theShip;
+    }
+    public void FireCannon1(Transform shotPos, Vector3 shotDirection, string Tag, GameObject theShip)
+    {
+        Debug.Log("Fired");
+        GameObject projectile = ObjectPooler.Instance.ReturnObject("Bullet");
+        SpriteRenderer ren = projectile.gameObject.GetComponent<SpriteRenderer>();
+        ren.color = WeaponManager.Instance.canProjectile.projectileColor;
+        projectile.transform.localScale = new Vector3(WeaponManager.Instance.canProjectile.projectileSize, WeaponManager.Instance.canProjectile.projectileSize, 1);
         projectile.tag = Tag;
         projectile.SetActive(true);
         projectile.transform.position = shotPos.position;
-        projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * bulletSpeed;
-		projectile.GetComponent<BulletDestroy>().shipFired = theShip;
+        projectile.GetComponent<Rigidbody2D>().velocity = shotDirection * WeaponManager.Instance.canProjectile.projectileSpeed;
+        projectile.GetComponent<BulletDestroy>().shipFired = theShip;
+
+
     }
+
 
 #endregion
 

@@ -22,7 +22,11 @@ public class PlayerShip : Ship
     public Camera mainCam;
     private GameObject spawnPoint;
     private UIManager ui;
-    
+
+
+    public bool canFire = false;
+    public float lastFired;
+
     [HideInInspector]
     public GameObject[] resources;
     
@@ -84,14 +88,7 @@ public class PlayerShip : Ship
 	}
     void FixedUpdate()
     {
-            if(Input.GetKeyDown(KeyCode.A))
-            {
-                currentWeapon = Weapons.BlueWeapon;
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                currentWeapon = Weapons.RedWeapon;
-            }
+        ShootWep();
             
     }
 
@@ -129,11 +126,13 @@ public class PlayerShip : Ship
     }
     void StartFire(CNAbstractController controller)
     {
-        StartCoroutine("FireWepon");
+        //StartCoroutine("FireWepon");
+        canFire = true;
     }
     void StopFire(CNAbstractController controller)
     {
-        StopCoroutine("FireWepon");
+        //StopCoroutine("FireWepon");
+        canFire = false;
     }
     #endregion
     #region Methods
@@ -154,24 +153,7 @@ public class PlayerShip : Ship
             }
         }
     }
-    IEnumerator FireWepon()
-    {
-		while (true) {
-			yield return new WaitForSeconds (.15f);           
-            
-			Vector3 sDir = new Vector3 (rightStick.GetAxis ("Horizontal"), rightStick.GetAxis ("Vertical"));
-			Vector3 cDir = sDir.normalized;
-            
-			bool canFire = false;
-			if (cDir.x == 0 && cDir.y == 0)
-				canFire = false;
-			else
-				canFire = true;
-			if (canFire && !paused) {
-				FireCannon (currentWeapon, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet", this.gameObject);
-			}
-		}
-    }
+  
     #endregion
     public void SpawnPlayer()
     {
@@ -323,5 +305,30 @@ public class PlayerShip : Ship
         
         ui.UpdatePlayerHealthText();
     }
+
+    public void ShootWep()
+    {
+        Vector3 sDir = new Vector3(rightStick.GetAxis("Horizontal"), rightStick.GetAxis("Vertical"));
+        Vector3 cDir = sDir.normalized;
+       
+        bool canFire1 = false;
+        bool canFire2 = false;
+
+        if ((Time.time - lastFired) < .15f)
+            canFire1 = false;
+        else
+            canFire1 = true;
+
+        if (cDir.x == 0 && cDir.y == 0)
+            canFire2 = false;
+        else
+            canFire2 = true;
+        if (canFire && !paused && canFire1 == true && canFire2 == true)
+        {
+            FireCannon(currentWeapon, bulletSpeed, audioSrc, shotSound, weaponShotPosition, cDir, false, bulletColor, "PlayerBullet", this.gameObject);
+            lastFired = Time.time;
+        }
+    }
+    
     
 }

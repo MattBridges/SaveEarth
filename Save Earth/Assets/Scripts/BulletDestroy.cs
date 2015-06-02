@@ -7,15 +7,19 @@ public class BulletDestroy : MonoBehaviour {
 	private Rigidbody2D rb;
 	private bool paused;
 	public GameObject shipFired;
+    public float bulletSpeed;
+    public Vector3 dir;
 
-	void Start()
+	void Awake()
 	{
 		rb = this.gameObject.GetComponent<Rigidbody2D>();
 	}
 
 	void OnEnable()
     {
-        Invoke("Destroy", 2f);        
+        Invoke("Destroy", 2f);
+        
+        
     }
     void Destroy()
     {
@@ -24,6 +28,8 @@ public class BulletDestroy : MonoBehaviour {
     void OnDisable()
     {
         CancelInvoke();
+        this.transform.localScale = new Vector3(1, 1, 1);
+       
     }
 
 	private void TogglePause()
@@ -42,6 +48,10 @@ public class BulletDestroy : MonoBehaviour {
 			Invoke("Destroy", 2f);
 		}
 	}
+    public void StartMove()
+    {
+        rb.velocity = dir * bulletSpeed;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -77,5 +87,6 @@ public class BulletDestroy : MonoBehaviour {
 		{
 			Destroy();
 		}
+    
     }
 }

@@ -1639,6 +1639,51 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 412796, guid: 074e37d3304693342a82796e70f43019, type: 2}
   m_PrefabInternal: {fileID: 1532748152}
+--- !u!1 &128490601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 128490602}
+  - 114: {fileID: 128490603}
+  m_Layer: 0
+  m_Name: WeaponManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &128490602
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128490601}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1967758684}
+  m_RootOrder: 6
+--- !u!114 &128490603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128490601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b2ef342b504fc4091fc5e63a724c2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canProjectile:
+    projectileSpeed: 5
+    cannonSound: {fileID: 0}
+    projectileColor: {r: 0, g: 1, b: .296551704, a: 1}
+    damageAmount: 5
+    projectileSize: 3
 --- !u!4 &131656654 stripped
 Transform:
   m_PrefabParentObject: {fileID: 412796, guid: 074e37d3304693342a82796e70f43019, type: 2}
@@ -3513,7 +3558,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -32.2999992
+      value: -36.1599998
       objectReference: {fileID: 0}
     - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: m_LocalPosition.y
@@ -20163,24 +20208,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9cf8722f412ab4f8c569c455d41ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipSpawns: 
-  bulletAmt: 50
-  dragonFlyAmt: 10
-  motherShipAmt: 5
-  mineAmt: 50
-  satelliteAmt: 5
-  allyRaptorAmt: 5
-  orbitalRefAmt: 2
-  gathererAmt: 5
-  allyOrbitalAmt: 5
-  orbitalAmt: 2
-  allyCarrierAmt: 5
-  carrierAmt: 2
-  baseShipAmt: 2
-  raptorAmt: 10
-  IceChunksAmt: 5
-  rawMaterialAmt: 5
-  preciousResourceAmt: 5
+  shipTotals:
+    dragonFlyAmt: 5
+    motherShipAmt: 2
+    mineAmt: 5
+    satelliteAmt: 2
+    allyRaptorAmt: 10
+    orbitalRefAmt: 5
+    gathererAmt: 5
+    allyOrbitalAmt: 5
+    orbitalAmt: 5
+    allyCarrierAmt: 10
+    carrierAmt: 10
+    baseShipAmt: 2
+    raptorAmt: 20
+  projectileTotals:
+    bulletAmt: 50
+  resourcesTotals:
+    rawMaterialAmt: 5
+    preciousResourceAmt: 5
   pooled: []
 --- !u!4 &1836787544
 Transform:
@@ -21120,7 +21166,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: SpawnType
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: DestroyEndCond
@@ -21511,6 +21557,7 @@ Transform:
   - {fileID: 1022465607}
   - {fileID: 194150314}
   - {fileID: 420434332}
+  - {fileID: 128490602}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!1001 &1967875355
