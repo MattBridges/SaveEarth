@@ -1679,17 +1679,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canProjectile:
-    projectileSpeed: 5
+    projectile: {fileID: 156950, guid: 051ffec3a1f55c24e85054d49f5437e3, type: 2}
+    projectileSpeed: 17
     cannonSound: {fileID: 0}
     projectileColor: {r: 0, g: 1, b: .296551704, a: 1}
     damageAmount: 5
-    projectileSize: 3
+    projectileSize: 2
   redProjectile:
+    projectile: {fileID: 101866, guid: c7f5911994bffc442949440532ee8b36, type: 2}
     projectileSpeed: 12
     cannonSound: {fileID: 0}
     projectileColor: {r: 1, g: 0, b: 0, a: 1}
     damageAmount: 5
   blueProjectile:
+    projectile: {fileID: 127546, guid: 67c3940b5ffe41d4fb9c5f7a7ded0815, type: 2}
     projectileSpeed: 15
     cannonSound: {fileID: 0}
     projectileColor: {r: 0, g: .211764708, b: 1, a: 1}
@@ -15837,6 +15840,10 @@ Prefab:
       propertyPath: delayTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -20305,6 +20312,9 @@ MonoBehaviour:
     raptorAmt: 20
   projectileTotals:
     bulletAmt: 50
+    canProjectileAmt: 15
+    redProjectileAmt: 50
+    yellowProjectileAmt: 50
   resourcesTotals:
     rawMaterialAmt: 5
     preciousResourceAmt: 5
@@ -21260,7 +21270,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: spawnType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: delayTime

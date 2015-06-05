@@ -32,6 +32,10 @@ public class Ships
 public class Projectiles
 {
     public int bulletAmt;
+    public int canProjectileAmt;
+    public int redProjectileAmt;
+    public int yellowProjectileAmt;
+
 }
 [System.Serializable]
 public class Collectibles
@@ -150,6 +154,7 @@ public class PoolingManager : MonoBehaviour
 
         //Add Object types
 
+        //Ships
         AddPoolObject(pooledObjects, "Dragonfly", shipTotals.dragonFlyAmt);
         AddPoolObject(pooledObjects, "Raptor", shipTotals.raptorAmt);
         AddPoolObject(pooledObjects, "MotherShip", shipTotals.motherShipAmt);
@@ -163,7 +168,14 @@ public class PoolingManager : MonoBehaviour
         AddPoolObject(pooledObjects, "AllyCarrier", shipTotals.allyCarrierAmt);
         AddPoolObject(pooledObjects, "Carrier", shipTotals.carrierAmt);
         AddPoolObject(pooledObjects, "EnemyBaseShip", shipTotals.baseShipAmt);
+        
+        //Projectiles
         AddPoolObject(pooledObjects, "Bullet", projectileTotals.bulletAmt);
+        AddPoolObject(pooledObjects, "CannonProjectile", projectileTotals.canProjectileAmt);
+        AddPoolObject(pooledObjects, "RedProjectile", projectileTotals.canProjectileAmt);
+        AddPoolObject(pooledObjects, "YellowProjectile", projectileTotals.canProjectileAmt);
+        
+        //DropObjects
         AddPoolObject(pooledDropObjects, "RawMaterial", resourcesTotals.rawMaterialAmt);
         AddPoolObject(pooledDropObjects, "PreciousResource", resourcesTotals.preciousResourceAmt);
 
