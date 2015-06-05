@@ -198,9 +198,12 @@ public class LevelCreator : MonoBehaviour {
     {
         
         string[] ns = node.name.Split('_');
-        string nodeName = ns[0];
-
-
+        string nodeName = null;
+        if (node.GetComponent<SpawnNode>().spawnType == SpawnNode.SpawnType.Delayed)
+            nodeName = ns[1];
+        else
+            nodeName = ns[0];
+    
         if(nodeName == "PlayerShip")
         {
            

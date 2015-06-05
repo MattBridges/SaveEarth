@@ -714,6 +714,10 @@ Prefab:
       propertyPath: SpawnType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -2043,6 +2047,10 @@ Prefab:
       propertyPath: SpawnType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -2736,6 +2744,14 @@ Prefab:
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: SpawnType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'Raptor_Spawn '
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: shipType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -3628,7 +3644,7 @@ Prefab:
         type: 0}
     - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: m_Name
-      value: SpawnNode
+      value: 'PlayerShip_Spawn '
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: shipType
@@ -3833,6 +3849,10 @@ Prefab:
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: SpawnType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -4889,6 +4909,10 @@ Prefab:
       propertyPath: SpawnType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -5252,6 +5276,14 @@ Prefab:
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: SpawnType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'Raptor_Spawn '
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: shipType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -6079,6 +6111,10 @@ Prefab:
       propertyPath: SpawnType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -6124,6 +6160,10 @@ Prefab:
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: SpawnType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -6746,6 +6786,10 @@ Prefab:
       propertyPath: SpawnType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -7121,6 +7165,10 @@ Prefab:
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: SpawnType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -11994,6 +12042,10 @@ Prefab:
       propertyPath: DestroyEndCond
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -13597,6 +13649,10 @@ Prefab:
       propertyPath: SpawnType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -14443,6 +14499,10 @@ Prefab:
       propertyPath: SpawnType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -14844,6 +14904,10 @@ Prefab:
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: DestroyEndCond
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -15834,7 +15898,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: spawnType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: delayTime
@@ -15842,7 +15906,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'Raptor_Spawn '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -16430,6 +16498,10 @@ Prefab:
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: DestroyEndCond
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -17950,6 +18022,10 @@ Prefab:
       propertyPath: DestroyEndCond
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -19069,6 +19145,10 @@ Prefab:
       propertyPath: SpawnType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -19209,6 +19289,10 @@ Prefab:
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: SpawnType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -20051,6 +20135,14 @@ Prefab:
       propertyPath: SpawnType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'Raptor_Spawn '
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: shipType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -20869,6 +20961,10 @@ Prefab:
       propertyPath: SpawnType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -21198,6 +21294,10 @@ Prefab:
       propertyPath: SpawnType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
   m_IsPrefabParent: 0
@@ -21270,11 +21370,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: spawnType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: delayTime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'Delayed_Raptor_Spawn '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -23727,6 +23831,10 @@ Prefab:
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: SpawnType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'PlayerShip_Spawn '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}

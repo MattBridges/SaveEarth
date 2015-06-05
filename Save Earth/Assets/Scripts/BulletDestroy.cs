@@ -6,9 +6,11 @@ public class BulletDestroy : MonoBehaviour {
 	private Vector2 oldVelocity;
 	private Rigidbody2D rb;
 	private bool paused;
+    public float lifeTime = 2;
 	public GameObject shipFired;
-    public float bulletSpeed;
-    public Vector3 dir;
+
+    
+   
 
 	void Awake()
 	{
@@ -17,7 +19,7 @@ public class BulletDestroy : MonoBehaviour {
 
 	void OnEnable()
     {
-        Invoke("Destroy", 2f);
+        Invoke("Destroy", lifeTime);
         
         
     }
@@ -45,13 +47,10 @@ public class BulletDestroy : MonoBehaviour {
 		else 
 		{
 			rb.velocity = oldVelocity;
-			Invoke("Destroy", 2f);
+            Invoke("Destroy", lifeTime);
 		}
 	}
-    public void StartMove()
-    {
-        rb.velocity = dir * bulletSpeed;
-    }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
