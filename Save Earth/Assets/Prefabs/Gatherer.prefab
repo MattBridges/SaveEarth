@@ -43,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.7027512, y: -8.79897308, z: 0}
+  m_LocalPosition: {x: -24.7441845, y: -16.9729176, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434548}
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.28999996, z: 0}
+  m_LocalPosition: {x: 1.39199996, y: .00999999978, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 401454}
@@ -84,11 +84,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 178894}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.5}
+  m_Size: {x: 2.6500001, y: 1.14999998}
 --- !u!114 &11459088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,7 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   currentWeapon: 0
-  endCondidtionObject: 0
   health: 0
   currentState: 1
   bulletSpeed: 2

@@ -181,7 +181,7 @@ public class AIController : Ship {
             else
                 nextNode = PathNodeManager.Instance.GetNextNodePingPong(pathNodeGroup);
 
-            UpdateRotation(nextNode, 90);
+            UpdateRotation(nextNode, 0);
         }
         else
         {
@@ -204,7 +204,7 @@ public class AIController : Ship {
 		{
 			if (target)
 			{
-				UpdateRotation(target.transform, 90);
+				UpdateRotation(target.transform, 0);
 
 				if (!target.activeSelf)
 				{
