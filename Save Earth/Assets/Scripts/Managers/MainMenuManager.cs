@@ -39,7 +39,7 @@ public class MainMenuManager : MonoBehaviour {
         GameManager.Instance.currentZone = str[0];
         GameManager.Instance.currentMissionNum = num;
         GameManager.Instance.playerLives = 3;
-        UIManager.Instance.UpdatePlayerLivesText();
+//        UIManager.Instance.UpdatePlayerLivesText();
         ToggleMenu();
         GameManager.Instance.TogglePause();        
         PlayerShip.Instance.SpawnPlayer();

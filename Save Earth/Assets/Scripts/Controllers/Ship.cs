@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Ship : MonoBehaviour {
     public float speed;
     public enum Weapons { BlueWeapon, RedWeapon, Cannon };
     public Weapons currentWeapon;
     private Vector3 rotDir;
+
  
 
 	[HideInInspector]
@@ -70,5 +72,5 @@ public class Ship : MonoBehaviour {
 
 #endregion
 
-  
+
 }

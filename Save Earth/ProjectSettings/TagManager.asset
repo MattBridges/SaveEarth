@@ -26,6 +26,7 @@ TagManager:
   - Dropzone
   - Hercules
   - ShipPart
+  - Pointer
   layers:
   - Default
   - TransparentFX

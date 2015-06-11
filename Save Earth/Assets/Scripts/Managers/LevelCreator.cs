@@ -67,13 +67,14 @@ public class LevelCreator : MonoBehaviour {
     {
         ClearAllMissionNodes(GameManager.Instance.currentMission);
         ClearAllEnemyShips();
-        UIManager.Instance.UpdatePlayerHealthText();
-        UIManager.Instance.UpdatePlayerLivesText();
+       // UIManager.Instance.UpdatePlayerHealthText();
+//        UIManager.Instance.UpdatePlayerLivesText();
         Mission.SetActive(true);
         SpawnShips();
         
         GameManager.Instance.currentMission = Mission;
         EventManager.ResetTargets();
+        
         Debug.Log("Loaded Level: " + Mission.name);
     }
     public void LoadRandomMission(string curLevel, int mission)

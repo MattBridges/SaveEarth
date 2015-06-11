@@ -6,10 +6,7 @@ public class PlayerShip : Ship
     #region Variables
     public Sprite shipSprite;
     public float moveSpeed;
-    public float bulletSpeed;
-    public AudioClip shotSound;
-    public PlayerShip curPlayer;
-    public Color bulletColor;
+
 
     private CNAbstractController leftStick;
     private CNAbstractController rightStick;
@@ -32,6 +29,8 @@ public class PlayerShip : Ship
     
     [HideInInspector]
     public Collectible towingObject;
+
+ 
         
     private static PlayerShip _instance;
     public static PlayerShip Instance
@@ -72,7 +71,7 @@ public class PlayerShip : Ship
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         weaponShotPosition = GameObject.Find("PlayerCannon").transform;
         //audioSrc = this.gameObject.GetComponent<AudioSource>();
-        curPlayer = this;
+        
         mainCam = GameObject.FindObjectOfType<GameManager>().mainCam;
         ui = GameObject.FindObjectOfType<UIManager>();
   
@@ -91,7 +90,9 @@ public class PlayerShip : Ship
         ShootWep();
             
     }
+    #region HUD Methods
 
+    #endregion
 	public void TogglePause()
 	{
 		paused = !paused;
@@ -182,6 +183,7 @@ public class PlayerShip : Ship
             RespawnPlayer(); 
 			EventManager.ResetTargets();				
         }
+        
            
     }
     public void RespawnPlayer()
@@ -218,7 +220,7 @@ public class PlayerShip : Ship
             }                
         }
 
-            
+        
        
             
         

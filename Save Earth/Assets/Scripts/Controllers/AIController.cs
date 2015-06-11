@@ -17,6 +17,7 @@ public class AIController : Ship {
 	private float lastFired;
 	private Vector3 cDir;
 	private bool canFire;
+    private GameObject targetingPointer;
 	
 	[HideInInspector]
 	public Transform nextNode;
@@ -63,8 +64,12 @@ public class AIController : Ship {
 		health = maxHealth;
         currentWeapon = Weapons.RedWeapon;
 		rb = this.gameObject.GetComponent<Rigidbody2D>();
+        
 	}
-
+    public virtual void Awake()
+    {
+        targetingPointer = UIManager.Instance.RegisterPointer(this.gameObject);
+    }
 	void ResetTarget()
 	{
 		target = null;
@@ -80,11 +85,15 @@ public class AIController : Ship {
 		{
 			Debug.LogError ("No player ship found");
 		}
+        
+
+        
 	}
 
 	void OnDisable()
 	{
 		EventManager.rT -= ResetTarget;
+       
         
         
         
