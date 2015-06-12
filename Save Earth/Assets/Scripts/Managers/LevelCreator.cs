@@ -67,8 +67,8 @@ public class LevelCreator : MonoBehaviour {
     {
         ClearAllMissionNodes(GameManager.Instance.currentMission);
         ClearAllEnemyShips();
-       // UIManager.Instance.UpdatePlayerHealthText();
-//        UIManager.Instance.UpdatePlayerLivesText();
+        UIManager.Instance.UpdatePlayerHealthText();
+        UIManager.Instance.UpdatePlayerLivesText();
         Mission.SetActive(true);
         SpawnShips();
         

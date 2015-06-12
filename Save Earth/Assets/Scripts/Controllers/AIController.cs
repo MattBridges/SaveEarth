@@ -10,7 +10,8 @@ public class AIController : Ship {
 	public float bulletSpeed;
 	public float fireRate;
 	public float wakeupDistance;
-	public int maxHealth;
+	public float maxHealth;
+    public HealthManager healthManager;
 	
 	private Vector3 dir;
 	private float angle;
@@ -77,7 +78,11 @@ public class AIController : Ship {
 
     void OnEnable()
 	{
-		pShip = PlayerShip.Instance.gameObject;
+		if(PlayerShip.Instance!=null)
+            pShip = PlayerShip.Instance.gameObject;
+       
+        healthManager = gameObject.GetComponentInChildren<HealthManager>();
+      
 
 		EventManager.rT += ResetTarget;
         
@@ -281,7 +286,9 @@ public class AIController : Ship {
     	}
     	else
 	        this.health -= amt;
-	        
+       
+
+        healthManager.SetWidth(health / maxHealth);
         if (this.health <= 0)
         {
             if (GameManager.Instance.currentEndLevel.destroyObjects.Contains(this.gameObject))
@@ -294,6 +301,7 @@ public class AIController : Ship {
             GameManager.Instance.currentEndLevel.CheckWinCondition(); 
             
         }
+        
     }
     public void DropItem()
     {

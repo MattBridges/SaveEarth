@@ -50,17 +50,10 @@ public class UIManager : MonoBehaviour {
     }
     public GameObject FindPointer()
     {
-        
-        //foreach (GameObject pointr in pointers)
-        //{
-        //    if (!pointer.activeInHierarchy)
-        //    {
-        //        return pointer;
-        //    }
-        //}
-  
+
        GameObject obj = Instantiate(pointer);
-       obj.gameObject.transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
+       if(PlayerShip.Instance !=null)
+           obj.gameObject.transform.parent = PlayerShip.Instance.transform;
        obj.SetActive(true);
        return obj;
 

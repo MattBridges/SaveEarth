@@ -11,7 +11,7 @@ public class Ship : MonoBehaviour {
  
 
 	[HideInInspector]
-    public int health;
+    public float health;
 
 
     #region Movement Methods

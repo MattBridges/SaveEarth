@@ -210,7 +210,7 @@ public class RaptorShip: AIController  {
 
 		if (other.gameObject.tag == "EnemyBullet" && this.gameObject.tag == "Ally" || other.gameObject.tag == "AllyBullet" && this.gameObject.tag == "Enemy") 
 		{
-			TakeDamage(5);
+			TakeDamage(2);
 			if (currentState == AIstate.AI_Idle)
 				currentState = AIstate.AI_Follow;
 			
