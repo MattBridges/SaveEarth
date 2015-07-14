@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AphroditeController : AIController {
+public class AphroditeController : BattleshipController {
 
 	public bool canWake;
 	
@@ -14,6 +14,8 @@ public class AphroditeController : AIController {
 	public override void Start () 
 	{
 		base.Start ();
+		
+		SubClass = subClass.Medium;
 		attack = false;	
 		Dropzone.evac += Evacuate;
 		Dropzone.collection += checkResources;

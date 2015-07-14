@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RaptorShip: AIController  {
+public class RaptorShip: FighterController  {
     
 	public float distanceFromPlayer;
 	public bool canWake;
@@ -31,7 +31,10 @@ public class RaptorShip: AIController  {
 	// Use this for initialization
 	public override void Start () {
 		base.Start ();
-		weaponShotPosition = transform.FindChild ("RaptorCannon").gameObject.transform;
+		
+		SubClass = subClass.Medium;
+		
+		weaponShotPosition = transform.FindChild("RaptorCannon").gameObject.transform;
 
 		currentLevel = GameManager.Instance.currentMission;
 		updateTarget(currentLevel);

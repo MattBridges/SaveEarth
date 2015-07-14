@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DragonflyShip : AIController {
+public class DragonflyShip : CorvetteController {
 
 	public float rushDistance;
 	public bool canWake;
@@ -15,6 +15,7 @@ public class DragonflyShip : AIController {
     public override void Start () 
 	{
 		base.Start ();
+		SubClass = subClass.Heavy;
 		attack = false;
 		weaponShotPosition = transform.FindChild ("DragonflyCannon").gameObject.transform;
 		target = pShip;

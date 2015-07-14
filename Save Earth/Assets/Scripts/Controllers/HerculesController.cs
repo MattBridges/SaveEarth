@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HerculesController : AIController {
+public class HerculesController : BattleshipController {
 
 	public bool canWake;
 	public int crewMembers;
@@ -12,9 +12,10 @@ public class HerculesController : AIController {
 	private SpriteRenderer theSprite;
 		
 	// Use this for initialization
-	void Awake () 
+	public override void Awake () 
 	{
 		base.Start ();
+		SubClass = subClass.Medium;
 		attack = false;		
 		
 		theSprite = this.gameObject.GetComponent<SpriteRenderer>();
