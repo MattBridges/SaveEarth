@@ -19,8 +19,8 @@ public class EventManager : MonoBehaviour {
 	public delegate void Cannons(GameObject orbBase);
 	public static event Cannons findCannons;
 	
-	public delegate void sendCannon(Carrier carrier, List<OrbitalBaseCannon> attachment);
-	public static event sendCannon sendCannonReference;
+//	public delegate void sendCannon(Carrier carrier, List<OrbitalBaseCannon> attachment);
+//	public static event sendCannon sendCannonReference;
 
 	public List<OrbitalBaseCannon> cannons;
 	public List<GameObject> theStations;
@@ -68,14 +68,14 @@ public class EventManager : MonoBehaviour {
 	    	doTow(PlayerShip.Instance, part, towDrop);
     }
     
-	public void GetCannons(Carrier carrier, GameObject orbBase)
-	{
-		if (findCannons != null)
-			findCannons(orbBase);
-		
-		if (sendCannonReference != null)
-			sendCannonReference(carrier, cannons);			
-	}
+//	public void GetCannons(Carrier carrier, GameObject orbBase)
+//	{
+//		if (findCannons != null)
+//			findCannons(orbBase);
+//		
+//		if (sendCannonReference != null)
+//			sendCannonReference(carrier, cannons);			
+//	}
 	
 	public void takeObject(GameObject collector, GameObject item)
 	{

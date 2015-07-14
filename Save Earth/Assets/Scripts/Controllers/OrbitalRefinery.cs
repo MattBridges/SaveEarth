@@ -22,7 +22,7 @@ public class OrbitalRefinery : StationaryStation {
 	
 	private void dropMaterial()
 	{
-		Gatherer gather;		
+//		Gatherer gather;		
 		GameObject newMat = ObjectPooler.Instance.ReturnObject("RawMaterial");
 
 		randomPos = Random.insideUnitSphere * 5;		
@@ -31,14 +31,14 @@ public class OrbitalRefinery : StationaryStation {
 		
 		foreach (GameObject go in GameObject.FindGameObjectsWithTag("Enemy"))
 		{
-			if (gather = go.GetComponent<Gatherer>())
-			{
-				if (gather.matHeld == null)
-				{
-					gather.GetRawMaterial(newMat);
-					newMat.GetComponent<Collectible>().beingCollected = gather.gameObject;
-				}
-			}
+//			if (gather = go.GetComponent<Gatherer>())
+//			{
+//				if (gather.matHeld == null)
+//				{
+//					gather.GetRawMaterial(newMat);
+//					newMat.GetComponent<Collectible>().beingCollected = gather.gameObject;
+//				}
+//			}
 		}
 		rawMaterials -= 1;
 	}
