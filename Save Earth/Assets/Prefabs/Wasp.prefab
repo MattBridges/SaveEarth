@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 11404868}
   - 114: {fileID: 11459762}
   m_Layer: 0
-  m_Name: Dragonfly
+  m_Name: Wasp
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,17 +276,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 160624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b8a5b3bb9f291045bcac3ce2ef262f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 49cc99af344b5438d8358a416e2c6777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0
   currentWeapon: 0
   health: 0
-  currentState: 3
-  bulletSpeed: 2
-  fireRate: 1
-  wakeupDistance: 8
-  maxHealth: 20
+  currentState: 0
+  bulletSpeed: 0
+  fireRate: 0
+  wakeupDistance: 0
+  maxHealth: 0
   healthManager: {fileID: 0}
   nextNode: {fileID: 0}
   pathNodeGroup: 0
@@ -301,9 +301,7 @@ MonoBehaviour:
   attack: 0
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
-  rushDistance: 4
-  canWake: 0
-  shipSprites: []
+  SubClass: 0
 --- !u!114 &11448746
 MonoBehaviour:
   m_ObjectHideFlags: 1

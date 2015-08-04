@@ -32,7 +32,7 @@ public class SpaceStation : AIController {
 
 	}
 	
-	public virtual void OnDisable()
+	public override void OnDisable()
 	{
 		health = maxHealth;
         

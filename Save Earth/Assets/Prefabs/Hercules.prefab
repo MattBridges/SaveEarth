@@ -69,7 +69,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 167200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec3602f3d897c47ad854b7e15ddf0ec1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f26dd7fae60e46a5b357c2c26663f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
@@ -79,7 +79,8 @@ MonoBehaviour:
   bulletSpeed: 0
   fireRate: 0
   wakeupDistance: 0
-  maxHealth: 3000
+  maxHealth: 0
+  healthManager: {fileID: 0}
   nextNode: {fileID: 0}
   pathNodeGroup: 0
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
@@ -93,8 +94,7 @@ MonoBehaviour:
   attack: 0
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
-  canWake: 0
-  crewMembers: 20
+  SubClass: 1
 --- !u!114 &11461632
 MonoBehaviour:
   m_ObjectHideFlags: 1

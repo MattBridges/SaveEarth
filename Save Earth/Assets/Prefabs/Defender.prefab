@@ -85,7 +85,7 @@ GameObject:
   - 114: {fileID: 11437204}
   - 114: {fileID: 11481718}
   m_Layer: 0
-  m_Name: MotherShip
+  m_Name: Defender
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,17 +287,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 178034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168ec6ecd4090c743b2d0b524da70891, type: 3}
+  m_Script: {fileID: 11500000, guid: e5db44621f62e4d0faeb4af5f4291398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0
   currentWeapon: 0
   health: 0
-  currentState: 3
-  bulletSpeed: 2
-  fireRate: 1
+  currentState: 0
+  bulletSpeed: 0
+  fireRate: 0
   wakeupDistance: 0
-  maxHealth: 40
+  maxHealth: 0
   healthManager: {fileID: 0}
   nextNode: {fileID: 0}
   pathNodeGroup: 0
@@ -305,13 +305,14 @@ MonoBehaviour:
   paused: 0
   rb: {fileID: 0}
   hasMothershipShield: 0
-  mothershipShieldDelay: 10
-  shieldHealth: 100
+  mothershipShieldDelay: 0
+  shieldHealth: 0
   shieldTime: 0
   target: {fileID: 0}
   attack: 0
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
+  SubClass: 2
 --- !u!114 &11453864
 MonoBehaviour:
   m_ObjectHideFlags: 1

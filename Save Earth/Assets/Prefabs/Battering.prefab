@@ -66,7 +66,7 @@ GameObject:
   - 114: {fileID: 11476154}
   - 114: {fileID: 11459088}
   m_Layer: 0
-  m_Name: Gatherer
+  m_Name: Battering
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 178894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 876a8714709a547fbada361c2cb0fc95, type: 3}
+  m_Script: {fileID: 11500000, guid: 412694cda2f2c414c9da7a39167e01a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   attack: 0
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
-  SubClass: 0
+  SubClass: 1
 --- !u!114 &11474524
 MonoBehaviour:
   m_ObjectHideFlags: 1

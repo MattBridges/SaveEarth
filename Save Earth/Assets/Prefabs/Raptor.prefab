@@ -250,20 +250,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 190962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9da92b52cb7e0d8479f21e41d03877d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 24b87a7384e2d478bb3adbe19f66e0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0
   currentWeapon: 0
   health: 0
   currentState: 0
-  bulletSpeed: 2
-  fireRate: .75
-  wakeupDistance: 10
-  maxHealth: 30
+  bulletSpeed: 0
+  fireRate: 0
+  wakeupDistance: 0
+  maxHealth: 0
   healthManager: {fileID: 0}
   nextNode: {fileID: 0}
-  pathNodeGroup: 1
+  pathNodeGroup: 0
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
   paused: 0
   rb: {fileID: 0}
@@ -275,14 +275,7 @@ MonoBehaviour:
   attack: 0
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
-  distanceFromPlayer: 4
-  canWake: 0
-  strafeSpeed: 3
-  strafeDir: 0
-  currentLevel: {fileID: 0}
-  swapTarget: 0
-  shipSprites: []
-  protectedSatellite: {fileID: 0}
+  SubClass: 1
 --- !u!114 &11467126
 MonoBehaviour:
   m_ObjectHideFlags: 1

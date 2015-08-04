@@ -76,7 +76,7 @@ public class AIController : Ship {
 		target = null;
 	}
 
-    void OnEnable()
+    public virtual void OnEnable()
 	{
 		if(PlayerShip.Instance!=null)
             pShip = PlayerShip.Instance.gameObject;
@@ -95,7 +95,7 @@ public class AIController : Ship {
         
 	}
 
-	void OnDisable()
+	public virtual void OnDisable()
 	{
 		EventManager.rT -= ResetTarget;
        
