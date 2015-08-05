@@ -3,7 +3,11 @@ using UnityEditor;
 using System.Collections;
 [ExecuteInEditMode]
 public class SpawnNode : MonoBehaviour {
-    public enum ShipType { PlayerShip, Dragonfly, Raptor, MotherShip, Satellite, AllyRaptor, OrbitalRefinery, Gatherer, AllyOrbitalBase, OrbitalBase, AllyCarrier, Carrier, EnemyBaseShip, EnemyMine};
+    public enum ShipType { 
+        
+        PlayerShip, AllyRaptor, Aphrodite, Battering, Bombardier, Bumble, Defender, Dreadnaught, 
+        EnemyBaseShip, Gatherer, Hercules, Hive, Hunter, LightCarrier, Protector, Rammer, Raptor, 
+        Replenisher, Trapper, Wasp, Wolverine};
     public enum SpawnType { Normal, Delayed };
     
     public ShipType shipType;
