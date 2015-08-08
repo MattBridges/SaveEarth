@@ -3,9 +3,10 @@ using System.Collections;
 
 public class AIController : Ship {
 	
-	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary, AI_Defend, AI_Strafe, AI_Assist, AI_Patrol };
-
+	public enum AIstate { AI_Idle, AI_Follow, AI_Retreat, AI_Stationary, AI_Patrol };
+	public enum AIsubState { AI_Idle, AI_Attack, AI_Strafe, AI_Assist, AI_Defend };
 	public AIstate currentState;
+	public AIsubState currentSubState;
 	
 	public float bulletSpeed;
 	public float fireRate;
@@ -111,7 +112,7 @@ public class AIController : Ship {
 		angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		angle -= tAngle;
 
-		if (currentState == AIstate.AI_Follow || currentState == AIstate.AI_Strafe || currentState == AIstate.AI_Patrol) 
+		if (currentState == AIstate.AI_Follow || currentSubState == AIsubState.AI_Strafe || currentState == AIstate.AI_Patrol) 
 		{
 			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		}
@@ -244,23 +245,30 @@ public class AIController : Ship {
 					AIStationary ();
 					AIAttack ();
 					break;
-				case AIstate.AI_Defend:
-					AIDefend ();
-					AIAttack ();
-					break;
-				case AIstate.AI_Strafe:
-					AIStrafe ();
-					AIAttack ();
-					break;
-				case AIstate.AI_Assist:
-					AIAssist();
-					break;
 				case AIstate.AI_Patrol:
 					AIPatrol();
 					break;
 				default:
 					break;
 			}
+
+			switch (currentSubState)
+			{
+				case AIsubState.AI_Idle:
+					break;
+				case AIsubState.AI_Defend:
+					AIDefend ();
+					break;
+				case AIsubState.AI_Strafe:
+					AIStrafe ();
+					break;
+				case AIsubState.AI_Assist:
+					AIAssist();
+					break;
+				case AIsubState.AI_Attack:
+					AIAttack();
+					break;
+			}			
 			
 			if (hasMothershipShield)
 			{

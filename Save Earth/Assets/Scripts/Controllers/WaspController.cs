@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class WaspController : FighterController {
+
 	public override void Start () 
 	{
 		base.Start();
