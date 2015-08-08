@@ -12343,7 +12343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLives: {fileID: 918958442}
   playerHealth: {fileID: 549187409}
-  pointer: {fileID: 116454, guid: c6c415ac37b846649bfd234b4b22bd98, type: 2}
+  pointer: {fileID: 116454, guid: 379429fe02ae742858fc17e70aea6098, type: 2}
 --- !u!4 &1023256715 stripped
 Transform:
   m_PrefabParentObject: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
@@ -13025,7 +13025,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
-  m_StereoMirrorMode: 0
 --- !u!4 &1094680304
 Transform:
   m_ObjectHideFlags: 0
@@ -14877,7 +14876,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1262952378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.33797503, y: -3.5, z: 0}
+  m_LocalPosition: {x: 5.33718491, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 535304300}
@@ -16020,7 +16019,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: shipType
-      value: 5
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: spawnType
@@ -16028,7 +16027,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: delayTime
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: m_IsActive
@@ -16036,7 +16035,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
       propertyPath: m_Name
-      value: 'Bumble_Spawn '
+      value: 'Wasp_Spawn '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
@@ -20393,7 +20392,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
-  m_StereoMirrorMode: 0
 --- !u!1 &1824030030
 GameObject:
   m_ObjectHideFlags: 0
@@ -20554,7 +20552,7 @@ MonoBehaviour:
     replenisherAmt: 5
     trapperAmt: 5
     waspAmt: 5
-    wolverineAmt: 5
+    wolverineAmt: 6
   projectileTotals:
     bulletAmt: 50
     canProjectileAmt: 15
@@ -23338,7 +23336,6 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
-  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &2073465209
 MonoBehaviour:
@@ -23389,7 +23386,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2076003980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.33797503, y: -3.5, z: 0}
+  m_LocalPosition: {x: -5.33718491, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 51983745}

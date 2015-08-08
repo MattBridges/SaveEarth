@@ -18,23 +18,23 @@ public class FighterController : AIController {
 		base.Awake();
 	}
 	
-	private AIController findClosestEnemy()
+	private GameObject findClosestEnemy()
 	{
-		AIController temp = null;
+		GameObject closest = null;
 	
-		foreach (AIController c in GameObject.FindObjectsOfType<AIController>())
+		foreach (GameObject c in PoolingManager.Instance.pooled)
 		{
-			if (!c.gameObject.activeSelf)
+			if (!c.activeSelf)
 				continue;
 				
-			if (temp == null)
-				temp = c;
+			if (closest == null)
+				closest = c;
 				
-			if (temp != c && (Vector2.Distance(c.gameObject.transform.position, this.gameObject.transform.position) < Vector2.Distance(temp.gameObject.transform.position, this.gameObject.transform.position)))
-				temp = c;
+			if (closest != c && (Vector2.Distance(c.transform.position, this.gameObject.transform.position) < Vector2.Distance(closest.transform.position, this.gameObject.transform.position)))
+				closest = c;
 		}
 		
-		return temp;
+		return closest;
 	}
 	
 	public override void OnEnable() 
@@ -50,6 +50,9 @@ public class FighterController : AIController {
 	public override void AIFollow()
 	{
 		base.AIFollow();
+		
+		if (health < (maxHealth * 0.3f))
+			currentState = AIstate.AI_Retreat;
 	}
 	
 	public override void AIRetreat()
@@ -65,9 +68,6 @@ public class FighterController : AIController {
 	public override void AIAttack()
 	{
 		base.AIAttack();
-		
-		if (health < (maxHealth * 0.3f))
-			currentState = AIstate.AI_Retreat;
 	}
 	
 	public override void AIDefend()
@@ -88,6 +88,12 @@ public class FighterController : AIController {
 	public override void AIIdle()
 	{
 		base.AIIdle();
+		
+		if (Vector2.Distance(PlayerShip.Instance.gameObject.transform.position, this.gameObject.transform.position) < wakeupDistance)
+		{
+			target = PlayerShip.Instance.gameObject;
+			currentState = AIstate.AI_Follow;
+		}
 	}
 	
 	public override void AIPatrol()

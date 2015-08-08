@@ -257,10 +257,10 @@ public class AIController : Ship {
 				case AIsubState.AI_Idle:
 					break;
 				case AIsubState.AI_Defend:
-					AIDefend ();
+					AIDefend();
 					break;
 				case AIsubState.AI_Strafe:
-					AIStrafe ();
+					AIStrafe();
 					break;
 				case AIsubState.AI_Assist:
 					AIAssist();

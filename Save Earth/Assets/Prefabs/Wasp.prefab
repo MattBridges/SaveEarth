@@ -11,10 +11,10 @@ GameObject:
   - 212: {fileID: 21230682}
   - 50: {fileID: 5072318}
   - 114: {fileID: 11407316}
-  - 60: {fileID: 6087752}
-  - 60: {fileID: 6069156}
   - 114: {fileID: 11404868}
   - 114: {fileID: 11459762}
+  - 60: {fileID: 6072962}
+  - 60: {fileID: 6049382}
   m_Layer: 0
   m_Name: Wasp
   m_TagString: Enemy
@@ -114,7 +114,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
---- !u!60 &6069156
+--- !u!60 &6049382
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -185,7 +185,7 @@ PolygonCollider2D:
       - {x: .0500000007, y: -.860000014}
       - {x: .25999999, y: -.810000002}
       - {x: .439999998, y: -.720000029}
---- !u!60 &6087752
+--- !u!60 &6072962
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -279,14 +279,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49cc99af344b5438d8358a416e2c6777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 2
   currentWeapon: 0
   health: 0
   currentState: 0
+  currentSubState: 0
   bulletSpeed: 0
   fireRate: 0
-  wakeupDistance: 0
-  maxHealth: 0
+  wakeupDistance: 10
+  maxHealth: 20
   healthManager: {fileID: 0}
   nextNode: {fileID: 0}
   pathNodeGroup: 0
@@ -302,6 +303,7 @@ MonoBehaviour:
   pShip: {fileID: 0}
   weaponShotPosition: {fileID: 0}
   SubClass: 0
+  detectionRange: 5
 --- !u!114 &11448746
 MonoBehaviour:
   m_ObjectHideFlags: 1
