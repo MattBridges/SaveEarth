@@ -11,9 +11,7 @@ public struct PoolObject
 [System.Serializable]
 public class Ships
 {
-    public int
-       dragonFlyAmt,
-       motherShipAmt,
+    public int       
        mineAmt,
        satelliteAmt,
        allyRaptorAmt,
@@ -21,10 +19,25 @@ public class Ships
        gathererAmt,
        allyOrbitalAmt,
        orbitalAmt,
-       allyCarrierAmt,
-       carrierAmt,
        baseShipAmt,
-       raptorAmt;
+       raptorAmt,
+	   aphroditeAmt,
+	   batteringAmt,
+	   bombardierAmt,
+	   bumbleAmt,
+	   defenderAmt,
+	   dreadnaughtAmt,
+	   herculesAmt,
+	   herculesPartsAmt,
+	   hiveAmt,
+	   hunterAmt,
+	   lightCarrierAmt,
+	   protectorAmt,
+	   rammerAmt,
+	   replenisherAmt,
+	   trapperAmt,
+	   waspAmt,
+	   wolverineAmt;
        
        
 }
@@ -154,20 +167,41 @@ public class PoolingManager : MonoBehaviour
 
         //Add Object types
 
-        //Ships
-        AddPoolObject(pooledObjects, "Dragonfly", shipTotals.dragonFlyAmt);
-        AddPoolObject(pooledObjects, "Raptor", shipTotals.raptorAmt);
-        AddPoolObject(pooledObjects, "MotherShip", shipTotals.motherShipAmt);
+        //Old Ships
+        //AddPoolObject(pooledObjects, "Dragonfly", shipTotals.dragonFlyAmt);        
+       // AddPoolObject(pooledObjects, "MotherShip", shipTotals.motherShipAmt);
         AddPoolObject(pooledObjects, "EnemyMine", shipTotals.mineAmt);
-        AddPoolObject(pooledObjects, "Satellite", shipTotals.satelliteAmt);
-        AddPoolObject(pooledObjects, "AllyRaptor", shipTotals.allyRaptorAmt);
-        AddPoolObject(pooledObjects, "OrbitalRefinery", shipTotals.orbitalRefAmt);
-        AddPoolObject(pooledObjects, "Gatherer", shipTotals.gathererAmt);
+        AddPoolObject(pooledObjects, "Satellite", shipTotals.satelliteAmt);        
+        AddPoolObject(pooledObjects, "OrbitalRefinery", shipTotals.orbitalRefAmt);        
         AddPoolObject(pooledObjects, "AllyOrbitalBase", shipTotals.allyOrbitalAmt);
         AddPoolObject(pooledObjects, "OrbitalBase", shipTotals.orbitalAmt);
-        AddPoolObject(pooledObjects, "AllyCarrier", shipTotals.allyCarrierAmt);
-        AddPoolObject(pooledObjects, "Carrier", shipTotals.carrierAmt);
-        AddPoolObject(pooledObjects, "EnemyBaseShip", shipTotals.baseShipAmt);
+       // AddPoolObject(pooledObjects, "AllyCarrier", shipTotals.allyCarrierAmt);
+       // AddPoolObject(pooledObjects, "Carrier", shipTotals.carrierAmt);
+ 
+		//New Ships 
+		AddPoolObject(pooledObjects, "AllyRaptor", shipTotals.allyRaptorAmt);
+		AddPoolObject(pooledObjects, "Aphrodite", shipTotals.aphroditeAmt);
+		AddPoolObject(pooledObjects, "EnemyBaseShip", shipTotals.baseShipAmt);
+		AddPoolObject(pooledObjects, "Gatherer", shipTotals.gathererAmt);
+		AddPoolObject(pooledObjects, "Battering", shipTotals.batteringAmt);
+
+		AddPoolObject(pooledObjects, "Raptor", shipTotals.raptorAmt);
+		AddPoolObject(pooledObjects, "Bombardier", shipTotals.bombardierAmt);
+		AddPoolObject(pooledObjects, "Bumble", shipTotals.bumbleAmt);
+		AddPoolObject(pooledObjects, "Defender", shipTotals.defenderAmt);
+		AddPoolObject(pooledObjects, "Dreadnaught", shipTotals.dreadnaughtAmt);
+
+		AddPoolObject(pooledObjects, "Hercules", shipTotals.herculesAmt);
+		AddPoolObject(pooledObjects, "HerculesPart", shipTotals.herculesPartsAmt);
+		AddPoolObject(pooledObjects, "Hive", shipTotals.hiveAmt);
+		AddPoolObject(pooledObjects, "Hunter", shipTotals.hunterAmt);
+		AddPoolObject(pooledObjects, "LightCarrier", shipTotals.lightCarrierAmt);
+		AddPoolObject(pooledObjects, "Protector", shipTotals.protectorAmt);
+		AddPoolObject(pooledObjects, "Rammer", shipTotals.rammerAmt);
+		AddPoolObject(pooledObjects, "Replenisher", shipTotals.replenisherAmt);
+		AddPoolObject(pooledObjects, "Trapper", shipTotals.trapperAmt);
+		AddPoolObject(pooledObjects, "Wasp", shipTotals.waspAmt);
+		AddPoolObject(pooledObjects, "Wolverine", shipTotals.wolverineAmt);
         
         //Projectiles
         AddPoolObject(pooledObjects, "Bullet", projectileTotals.bulletAmt);
