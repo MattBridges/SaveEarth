@@ -100,6 +100,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5070316
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -108,11 +109,11 @@ Rigidbody2D:
   m_LinearDrag: .5
   m_AngularDrag: .0500000007
   m_GravityScale: 0
-  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6100100
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -203,11 +204,14 @@ MonoBehaviour:
   currentWeapon: 0
   health: 0
   currentState: 0
+  currentSubState: 0
   bulletSpeed: 0
   fireRate: 0
   wakeupDistance: 0
   maxHealth: 0
   healthManager: {fileID: 0}
+  detectionRange: 0
+  attackRange: 0
   nextNode: {fileID: 0}
   pathNodeGroup: 0
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
@@ -220,7 +224,7 @@ MonoBehaviour:
   target: {fileID: 0}
   attack: 0
   pShip: {fileID: 0}
-  weaponShotPosition: {fileID: 0}
+  weaponShotPosition: {fileID: 434548}
   SubClass: 0
 --- !u!114 &11474524
 MonoBehaviour:
@@ -345,7 +349,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: weaponShotPosition
+      value: 
+      objectReference: {fileID: 434548}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 178894}

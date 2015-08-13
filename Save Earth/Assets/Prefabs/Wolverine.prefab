@@ -31,7 +31,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 454806}
   m_Layer: 0
-  m_Name: DragonflyCannon
+  m_Name: WolverineCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +101,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5072318
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -109,11 +110,11 @@ Rigidbody2D:
   m_LinearDrag: .5
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!60 &6069156
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -283,11 +284,14 @@ MonoBehaviour:
   currentWeapon: 0
   health: 0
   currentState: 0
+  currentSubState: 0
   bulletSpeed: 0
   fireRate: 0
   wakeupDistance: 0
   maxHealth: 0
   healthManager: {fileID: 0}
+  detectionRange: 0
+  attackRange: 0
   nextNode: {fileID: 0}
   pathNodeGroup: 0
   bulletColor: {r: 1, g: 0, b: 1, a: 1}

@@ -6,8 +6,8 @@ public class FighterController : AIController {
 	public enum subClass { Light, Medium, Heavy };
 	public subClass SubClass;
 	
-	public float detectionRange;
-	
+	public GameObject nearestShip;
+		
 	public override void Start () 
 	{
 		base.Start();
@@ -26,11 +26,15 @@ public class FighterController : AIController {
 		{
 			if (!c.activeSelf)
 				continue;
-				
+
+			if (c == this.gameObject || c == PlayerShip.Instance.gameObject)
+				continue;
+			
 			if (closest == null)
 				closest = c;
+							
 				
-			if (closest != c && (Vector2.Distance(c.transform.position, this.gameObject.transform.position) < Vector2.Distance(closest.transform.position, this.gameObject.transform.position)))
+			if (Vector2.Distance(c.transform.position, this.gameObject.transform.position) < Vector2.Distance(closest.transform.position, this.gameObject.transform.position))
 				closest = c;
 		}
 		
@@ -51,13 +55,34 @@ public class FighterController : AIController {
 	{
 		base.AIFollow();
 		
-		if (health < (maxHealth * 0.3f))
-			currentState = AIstate.AI_Retreat;
+		if (Vector2.Distance(PlayerShip.Instance.gameObject.transform.position, this.gameObject.transform.position) < attackRange)
+			currentSubState = AIsubState.AI_Attack;
 	}
 	
 	public override void AIRetreat()
 	{
 		base.AIRetreat();
+
+		if (Vector2.Distance(nearestShip.transform.position, transform.position) > 4)
+		{
+			rb.AddForce((nearestShip.transform.position - transform.position).normalized * speed, ForceMode2D.Force);
+		}
+	}
+	
+	public override void TakeDamage(int amt)
+	{
+		base.TakeDamage(amt);
+		
+		if (health < (maxHealth * 0.3f))
+		{
+			nearestShip = findClosestEnemy();
+			
+			if (nearestShip)
+			{
+				currentState = AIstate.AI_Retreat;
+				currentSubState = AIsubState.AI_Attack;
+			}
+		}
 	}
 	
 	public override void AIAssist()
@@ -89,7 +114,7 @@ public class FighterController : AIController {
 	{
 		base.AIIdle();
 		
-		if (Vector2.Distance(PlayerShip.Instance.gameObject.transform.position, this.gameObject.transform.position) < wakeupDistance)
+		if (Vector2.Distance(PlayerShip.Instance.gameObject.transform.position, this.gameObject.transform.position) < detectionRange)
 		{
 			target = PlayerShip.Instance.gameObject;
 			currentState = AIstate.AI_Follow;

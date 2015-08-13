@@ -56,7 +56,7 @@ public class OrbitalRefinery : StationaryStation {
 		transform.Rotate(new Vector3(0, 0, speed));
 	}
 	
-	void OnTriggerEnter2D(Collider2D other)
+	public override void OnTriggerEnter2D(Collider2D other)
 	{	
 		if (other.tag == "EnemyBullet")
 		{

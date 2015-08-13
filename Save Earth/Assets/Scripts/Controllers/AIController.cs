@@ -20,6 +20,9 @@ public class AIController : Ship {
 	private Vector3 cDir;
 	private bool canFire;
     private GameObject targetingPointer;
+    
+	public float detectionRange;
+	public float attackRange;
 	
 	[HideInInspector]
 	public Transform nextNode;
@@ -57,7 +60,6 @@ public class AIController : Ship {
 	[HideInInspector]
 	public GameObject pShip;
 	
-	[HideInInspector]
 	public Transform weaponShotPosition;
 
 	// Use this for initialization
@@ -65,8 +67,7 @@ public class AIController : Ship {
 	{		
 		health = maxHealth;
         currentWeapon = Weapons.RedWeapon;
-		rb = this.gameObject.GetComponent<Rigidbody2D>();
-        
+		rb = this.gameObject.GetComponent<Rigidbody2D>();        
 	}
     public virtual void Awake()
     {
@@ -99,13 +100,8 @@ public class AIController : Ship {
 	public virtual void OnDisable()
 	{
 		EventManager.rT -= ResetTarget;
-       
-        
-        
-        
-	}
+    }
     
-  
 	public void UpdateRotation(Transform faceDir, float tAngle)
 	{
 		dir = faceDir.position - transform.position;
@@ -142,8 +138,14 @@ public class AIController : Ship {
 	
 	public virtual void AIAttack()
 	{
-		if ((attack && target) && target.activeSelf) 
+		if (target && target.activeSelf) 
 		{
+			if (Vector2.Distance(target.transform.position, transform.position) > attackRange && currentState != AIstate.AI_Retreat)
+			{
+				currentSubState = AIsubState.AI_Idle;
+				return;
+			}
+		
 			cDir = target.transform.position - transform.position;
             Vector3 dDir = cDir.normalized;
 
@@ -235,15 +237,12 @@ public class AIController : Ship {
 					break;
 				case AIstate.AI_Follow:
 					AIFollow ();
-					AIAttack ();
 					break;
 				case AIstate.AI_Retreat:
 					AIRetreat ();
-					AIAttack ();
 					break;
 				case AIstate.AI_Stationary:
 					AIStationary ();
-					AIAttack ();
 					break;
 				case AIstate.AI_Patrol:
 					AIPatrol();
@@ -280,23 +279,31 @@ public class AIController : Ship {
 		}
 	}
 
+	public virtual void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.tag == "PlayerBullet")
+		{
+			BulletDestroy bD = other.gameObject.GetComponent<BulletDestroy>();
+			TakeDamage(5);
+
+			if (currentState == AIstate.AI_Idle)
+			{
+				if (!target)
+				{
+					target = bD.shipFired;
+					currentState = AIstate.AI_Follow;
+				}
+			}
+		}
+	}
+
     public virtual void TakeDamage(int amt)
     {
-    	if (hasMothershipShield)
-    	{
-    		this.shieldHealth -= amt;
-    		
-    		if (shieldHealth <= 0)
-    		{
-    			this.health -= shieldHealth;
-    			hasMothershipShield = false;
-    		}
-    	}
-    	else
-	        this.health -= amt;
-       
-
-        healthManager.SetWidth(health / maxHealth);
+    	health -= amt;
+    	
+    	if (healthManager != null)
+	        healthManager.SetWidth(health / maxHealth);
+                
         if (this.health <= 0)
         {
             if (GameManager.Instance.currentEndLevel.destroyObjects.Contains(this.gameObject))
@@ -306,11 +313,10 @@ public class AIController : Ship {
             }
             DropItem();
             this.gameObject.SetActive(false);            
-            GameManager.Instance.currentEndLevel.CheckWinCondition(); 
-            
+            GameManager.Instance.currentEndLevel.CheckWinCondition();   
         }
-        
     }
+    
     public void DropItem()
     {
         ItemDrop item = this.gameObject.GetComponent<ItemDrop>();

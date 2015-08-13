@@ -36,7 +36,7 @@ public class OrbitalBase : StationaryStation {
 	}
 	
 	
-	void OnTriggerEnter2D(Collider2D other)
+	public override void OnTriggerEnter2D(Collider2D other)
 	{
 		if (this.baseType == BaseType.Ally && other.tag == "EnemyBullet")
 		{

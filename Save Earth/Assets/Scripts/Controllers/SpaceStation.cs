@@ -27,7 +27,7 @@ public class SpaceStation : AIController {
 		base.AIAttack();
 	}
 	
-	void OnTriggerEnter2D(Collider2D other)
+	public override void OnTriggerEnter2D(Collider2D other)
 	{
 
 	}

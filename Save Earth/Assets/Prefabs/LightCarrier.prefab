@@ -18,6 +18,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &183366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 469646}
+  m_Layer: 0
+  m_Name: LightCarrierCannon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &191374
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +72,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &469646
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.01000023, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 495844}
+  m_RootOrder: 1
 --- !u!4 &495844
 Transform:
   m_ObjectHideFlags: 1
@@ -64,14 +91,16 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.6068192, y: -14.2865505, z: 0}
+  m_LocalPosition: {x: -16.3338165, y: -1.00368905, z: 0}
   m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children:
   - {fileID: 22420918}
+  - {fileID: 469646}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5066550
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -80,11 +109,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
-  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &5868606
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -158,11 +187,14 @@ MonoBehaviour:
   currentWeapon: 0
   health: 0
   currentState: 0
+  currentSubState: 0
   bulletSpeed: 0
   fireRate: 0
   wakeupDistance: 0
   maxHealth: 0
   healthManager: {fileID: 0}
+  detectionRange: 0
+  attackRange: 0
   nextNode: {fileID: 0}
   pathNodeGroup: 0
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
@@ -175,7 +207,7 @@ MonoBehaviour:
   target: {fileID: 0}
   attack: 0
   pShip: {fileID: 0}
-  weaponShotPosition: {fileID: 0}
+  weaponShotPosition: {fileID: 469646}
   SubClass: 0
 --- !u!114 &11468054
 MonoBehaviour:
@@ -317,7 +349,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: weaponShotPosition
+      value: 
+      objectReference: {fileID: 469646}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 192768}

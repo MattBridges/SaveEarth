@@ -13,8 +13,8 @@ GameObject:
   - 114: {fileID: 11407316}
   - 114: {fileID: 11404868}
   - 114: {fileID: 11459762}
-  - 60: {fileID: 6072962}
   - 60: {fileID: 6049382}
+  - 60: {fileID: 6072962}
   m_Layer: 0
   m_Name: Wasp
   m_TagString: Enemy
@@ -31,7 +31,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 454806}
   m_Layer: 0
-  m_Name: DragonflyCannon
+  m_Name: WaspCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +101,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5072318
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -109,11 +110,11 @@ Rigidbody2D:
   m_LinearDrag: .5
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!60 &6049382
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -285,10 +286,12 @@ MonoBehaviour:
   currentState: 0
   currentSubState: 0
   bulletSpeed: 0
-  fireRate: 0
+  fireRate: 1
   wakeupDistance: 10
   maxHealth: 20
   healthManager: {fileID: 0}
+  detectionRange: 10
+  attackRange: 6
   nextNode: {fileID: 0}
   pathNodeGroup: 0
   bulletColor: {r: 1, g: 0, b: 1, a: 1}
@@ -301,9 +304,9 @@ MonoBehaviour:
   target: {fileID: 0}
   attack: 0
   pShip: {fileID: 0}
-  weaponShotPosition: {fileID: 0}
+  weaponShotPosition: {fileID: 454806}
   SubClass: 0
-  detectionRange: 5
+  nearestShip: {fileID: 0}
 --- !u!114 &11448746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -477,7 +480,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: detectionRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: weaponShotPosition
+      value: 
+      objectReference: {fileID: 454806}
+    - target: {fileID: 0}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160624}

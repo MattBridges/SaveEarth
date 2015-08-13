@@ -3762,6 +3762,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 074e37d3304693342a82796e70f43019, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &314317950 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+  m_PrefabInternal: {fileID: 647930934}
 --- !u!4 &320689849 stripped
 Transform:
   m_PrefabParentObject: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
@@ -8167,6 +8171,72 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 488852, guid: 0a93bfce3a53a46428f1f5f3b7b899a7, type: 2}
   m_PrefabInternal: {fileID: 1805087098}
+--- !u!1001 &647930934
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1869498844}
+    m_Modifications:
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -10.1499996
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.0999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: shipType
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: spawnType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421896, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: delayTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133196, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_Name
+      value: 'Wasp_Spawn '
+      objectReference: {fileID: 0}
+    - target: {fileID: 426204, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 76a04f07c5554d74d9b487417503a448, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &648353740
 Prefab:
   m_ObjectHideFlags: 0
@@ -13025,6 +13095,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!4 &1094680304
 Transform:
   m_ObjectHideFlags: 0
@@ -20392,6 +20463,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!1 &1824030030
 GameObject:
   m_ObjectHideFlags: 0
@@ -20848,6 +20920,7 @@ Transform:
   - {fileID: 228605657}
   - {fileID: 1163861921}
   - {fileID: 1349460440}
+  - {fileID: 314317950}
   m_Father: {fileID: 540486266}
   m_RootOrder: 0
 --- !u!114 &1869498845
@@ -23336,6 +23409,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &2073465209
 MonoBehaviour:

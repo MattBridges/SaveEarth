@@ -24,7 +24,7 @@ public class MixedStation : SpaceStation {
 		base.AIAttack();
 	}
 	
-	void OnTriggerEnter2D(Collider2D other)
+	public override void OnTriggerEnter2D(Collider2D other)
 	{
 	}
 	
